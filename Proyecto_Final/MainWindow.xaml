@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="Registros" HorizontalAlignment="Left" FontSize="20"/>
+            <ComboBox x:Name="OpcionesComboBox" FontSize="20">
+                <ComboBoxItem Content="Registrar Usuario"/>
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>
