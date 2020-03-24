@@ -6,5 +6,6 @@ namespace Proyecto_Final.Validaciones
 {
     public class NombreValidacion
     {
+        //hola
     }
 }
