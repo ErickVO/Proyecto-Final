@@ -4,24 +4,66 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final"
+        xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Login" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Usuario" Grid.Row="1" Grid.Column="1" FontSize="20"/>
+        <TextBox x:Name="UsuarioTextBox" Grid.Row="1" Grid.Column="3" FontSize="20">
+            <TextBox.Text>
+                <Binding Path="NombreUsuario" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <src:CampoLlenoValidacion x:Name="usuarioValidacion" Message="Debes poner un usuario." ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="Registros" HorizontalAlignment="Left" FontSize="20"/>
-            <ComboBox x:Name="OpcionesComboBox" FontSize="20">
-                <ComboBoxItem Content="Registrar Usuario"/>
-            </ComboBox>
-        </StackPanel>
+        <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20"/>
+        <TextBox x:Name="ClaveTextBox" Grid.Row="3" Grid.Column="3" FontSize="20">
+            <TextBox.Text>
+                <Binding Path="Clave" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <src:CampoLlenoValidacion x:Name="claveValidacion" Message="Debes poner una clave." ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <Button x:Name="LoginButton" Content="Login" Grid.Column="3" Grid.Row="5" FontSize="20" HorizontalContentAlignment="Right" Width="140" Click="LoginButton_Click">
+            <!--<Button.Background>
+                <ImageBrush ImageSource="Resources/login.png" Stretch="Uniform" AlignmentX="Left"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=UsuarioTextBox, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=ClaveTextBox, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>-->
+        </Button>
     </Grid>
 </Window>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Proyecto_Final.BLL;
+using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final
 {
@@ -20,9 +22,24 @@ namespace Proyecto_Final
     /// </summary>
     public partial class MainWindow : Window
     {
+        Usuarios usuario = new Usuarios();
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = usuario;
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            //abrir menu para los registros
+            /*if (UsuariosBLL.Existe(usuario))
+            {
+
+            }
+            else
+                MessageBox.Show("Usuario no existente");*/
         }
     }
 }
