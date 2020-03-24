@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BLL\" />
+    <Folder Include="Data\" />
     <Folder Include="UI\" />
   </ItemGroup>
 
