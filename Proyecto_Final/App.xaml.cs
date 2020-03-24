@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace Proyecto_Final
 {
@@ -13,5 +14,10 @@ namespace Proyecto_Final
     /// </summary>
     public partial class App : Application
     {
+        void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show($"Ocurrio un error no controlado:\n {e.Exception.Message}");
+            e.Handled = true;
+        }
     }
 }
