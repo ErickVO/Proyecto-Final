@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Proyecto_Final.Validaciones
 {
-    class NombreValidacion
+    public class NombreValidacion
     {
     }
 }
