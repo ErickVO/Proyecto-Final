@@ -17,9 +17,11 @@ namespace Proyecto_Final.UI.Menu
     /// </summary>
     public partial class MenuPrincipal : Window
     {
-        public MenuPrincipal()
+        private int UsuarioId { get; set; }
+        public MenuPrincipal(int usuarioId)
         {
             InitializeComponent();
+            UsuarioId = usuarioId;
         }
     }
 }

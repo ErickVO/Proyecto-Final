@@ -32,12 +32,9 @@ namespace Proyecto_Final
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-
-
-            //abrir menu para los registros
             if (UsuariosBLL.Existe(usuario))
             {
-                MenuPrincipal menuPrincipal = new MenuPrincipal();
+                MenuPrincipal menuPrincipal = new MenuPrincipal(UsuariosBLL.ObtenerId(usuario));
                 menuPrincipal.Show();
             }
             else
