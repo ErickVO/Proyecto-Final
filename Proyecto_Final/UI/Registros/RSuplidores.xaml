@@ -98,26 +98,38 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
-            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="100">
-                
+            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="0">
             <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100">
-                
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
+                </Button.Background>
+
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="1">
             <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
-                
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.jpg" AlignmentX="Left"/>
+                </Button.Background>
+
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="3">
             <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
-                
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
+                </Button.Background>
+
             </Button>
         </StackPanel>
 
