@@ -1,0 +1,34 @@
+﻿<Window x:Class="Proyecto_Final.UI.Menu.MenuPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Proyecto_Final.UI.Menu"
+        mc:Ignorable="d"
+        Title="Menu Principal                                                                                 AgrocontsaApp" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="Registros" FontSize="20"/>
+            <ComboBox x:Name="RegistrosComboBox" FontSize="20">
+                <ComboBoxItem Content="Registrar Cliente"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Label Content="Consultas" FontSize="20"/>
+            <ComboBox x:Name="ConsultasComboBox" FontSize="20">
+                <ComboBoxItem Content="Consultar Clientes"/>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Window>

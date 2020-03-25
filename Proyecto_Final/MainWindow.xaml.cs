@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Proyecto_Final.BLL;
 using Proyecto_Final.Entidades;
+using Proyecto_Final.UI.Menu;
 
 namespace Proyecto_Final
 {
@@ -34,12 +35,13 @@ namespace Proyecto_Final
 
 
             //abrir menu para los registros
-            /*if (UsuariosBLL.Existe(usuario))
+            if (UsuariosBLL.Existe(usuario))
             {
-
+                MenuPrincipal menuPrincipal = new MenuPrincipal();
+                menuPrincipal.Show();
             }
             else
-                MessageBox.Show("Usuario no existente");*/
+                MessageBox.Show("Usuario no existente");
         }
     }
 }
