@@ -38,7 +38,7 @@
         <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20"/>
         <TextBox x:Name="ClaveTextBox" Grid.Row="3" Grid.Column="3" FontSize="20">
             <TextBox.Text>
-                <Binding Path="Clave" Mode="TwoWay">
+                <Binding Path="Clave" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:CampoLlenoValidacion x:Name="claveValidacion" Message="Debes poner una clave." ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
