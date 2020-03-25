@@ -11,7 +11,6 @@ namespace Proyecto_Final.Entidades
         [Key]
         public int VentaId { get; set; }
         public int UsuarioId { get; set; }
-        public int ContratoId { get; set; }
         public DateTime Fecha { get; set; }
 
         [ForeignKey("VentaId")]
@@ -21,9 +20,16 @@ namespace Proyecto_Final.Entidades
         {
             VentaId = 0;
             UsuarioId = 0;
-            ContratoId = 0;
             Fecha = DateTime.Now;
             VentaDetalle = new List<VentasDetalle>();
+        }
+
+        public Ventas(int ventaId, int usuarioId, DateTime fecha, List<VentasDetalle> ventaDetalle)
+        {
+            VentaId = ventaId;
+            UsuarioId = usuarioId;
+            Fecha = fecha;
+            VentaDetalle = ventaDetalle;
         }
     }
 }
