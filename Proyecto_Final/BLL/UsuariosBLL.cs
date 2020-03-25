@@ -132,5 +132,25 @@ namespace Proyecto_Final.BLL
 
             return paso;
         }
+
+        public static int ObtenerId(Usuarios usuario)
+        {
+            Contexto db = new Contexto();
+
+            try
+            {
+                usuario = db.Usuarios.Where(u => u.NombreUsuario == usuario.NombreUsuario && u.Clave == usuario.Clave).SingleOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return usuario.UsuarioId;
+        }
     }
 }
