@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Proyecto_Final.Entidades
 {
@@ -16,6 +17,9 @@ namespace Proyecto_Final.Entidades
         public string Direccion { get; set; }
         public string Email { get; set; }
 
+        [ForeignKey("ClienteId")]
+        public virtual List<PagosDetalle> PagoDetalle { get; set; }
+
         public Clientes()
         {
             ClienteId = 0;
@@ -25,6 +29,8 @@ namespace Proyecto_Final.Entidades
             Telefono = string.Empty;
             Direccion = string.Empty;
             Email = string.Empty;
+
+            PagoDetalle = new List<PagosDetalle>();
         }
 
         public Clientes(int clienteId, int usuarioId, string nombres, string cedula, string telefono, string direccion, string email)

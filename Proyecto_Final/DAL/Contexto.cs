@@ -9,6 +9,8 @@ namespace Proyecto_Final.DAL
     public class Contexto :DbContext
     {
         public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Contratos> Contratos { get; set; }
+        public DbSet<Entradas> Entradas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
