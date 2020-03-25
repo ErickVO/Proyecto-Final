@@ -17,7 +17,7 @@ namespace Proyecto_Final.Entidades
         public decimal CantidadTotal { get; set; }
 
         [ForeignKey("ContratoId")]
-        public virtual List<Ventas> VentasContrato { get; set; }
+        public virtual List<VentasDetalle> VentaDetalle { get; set; }
 
         public Contratos()
         {
@@ -26,7 +26,7 @@ namespace Proyecto_Final.Entidades
             ClienteId = 0;
             FechaCreacion = DateTime.Now;
             FechaVencimiento = DateTime.Now;
-            VentasContrato = new List<Ventas>();
+            VentaDetalle = new List<VentasDetalle>();
         }
 
         public Contratos(int contratoId, int usuarioId, int clienteId, DateTime fechaCreacion, DateTime fechaVencimiento, decimal cantidadTotal)
