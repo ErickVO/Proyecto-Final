@@ -14,7 +14,7 @@ namespace Proyecto_Final.Entidades
         public string Direccion { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
-        public string Celular { get; set; }
+        public string Cedula { get; set; }
 
         public Suplidores()
         {
@@ -24,10 +24,10 @@ namespace Proyecto_Final.Entidades
             Direccion = string.Empty;
             Email = string.Empty;
             Telefono = string.Empty;
-            Celular = string.Empty;
+            Cedula = string.Empty;
         }
 
-        public Suplidores(int suplidorId, int usuarioId, string nombres, string direccion, string email, string telefono, string celular)
+        public Suplidores(int suplidorId, int usuarioId, string nombres, string direccion, string email, string telefono, string cedula)
         {
             SuplidorId = suplidorId;
             UsuarioId = usuarioId;
@@ -35,7 +35,7 @@ namespace Proyecto_Final.Entidades
             Direccion = direccion;
             Email = email;
             Telefono = telefono;
-            Celular = celular;
+            Cedula = cedula;
         }
     }
 }
