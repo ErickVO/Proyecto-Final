@@ -10,6 +10,7 @@ namespace Proyecto_Final.Entidades
         [Key]
         public int UsuarioId { get; set; }
         public string Nombres { get; set; }
+        public DateTime Fecha { get; set; }
         public string NombreUsuario { get; set; }
         public string Clave { get; set; }
         public string Email { get; set; }
@@ -18,15 +19,17 @@ namespace Proyecto_Final.Entidades
         {
             UsuarioId = 0;
             Nombres = string.Empty;
+            Fecha = DateTime.Now;
             NombreUsuario = string.Empty;
             Clave = string.Empty;
             Email = string.Empty;
         }
 
-        public Usuarios(int usuarioId, string nombres, string nombreUsuario, string clave, string email)
+        public Usuarios(int usuarioId, string nombres, DateTime fecha, string nombreUsuario, string clave, string email)
         {
             UsuarioId = usuarioId;
             Nombres = nombres;
+            Fecha = fecha;
             NombreUsuario = nombreUsuario;
             Clave = clave;
             Email = email;

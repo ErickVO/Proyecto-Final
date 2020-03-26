@@ -9,6 +9,7 @@ namespace Proyecto_Final.Entidades
     {
         [Key]
         public int CacaoId { get; set; }
+        public int UsuarioId { get; set; }
         public int EntradaId { get; set; }
         public DateTime Fecha { get; set; }
         public string Tipo { get; set; }
@@ -17,15 +18,17 @@ namespace Proyecto_Final.Entidades
         public Cacaos()
         {
             CacaoId = 0;
+            UsuarioId = 0;
             EntradaId = 0;
             Fecha = DateTime.Now;
             Tipo = string.Empty;
             Cantidad = 0.0m;
         }
 
-        public Cacaos(int cacaoId, int entradaId, DateTime fecha, string tipo, decimal cantidad)
+        public Cacaos(int cacaoId, int usuarioId, int entradaId, DateTime fecha, string tipo, decimal cantidad)
         {
             CacaoId = cacaoId;
+            UsuarioId = usuarioId;
             EntradaId = entradaId;
             Fecha = fecha;
             Tipo = tipo;

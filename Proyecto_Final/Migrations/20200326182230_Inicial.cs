@@ -13,6 +13,7 @@ namespace Proyecto_Final.Migrations
                 {
                     CacaoId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    UsuarioId = table.Column<int>(nullable: false),
                     EntradaId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
                     Tipo = table.Column<string>(nullable: true),
@@ -116,6 +117,7 @@ namespace Proyecto_Final.Migrations
                     UsuarioId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombres = table.Column<string>(nullable: true),
+                    Fecha = table.Column<DateTime>(nullable: false),
                     NombreUsuario = table.Column<string>(nullable: true),
                     Clave = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true)
@@ -197,8 +199,8 @@ namespace Proyecto_Final.Migrations
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
-                columns: new[] { "UsuarioId", "Clave", "Email", "NombreUsuario", "Nombres" },
-                values: new object[] { 1, "Admin", "Admin@outlook.com", "Admin", "Administrador" });
+                columns: new[] { "UsuarioId", "Clave", "Email", "Fecha", "NombreUsuario", "Nombres" },
+                values: new object[] { 1, "Admin", "Admin@outlook.com", new DateTime(2020, 3, 26, 14, 22, 29, 522, DateTimeKind.Local).AddTicks(9360), "Admin", "Administrador" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_PagosDetalle_ClienteId",

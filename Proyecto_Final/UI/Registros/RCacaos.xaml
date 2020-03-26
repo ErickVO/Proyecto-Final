@@ -1,0 +1,129 @@
+﻿<Window x:Class="Proyecto_Final.UI.Registros.RCacaos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
+        mc:Ignorable="d"
+        Title="                                                                                                   Registro de Cacaos" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="CacaoId:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBox x:Name="CacaoIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
+
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
+
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Label Content="EntradaId:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBox x:Name="EntradaIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
+
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False">
+
+            </DatePicker>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0">
+            <Label Content="Tipo Cacao:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <ComboBox x:Name="TipoComboBox" FontSize="17" HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="Sánchez"/>
+                <ComboBoxItem Content="Orgánico"/>
+                <ComboBoxItem Content="Española"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="0">
+            <Label Content="Cantidad:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <TextBox x:Name="CantidadTextBox" FontSize="17" HorizontalAlignment="Stretch">
+
+            </TextBox>
+        </StackPanel>
+
+       
+
+        <StackPanel Grid.Row="0" Grid.Column="3">
+            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.Column="0">
+            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
+                </Button.Background>
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.Column="1">
+            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
+                </Button.Background>
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.Column="3">
+            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
+                </Button.Background>
+
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
