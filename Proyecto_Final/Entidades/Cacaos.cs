@@ -18,7 +18,7 @@ namespace Proyecto_Final.Entidades
             CacaoId = 0;
             EntradaId = 0;
             Tipo = string.Empty;
-            Cantidad = 0;
+            Cantidad = 0.0m;
         }
 
         public Cacaos(int cacaoId, int entradaId, string tipo, decimal cantidad)

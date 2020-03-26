@@ -6,28 +6,29 @@ using System.Globalization;
 
 namespace Proyecto_Final.Validaciones
 {
-    public class IdValidacion : ValidationRule
+    public class CantidadValidacion : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             if (value != null)
             {
-                int id = 0;
-
+                decimal cantidad = 0;
                 try
                 {
-                    id = Convert.ToInt32(value);
+                    cantidad = Convert.ToDecimal(value);
                 }
-                catch (FormatException)
+                catch
                 {
-                    return new ValidationResult(false, "El ID debe ser un numero");
+                    return new ValidationResult(false, "La cantidad debe ser un numero");
                 }
 
-                if (id >= 0)
+                if (cantidad >= 0.1m)
                     return ValidationResult.ValidResult;
                 else
-                    return new ValidationResult(false, "El ID debe ser mayor o igual a cero");
+                    return new ValidationResult(false, "La cantidad debe mayor o igual a 0.1");
+
             }
-            return new ValidationResult(false, "Debes poner un ID");
+            return new ValidationResult(false, "Debes poner una cantidad");
         }
+    }
 }
