@@ -11,7 +11,6 @@ namespace Proyecto_Final.Entidades
         [Key]
         public int PagoId { get; set; }
         public int UsuarioId { get; set; }
-        public int ClienteId { get; set; }
         public DateTime Fecha { get; set; }
         public decimal Monto { get; set; }
 
@@ -22,7 +21,6 @@ namespace Proyecto_Final.Entidades
         {
             PagoId = 0;
             UsuarioId = 0;
-            ClienteId = 0;
             Fecha = DateTime.Now;
             Monto = 0;
 
