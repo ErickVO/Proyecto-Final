@@ -1,13 +1,13 @@
-﻿<Window x:Class="Proyecto_Final.UI.Registros.RSuplidores"
+﻿<Window x:Class="Proyecto_Final.UI.Registros.RVentas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title="                                                                                                   Registro de Suplidores" Height="450" Width="800">
+        Title="                                                                                                    Registro de Ventas" Height="450" Width="800">
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="300*"/>
@@ -21,9 +21,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="170"/>
+            <RowDefinition Height="225"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
@@ -33,68 +31,72 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-                
+
             </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="SuplidorId:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="VentaId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="SuplidorIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox x:Name="VentaIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="Nombres:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox x:Name="NombresTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch">
 
-            </TextBox>
+            </DatePicker>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Dirección:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="ContratoId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox x:Name="DireccionTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox x:Name="ContratoIdTexBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0">
-            <Label Content="Email:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Cantidad de Cacao:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBox x:Name="EmailTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox x:Name="CantidadCacaoTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="0">
-            <Label Content="Telefono:" FontSize="16" HorizontalAlignment="Left"/>
+            <Button x:Name="AgregarButton" Content="Agregar" HorizontalContentAlignment="Right" FontSize="16" Width="86">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Agregar.png" AlignmentX="Left"/>
+                </Button.Background>
+
+            </Button>
+
+            <Label Height="150"/>
+
+            <Button x:Name="RemoverButton" Content="Remover" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Remover.png" AlignmentX="Left"/>
+                </Button.Background>
+
+            </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox x:Name="TelefonoTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
-            </TextBox>
-        </StackPanel>
-
-        <StackPanel Grid.Row="6" Grid.Column="0">
-            <Label Content="Cedula:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="6" Grid.Column="1">
-            <TextBox x:Name="CedulaTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
-            </TextBox>
+        <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+            <DataGrid x:Name="LlamadasDataGrid" Height="250">
+                
+            </DataGrid>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
