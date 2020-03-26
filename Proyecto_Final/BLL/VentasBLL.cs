@@ -41,7 +41,7 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                db.Database.ExecuteSqlRaw($"Delete FROM VentasDetalle Where OrdenId = {venta.VentaId}");
+                db.Database.ExecuteSqlRaw($"Delete FROM VentasDetalle Where VentaId = {venta.VentaId}");
 
                 foreach (var item in venta.VentaDetalle)
                 {

@@ -1,13 +1,13 @@
-﻿<Window x:Class="Proyecto_Final.UI.Registros.RSuplidores"
+﻿<Window x:Class="Proyecto_Final.UI.Registros.REntradas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         mc:Ignorable="d"
-        Title="                                                                                                   Registro de Suplidores" Height="450" Width="800">
+        Title="                                                                                                    Registro de Entradas" Height="450" Width="800">
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="300*"/>
@@ -21,9 +21,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="170"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
@@ -33,66 +31,46 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-                
+
             </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="SuplidorId:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="EntradaId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="SuplidorIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox x:Name="EntradaIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="Nombres:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="SuplidorId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox x:Name="NombresTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox x:Name="SuplidorIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Dirección:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox x:Name="DireccionTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch">
 
-            </TextBox>
+            </DatePicker>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0">
-            <Label Content="Email:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Cantidad:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBox x:Name="EmailTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
-            </TextBox>
-        </StackPanel>
-
-        <StackPanel Grid.Row="5" Grid.Column="0">
-            <Label Content="Telefono:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox x:Name="TelefonoTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
-            </TextBox>
-        </StackPanel>
-
-        <StackPanel Grid.Row="6" Grid.Column="0">
-            <Label Content="Cedula:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="6" Grid.Column="1">
-            <TextBox x:Name="CedulaTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox x:Name="CantidadTextBox" FontSize="16" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
@@ -106,7 +84,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="0">
+        <StackPanel Grid.Row="6" Grid.Column="0">
             <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
@@ -115,7 +93,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="1">
+        <StackPanel Grid.Row="6" Grid.Column="1">
             <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
@@ -124,7 +102,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="3">
+        <StackPanel Grid.Row="6" Grid.Column="3">
             <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>

@@ -12,7 +12,7 @@ namespace Proyecto_Final.Entidades
         public int UsuarioId { get; set; }
         public int SuplidorId { get; set; }
         public DateTime Fecha { get; set; }
-        public int Cantidad { get; set; }
+        public decimal Cantidad { get; set; }
 
         public Entradas()
         {
