@@ -80,7 +80,6 @@ namespace Proyecto_Final.Migrations
                     PagoId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
-                    ClienteId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
                     Monto = table.Column<decimal>(nullable: false)
                 },
