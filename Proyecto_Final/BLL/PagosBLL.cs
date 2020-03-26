@@ -9,16 +9,18 @@ using System.Linq.Expressions;
 
 namespace Proyecto_Final.BLL
 {
-    public class ClientesBLL
+    class PagosBLL
     {
-        public static bool Guardar(Clientes cliente)
+        public static bool Guardar(Pagos pago)
         {
-            bool paso = false;
             Contexto db = new Contexto();
+            bool paso = false;
+
             try
             {
-                if (db.Clientes.Add(cliente) != null)
+                if (db.Pagos.Add(pago) != null)
                     paso = db.SaveChanges() > 0;
+
             }
             catch (Exception)
             {
@@ -28,17 +30,25 @@ namespace Proyecto_Final.BLL
             {
                 db.Dispose();
             }
+
             return paso;
         }
 
-        public static bool Modificar(Clientes cliente)
+        public static bool Modificar(Pagos pago)
         {
             bool paso = false;
             Contexto db = new Contexto();
+
             try
             {
-                db.Entry(cliente).State = EntityState.Modified;
-                paso = (db.SaveChanges() > 0);
+                db.Database.ExecuteSqlRaw($"Delete FROM PagosDetalle Where PagoId = {pago.PagoId}");
+
+                foreach (var item in pago.PagoDetalle)
+                {
+                    db.Entry(item).State = EntityState.Added;
+                }
+                db.Entry(pago).State = EntityState.Modified;
+                paso = db.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -51,13 +61,14 @@ namespace Proyecto_Final.BLL
             return paso;
         }
 
-        public static Clientes Buscar(int id)
+        public static Pagos Buscar(int Id)
         {
-            Clientes cliente = new Clientes();
+            Pagos pago = new Pagos();
             Contexto db = new Contexto();
+
             try
             {
-                cliente = db.Clientes.Find(id);
+                pago = db.Pagos.Include(p => p.PagoDetalle).Where(p => p.PagoId == Id).SingleOrDefault();
             }
             catch (Exception)
             {
@@ -67,18 +78,19 @@ namespace Proyecto_Final.BLL
             {
                 db.Dispose();
             }
-            return cliente;
+            return pago;
         }
 
         public static bool Eliminar(int id)
         {
             bool paso = false;
             Contexto db = new Contexto();
+
             try
             {
-                var Eliminar = db.Clientes.Find(id);
+                var Eliminar = PagosBLL.Buscar(id);
                 db.Entry(Eliminar).State = EntityState.Deleted;
-                paso = (db.SaveChanges() > 0);
+                paso = db.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -91,13 +103,14 @@ namespace Proyecto_Final.BLL
             return paso;
         }
 
-        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> cliente)
+        public static List<Pagos> GetList(Expression<Func<Pagos, bool>> pago)
         {
-            List<Clientes> Lista = new List<Clientes>();
             Contexto db = new Contexto();
+            List<Pagos> Lista = new List<Pagos>();
+
             try
             {
-                Lista = db.Clientes.Where(cliente).ToList();
+                Lista = db.Pagos.Where(pago).ToList();
             }
             catch (Exception)
             {

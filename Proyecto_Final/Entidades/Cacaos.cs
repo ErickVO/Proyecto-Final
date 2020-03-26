@@ -11,7 +11,7 @@ namespace Proyecto_Final.Entidades
         public int CacaoId { get; set; }
         public int EntradaId { get; set; }
         public string Tipo { get; set; }
-        public int Cantidad { get; set; }
+        public decimal Cantidad { get; set; }
 
         public Cacaos()
         {
@@ -21,7 +21,7 @@ namespace Proyecto_Final.Entidades
             Cantidad = 0;
         }
 
-        public Cacaos(int cacaoId, int entradaId, string tipo, int cantidad)
+        public Cacaos(int cacaoId, int entradaId, string tipo, decimal cantidad)
         {
             CacaoId = cacaoId;
             EntradaId = entradaId;

@@ -9,15 +9,15 @@ using System.Linq.Expressions;
 
 namespace Proyecto_Final.BLL
 {
-    public class ClientesBLL
+    public class CacaosBLL
     {
-        public static bool Guardar(Clientes cliente)
+        public static bool Guardar(Cacaos cacao)
         {
             bool paso = false;
             Contexto db = new Contexto();
             try
             {
-                if (db.Clientes.Add(cliente) != null)
+                if (db.Cacaos.Add(cacao) != null)
                     paso = db.SaveChanges() > 0;
             }
             catch (Exception)
@@ -31,13 +31,13 @@ namespace Proyecto_Final.BLL
             return paso;
         }
 
-        public static bool Modificar(Clientes cliente)
+        public static bool Modificar(Cacaos cacao)
         {
             bool paso = false;
             Contexto db = new Contexto();
             try
             {
-                db.Entry(cliente).State = EntityState.Modified;
+                db.Entry(cacao).State = EntityState.Modified;
                 paso = (db.SaveChanges() > 0);
             }
             catch (Exception)
@@ -51,13 +51,13 @@ namespace Proyecto_Final.BLL
             return paso;
         }
 
-        public static Clientes Buscar(int id)
+        public static Cacaos Buscar(int id)
         {
-            Clientes cliente = new Clientes();
+            Cacaos cacao = new Cacaos();
             Contexto db = new Contexto();
             try
             {
-                cliente = db.Clientes.Find(id);
+                cacao = db.Cacaos.Find(id);
             }
             catch (Exception)
             {
@@ -67,7 +67,7 @@ namespace Proyecto_Final.BLL
             {
                 db.Dispose();
             }
-            return cliente;
+            return cacao;
         }
 
         public static bool Eliminar(int id)
@@ -76,7 +76,7 @@ namespace Proyecto_Final.BLL
             Contexto db = new Contexto();
             try
             {
-                var Eliminar = db.Clientes.Find(id);
+                var Eliminar = db.Cacaos.Find(id);
                 db.Entry(Eliminar).State = EntityState.Deleted;
                 paso = (db.SaveChanges() > 0);
             }
@@ -91,13 +91,13 @@ namespace Proyecto_Final.BLL
             return paso;
         }
 
-        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> cliente)
+        public static List<Cacaos> GetList(Expression<Func<Cacaos, bool>> cacao)
         {
-            List<Clientes> Lista = new List<Clientes>();
+            List<Cacaos> Lista = new List<Cacaos>();
             Contexto db = new Contexto();
             try
             {
-                Lista = db.Clientes.Where(cliente).ToList();
+                Lista = db.Cacaos.Where(cacao).ToList();
             }
             catch (Exception)
             {
