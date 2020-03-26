@@ -28,6 +28,9 @@ namespace Proyecto_Final.Migrations
                     b.Property<int>("EntradaId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Tipo")
                         .HasColumnType("TEXT");
 
@@ -49,6 +52,9 @@ namespace Proyecto_Final.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")
@@ -177,6 +183,9 @@ namespace Proyecto_Final.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")

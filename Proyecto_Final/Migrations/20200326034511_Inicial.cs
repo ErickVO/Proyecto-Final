@@ -14,6 +14,7 @@ namespace Proyecto_Final.Migrations
                     CacaoId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     EntradaId = table.Column<int>(nullable: false),
+                    Fecha = table.Column<DateTime>(nullable: false),
                     Tipo = table.Column<string>(nullable: true),
                     Cantidad = table.Column<decimal>(nullable: false)
                 },
@@ -29,6 +30,7 @@ namespace Proyecto_Final.Migrations
                     ClienteId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
+                    Fecha = table.Column<DateTime>(nullable: false),
                     Nombres = table.Column<string>(nullable: true),
                     Cedula = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true),
@@ -95,6 +97,7 @@ namespace Proyecto_Final.Migrations
                     SuplidorId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
+                    Fecha = table.Column<DateTime>(nullable: false),
                     Nombres = table.Column<string>(nullable: true),
                     Direccion = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),

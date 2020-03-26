@@ -48,50 +48,60 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="Nombres:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
+            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch">
+
+            </DatePicker>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <Label Content="Nombres:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
             <TextBox x:Name="NombresTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="0">
+        <StackPanel Grid.Row="4" Grid.Column="0">
             <Label Content="Dirección:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="1">
+        <StackPanel Grid.Row="4" Grid.Column="1">
             <TextBox x:Name="DireccionTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="0">
+        <StackPanel Grid.Row="5" Grid.Column="0">
             <Label Content="Email:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="1">
+        <StackPanel Grid.Row="5" Grid.Column="1">
             <TextBox x:Name="EmailTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="5" Grid.Column="0">
+        <StackPanel Grid.Row="6" Grid.Column="0">
             <Label Content="Telefono:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="5" Grid.Column="1">
+        <StackPanel Grid.Row="6" Grid.Column="1">
             <TextBox x:Name="TelefonoTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="6" Grid.Column="0">
+        <StackPanel Grid.Row="7" Grid.Column="0">
             <Label Content="Cedula:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="6" Grid.Column="1">
+        <StackPanel Grid.Row="7" Grid.Column="1">
             <TextBox x:Name="CedulaTextBox" FontSize="17" HorizontalAlignment="Stretch">
 
             </TextBox>

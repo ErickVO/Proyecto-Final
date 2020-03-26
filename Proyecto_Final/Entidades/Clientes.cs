@@ -11,6 +11,7 @@ namespace Proyecto_Final.Entidades
         [Key]
         public int ClienteId { get; set; }
         public int UsuarioId { get; set; }
+        public DateTime Fecha { get; set; }
         public string Nombres { get; set; }
         public string Cedula { get; set; }
         public string Telefono { get; set; }
@@ -24,6 +25,7 @@ namespace Proyecto_Final.Entidades
         {
             ClienteId = 0;
             UsuarioId = 0;
+            Fecha = DateTime.Now;
             Nombres = string.Empty;
             Cedula = string.Empty;
             Telefono = string.Empty;
@@ -33,10 +35,11 @@ namespace Proyecto_Final.Entidades
             PagoDetalle = new List<PagosDetalle>();
         }
 
-        public Clientes(int clienteId, int usuarioId, string nombres, string cedula, string telefono, string direccion, string email)
+        public Clientes(int clienteId, int usuarioId, DateTime fecha, string nombres, string cedula, string telefono, string direccion, string email)
         {
             ClienteId = clienteId;
             UsuarioId = usuarioId;
+            Fecha = fecha;
             Nombres = nombres;
             Cedula = cedula;
             Telefono = telefono;
