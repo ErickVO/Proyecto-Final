@@ -22,8 +22,8 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("INTEGER");
+                    b.Property<decimal>("Cantidad")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("EntradaId")
                         .HasColumnType("INTEGER");
@@ -97,8 +97,8 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("INTEGER");
+                    b.Property<decimal>("Cantidad")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");

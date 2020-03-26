@@ -15,7 +15,7 @@ namespace Proyecto_Final.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     EntradaId = table.Column<int>(nullable: false),
                     Tipo = table.Column<string>(nullable: true),
-                    Cantidad = table.Column<int>(nullable: false)
+                    Cantidad = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,7 +66,7 @@ namespace Proyecto_Final.Migrations
                     UsuarioId = table.Column<int>(nullable: false),
                     SuplidorId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false)
+                    Cantidad = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
