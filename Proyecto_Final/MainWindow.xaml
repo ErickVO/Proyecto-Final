@@ -47,9 +47,9 @@
         </TextBox>
 
         <Button x:Name="LoginButton" Content="Login" Grid.Column="3" Grid.Row="5" FontSize="20" HorizontalContentAlignment="Right" Width="140" Click="LoginButton_Click">
-            <!--<Button.Background>
+            <Button.Background>
                 <ImageBrush ImageSource="Resources/login.png" Stretch="Uniform" AlignmentX="Left"/>
-            </Button.Background>-->
+            </Button.Background>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="IsEnabled" Value="false" />

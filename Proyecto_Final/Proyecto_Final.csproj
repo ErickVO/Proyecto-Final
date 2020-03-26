@@ -11,10 +11,16 @@
     <None Remove="Resources\Agregar.png" />
     <None Remove="Resources\buscar.png" />
     <None Remove="Resources\eliminar.png" />
-    <None Remove="Resources\guardar.jpg" />
-    <None Remove="Resources\Login-icon.png" />
+    <None Remove="Resources\guardar.png" />
+    <None Remove="Resources\login.png" />
     <None Remove="Resources\nuevo.png" />
     <None Remove="Resources\Remover.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\guardar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -39,10 +45,7 @@
     <Resource Include="Resources\eliminar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\guardar.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Login-icon.png">
+    <Resource Include="Resources\login.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\nuevo.png">
