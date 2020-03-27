@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
+        xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
         Title="                                                                                                   Registro de Suplidores" Height="450" Width="800">
     <Grid>
@@ -32,8 +33,10 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-                
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
+                <TextBox.Text>
+                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -42,8 +45,12 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="SuplidorIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="SuplidorIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <Binding Path="SuplidorId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <src:IdValidacion ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
             </TextBox>
         </StackPanel>
 
@@ -52,9 +59,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch">
-
-            </DatePicker>
+            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False" SelectedDate="{Binding Path=Fecha, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
@@ -62,8 +67,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox x:Name="NombresTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:NombreValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -72,8 +83,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBox x:Name="DireccionTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="DireccionTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debe De ingresar una Direccion Valida"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -82,8 +99,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox x:Name="EmailTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EmailTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debe de Ingresar un Email Valido"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -92,8 +115,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="1">
-            <TextBox x:Name="TelefonoTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TelefonoTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -102,8 +131,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1">
-            <TextBox x:Name="CedulaTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CedulaTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CedulaValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -130,7 +165,24 @@
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=SuplidorIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=NombresTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=DireccionTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=TelefonoTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=CedulaTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
 
@@ -139,7 +191,19 @@
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=SuplidorIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
 

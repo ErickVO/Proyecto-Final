@@ -20,7 +20,7 @@ namespace Proyecto_Final.UI.Registros
     public partial class RContratos : Window
     {
         Contratos contrato = new Contratos();
-        public int UsuarioId { get; set; }
+        private int UsuarioId { get; set; }
         public RContratos(int usuarioId)
         {
             InitializeComponent();

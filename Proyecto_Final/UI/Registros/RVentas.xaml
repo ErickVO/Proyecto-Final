@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
+        xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
         Title="                                                                                                    Registro de Ventas" Height="450" Width="800">
     <Grid>
@@ -31,7 +32,9 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-
+                <TextBox.Text>
+                    <Binding Path="ventas.UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -40,8 +43,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="VentaIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="VentaIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="ventas.VentaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -50,9 +59,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch">
-
-            </DatePicker>
+            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False" SelectedDate="{Binding Path=ventas.Fecha, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
@@ -60,8 +67,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox x:Name="ContratoIdTexBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ContratoIdTexBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="ventasDetalle.ContratoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdForaneaValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -70,8 +83,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBox x:Name="CantidadCacaoTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadCacaoTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="ventasDetalle.CantidadCacao" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CantidadValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -94,8 +113,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
-            <DataGrid x:Name="LlamadasDataGrid" Height="250">
-                
+            <DataGrid Style="{StaticResource DataGridStyle}" x:Name="VentasDataGrid" Height="223">
+                <DataGrid.ItemsSource>
+                    <Binding Path="ventas.VentaDetalle" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:DetalleValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DataGrid.ItemsSource>
             </DataGrid>
         </StackPanel>
 
@@ -122,7 +147,22 @@
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=VentaIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=ContratoIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=CantidadCacaoTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=VentasDataGrid, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
 
@@ -131,7 +171,19 @@
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=VentaIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
 

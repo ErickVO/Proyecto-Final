@@ -22,6 +22,9 @@
             <ComboBox x:Name="RegistrosComboBox" FontSize="20" SelectionChanged="RegistrosComboBox_SelectionChanged">
                 <ComboBoxItem Content="Registrar Usuario"/>
                 <ComboBoxItem Content="Registrar Contrato"/>
+                <ComboBoxItem Content="Registrar Entrada"/>
+                <ComboBoxItem Content="Registrar Suplidor"/>
+                <ComboBoxItem Content="Registrar Venta"/>
             </ComboBox>
         </StackPanel>
 

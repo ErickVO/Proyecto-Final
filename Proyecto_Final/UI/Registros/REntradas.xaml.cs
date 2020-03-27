@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Proyecto_Final.BLL;
+using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.UI.Registros
 {
@@ -17,9 +19,15 @@ namespace Proyecto_Final.UI.Registros
     /// </summary>
     public partial class REntradas : Window
     {
-        public REntradas()
+        Entradas entrada = new Entradas();
+        private int UsuarioId { get; set; }
+        public REntradas(int usuarioId)
         {
             InitializeComponent();
+            UsuarioId = usuarioId;
+            this.DataContext = entrada;
+            UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
+            EntradaIdTextBox.Text = "0";
         }
     }
 }

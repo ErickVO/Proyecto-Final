@@ -32,7 +32,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
                 <TextBox.Text>
                     <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
                 </TextBox.Text>
@@ -44,7 +44,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="ContratoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ContratoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
                     <Binding Path="ContratoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -60,7 +60,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
                     <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -84,7 +84,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <DatePicker x:Name="FechaVencimientoDatePicker" FontSize="16" HorizontalAlignment="Stretch">
+            <DatePicker Style="{StaticResource DatePickerStyle}" x:Name="FechaVencimientoDatePicker" FontSize="16" HorizontalAlignment="Stretch">
                 <DatePicker.SelectedDate>
                     <Binding Path="FechaVencimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -100,7 +100,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox x:Name="CantidadTotalTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTotalTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
                     <Binding Path="CantidadTotal" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -159,7 +159,19 @@
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ContratoIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
 
