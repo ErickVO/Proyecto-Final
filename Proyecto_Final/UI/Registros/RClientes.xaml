@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
+        xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
         Title="                                                                                                   Registro de Clientes" Height="450" Width="800">
     <Grid>
@@ -31,8 +32,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
+                <TextBox.Text>
+                    <Binding Path="ClienteId" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -41,9 +48,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-
-            </TextBox>
+            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0">
@@ -51,9 +56,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False">
-
-            </DatePicker>
+            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False" SelectedDate="{Binding Path=Fecha,Mode=TwoWay}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
@@ -61,8 +64,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox x:Name="NombresTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Nombres" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:NombreValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -71,8 +80,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBox x:Name="DireccionTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="DireccionTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Direccion" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner una dirección."/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -81,8 +96,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox x:Name="EmailTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EmailTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Email" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un email."/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -91,8 +112,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="1">
-            <TextBox x:Name="TelefonoTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TelefonoTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Telefono" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -101,22 +128,40 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1">
-            <TextBox x:Name="CedulaTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CedulaTextBox" FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Cedula" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CedulaValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
-            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90">
+            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90" Click="BuscarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ClienteIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="0">
-            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -125,20 +170,49 @@
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="1">
-            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ClienteIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=NombresTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=DireccionTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=TelefonoTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=CedulaTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="3">
-            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ClienteIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
     </Grid>
