@@ -32,7 +32,11 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
+            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
+                <TextBox.Text>
+                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
@@ -42,7 +46,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBox x:Name="ContratoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
-                    <Binding Path="ContratoId" Mode="TwoWay">
+                    <Binding Path="ContratoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -58,7 +62,7 @@
         <StackPanel Grid.Row="2" Grid.Column="1">
             <TextBox x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
-                    <Binding Path="ClienteId" Mode="TwoWay">
+                    <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdForaneaValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -72,11 +76,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <DatePicker x:Name="FechaCreacionDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False">
-                <DatePicker.SelectedDate>
-                    <Binding Path="FechaCreacion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
-                </DatePicker.SelectedDate>
-            </DatePicker>
+            <DatePicker x:Name="FechaCreacionDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False" SelectedDate="{Binding Path=FechaCreacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0">
