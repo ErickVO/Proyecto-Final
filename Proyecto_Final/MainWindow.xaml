@@ -25,7 +25,7 @@
             <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Usuario" Grid.Row="1" Grid.Column="1" FontSize="20"/>
-        <TextBox x:Name="UsuarioTextBox" Grid.Row="1" Grid.Column="3" FontSize="20">
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioTextBox" Grid.Row="1" Grid.Column="3" FontSize="20">
             <TextBox.Text>
                 <Binding Path="NombreUsuario" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -36,7 +36,7 @@
         </TextBox>
 
         <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20"/>
-        <TextBox x:Name="ClaveTextBox" Grid.Row="3" Grid.Column="3" FontSize="20">
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="3" Grid.Column="3" FontSize="20">
             <TextBox.Text>
                 <Binding Path="Clave" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>

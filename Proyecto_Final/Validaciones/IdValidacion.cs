@@ -20,7 +20,7 @@ namespace Proyecto_Final.Validaciones
                 }
                 catch (FormatException)
                 {
-                    return new ValidationResult(false, "El ID debe ser un numero");
+                    return new ValidationResult(false, "El ID debe ser un numero entero");
                 }
 
                 if (id >= 0)
