@@ -129,7 +129,7 @@
                 <DataGrid.ItemsSource>
                     <Binding Path="ventas.VentaDetalle" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:DetalleValidacion ValidatesOnTargetUpdated="True"/>
+                            <src:DetalleVentaValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </DataGrid.ItemsSource>
