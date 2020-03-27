@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Proyecto_Final.UI.Registros;
 using Proyecto_Final.UI.Consultas;
+using Proyecto_Final.BLL;
 
 namespace Proyecto_Final.UI.Menu
 {
@@ -37,6 +38,18 @@ namespace Proyecto_Final.UI.Menu
                 case 1:
                     RContratos rContratos = new RContratos(UsuarioId);
                     rContratos.Show();
+                    break;
+                case 2:
+                    REntradas rEntradas = new REntradas(UsuarioId);
+                    rEntradas.Show();
+                    break;
+                case 3:
+                    RSuplidores rSuplidores = new RSuplidores(UsuarioId);
+                    rSuplidores.Show();
+                    break;
+                case 4:
+                    RVentas rVentas = new RVentas(UsuarioId);
+                    rVentas.Show();
                     break;
             }
         }
