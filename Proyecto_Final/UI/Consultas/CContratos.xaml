@@ -7,6 +7,63 @@
         mc:Ignorable="d"
         Title="CContratos" Height="450" Width="800">
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="Desde" FontSize="15"/>
+            <DatePicker x:Name="DesdeDatePicker" Width="150" FontSize="15">
+
+            </DatePicker>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Label Content="Hasta" FontSize="15"/>
+            <DatePicker x:Name="HastaDatePicker" Width="150" FontSize="15">
+
+            </DatePicker>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <Label Content="Filtro" FontSize="15"/>
+            <ComboBox x:Name="FiltroComboBox" Width="150" FontSize="15">
+
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="3">
+            <Label Content="Criterio" FontSize="15"/>
+            <TextBox x:Name="CriterioTextBox" Width="220" FontSize="16">
+
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="5" Grid.RowSpan="2" Margin="0,0,10,0">
+            <Label Content=" " FontSize="14"/>
+            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="115">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+            <DataGrid x:Name="ConsultaDataGrid" Height="375">
+
+            </DataGrid>
+        </StackPanel>
+
     </Grid>
 </Window>
