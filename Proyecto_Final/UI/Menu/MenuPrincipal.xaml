@@ -19,8 +19,9 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0">
             <Label Content="Registros" FontSize="20"/>
-            <ComboBox x:Name="RegistrosComboBox" FontSize="20">
-                <ComboBoxItem Content="Registrar Cliente"/>
+            <ComboBox x:Name="RegistrosComboBox" FontSize="20" SelectionChanged="RegistrosComboBox_SelectionChanged">
+                <ComboBoxItem Content="Registrar Usuario"/>
+                <ComboBoxItem Content="Registrar Contrato"/>
             </ComboBox>
         </StackPanel>
 

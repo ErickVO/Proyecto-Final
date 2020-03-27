@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
+        xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
         Title="                                                                                                     Registro de Contratos" Height="450" Width="800">
     <Grid>
@@ -31,9 +32,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-
-            </TextBox>
+            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
@@ -42,7 +41,13 @@
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBox x:Name="ContratoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+                <TextBox.Text>
+                    <Binding Path="ContratoId" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -52,7 +57,13 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1">
             <TextBox x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+                <TextBox.Text>
+                    <Binding Path="ClienteId" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdForaneaValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -61,8 +72,10 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <DatePicker x:Name="FechaCreacionDatePicker" FontSize="16" HorizontalAlignment="Stretch">
-
+            <DatePicker x:Name="FechaCreacionDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False">
+                <DatePicker.SelectedDate>
+                    <Binding Path="FechaCreacion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
+                </DatePicker.SelectedDate>
             </DatePicker>
         </StackPanel>
 
@@ -72,7 +85,13 @@
 
         <StackPanel Grid.Row="4" Grid.Column="1">
             <DatePicker x:Name="FechaVencimientoDatePicker" FontSize="16" HorizontalAlignment="Stretch">
-
+                <DatePicker.SelectedDate>
+                    <Binding Path="FechaVencimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:FechaValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
             </DatePicker>
         </StackPanel>
 
@@ -82,7 +101,13 @@
 
         <StackPanel Grid.Row="5" Grid.Column="1">
             <TextBox x:Name="CantidadTotalTextBox" FontSize="17" HorizontalAlignment="Stretch">
-
+                <TextBox.Text>
+                    <Binding Path="CantidadTotal" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:CantidadValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
             </TextBox>
         </StackPanel>
 
@@ -109,6 +134,22 @@
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
                 </Button.Background>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ContratoIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=ClienteIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=FechaVencimientoDatePicker, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=CantidadTotalTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
 
             </Button>
         </StackPanel>

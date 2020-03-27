@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Proyecto_Final.UI.Registros;
+using Proyecto_Final.UI.Consultas;
 
 namespace Proyecto_Final.UI.Menu
 {
@@ -22,6 +24,21 @@ namespace Proyecto_Final.UI.Menu
         {
             InitializeComponent();
             UsuarioId = usuarioId;
+        }
+
+        private void RegistrosComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch(RegistrosComboBox.SelectedIndex)
+            {
+                case 0:
+                    RUsuarios rUsuarios = new RUsuarios(UsuarioId);
+                    rUsuarios.Show();
+                    break;
+                case 1:
+                    RContratos rContratos = new RContratos(UsuarioId);
+                    rContratos.Show();
+                    break;
+            }
         }
     }
 }
