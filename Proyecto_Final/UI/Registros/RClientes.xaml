@@ -84,7 +84,7 @@
                 <TextBox.Text>
                     <Binding Path="Direccion" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un nombre de usuario."/>
+                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner una dirección."/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -100,7 +100,7 @@
                 <TextBox.Text>
                     <Binding Path="Email" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un nombre de usuario."/>
+                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un email."/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -116,7 +116,7 @@
                 <TextBox.Text>
                     <Binding Path="Telefono" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:TelefonoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un nombre de usuario."/>
+                            <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -132,7 +132,7 @@
                 <TextBox.Text>
                     <Binding Path="Cedula" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:CedulaValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un nombre de usuario."/>
+                            <src:CedulaValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
