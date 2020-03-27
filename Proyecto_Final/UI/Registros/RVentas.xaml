@@ -67,7 +67,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ContratoIdTexBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ContratoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
                     <Binding Path="ventasDetalle.ContratoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -95,20 +95,32 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="0">
-            <Button x:Name="AgregarButton" Content="Agregar" HorizontalContentAlignment="Right" FontSize="16" Width="86">
+            <Button x:Name="AgregarButton" Content="Agregar" HorizontalContentAlignment="Right" FontSize="16" Width="86" Click="AgregarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/Agregar.png" AlignmentX="Left"/>
                 </Button.Background>
-
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ContratoIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=CantidadCacaoTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
 
             <Label Height="150"/>
 
-            <Button x:Name="RemoverButton" Content="Remover" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+            <Button x:Name="RemoverButton" Content="Remover" HorizontalContentAlignment="Right" FontSize="16" Width="90" Click="RemoverButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/Remover.png" AlignmentX="Left"/>
                 </Button.Background>
-
             </Button>
         </StackPanel>
 
@@ -125,25 +137,23 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
-            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90">
+            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90" Click="BuscarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>
-
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="0">
-            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
                 </Button.Background>
-
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="1">
-            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -167,7 +177,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="3">
-            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -184,6 +194,15 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="4">
+            <Label Content="Consultar Ventas" FontSize="12"/>
+            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
             </Button>
         </StackPanel>
 

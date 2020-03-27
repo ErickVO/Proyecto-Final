@@ -95,7 +95,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
-            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90">
+            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90" Click="BuscarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -103,7 +103,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="0">
-            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -111,7 +111,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="1">
-            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -134,7 +134,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="3">
-            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100">
+            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -151,6 +151,15 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="4">
+            <Label Content="Consultar Entradas" FontSize="12"/>
+            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
             </Button>
         </StackPanel>
 
