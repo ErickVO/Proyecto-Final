@@ -49,7 +49,8 @@ namespace Proyecto_Final.UI.Consultas
                         }
                         break;
                 }
-                Listado = Listado.Where(c => c.FechaCreacion.Date >= DesdeDatePicker.SelectedDate.Value && c.FechaCreacion.Date <= HastaDatePicker.SelectedDate.Value).ToList();
+                if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
+                    Listado = Listado.Where(c => c.FechaCreacion.Date >= DesdeDatePicker.SelectedDate.Value && c.FechaCreacion.Date <= HastaDatePicker.SelectedDate.Value).ToList();
             }
             else
             {

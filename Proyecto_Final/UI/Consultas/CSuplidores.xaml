@@ -33,7 +33,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="2">
             <Label Content="Filtro" FontSize="15"/>
-            <ComboBox x:Name="FiltroComboBox" Width="150" FontSize="15">
+            <ComboBox SelectedIndex="0" x:Name="FiltroComboBox" Width="150" FontSize="15">
                 <ComboBoxItem Content="Todo"/>
                 <ComboBoxItem Content="Id"/>
                 <ComboBoxItem Content="Nombres"/>

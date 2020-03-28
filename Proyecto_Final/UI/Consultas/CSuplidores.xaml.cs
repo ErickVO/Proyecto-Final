@@ -58,7 +58,8 @@ namespace Proyecto_Final.UI.Consultas
                         Listado = SuplidoresBLL.GetList(s => s.Direccion.Contains(CriterioTextBox.Text));
                         break;
                 }
-                Listado = Listado.Where(s => s.Fecha.Date >= DesdeDatePicker.SelectedDate.Value && s.Fecha.Date <= HastaDatePicker.SelectedDate.Value).ToList();
+                if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
+                    Listado = Listado.Where(s => s.Fecha.Date >= DesdeDatePicker.SelectedDate.Value && s.Fecha.Date <= HastaDatePicker.SelectedDate.Value).ToList();
             }
             else
             {
