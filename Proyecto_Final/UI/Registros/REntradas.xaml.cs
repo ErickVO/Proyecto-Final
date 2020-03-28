@@ -42,6 +42,7 @@ namespace Proyecto_Final.UI.Registros
             EntradaIdTextBox.Text = "0";
             SuplidorIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
+            entrada = new Entradas();
             Recargar();
         }
 
@@ -56,9 +57,22 @@ namespace Proyecto_Final.UI.Registros
             return EntradatoAnterior != null;
         }
 
+        private bool ExisteEnLaBaseDeDatosSuplidores()
+        {
+            Suplidores SuplidorAnterior = SuplidoresBLL.Buscar(entrada.SuplidorId);
+            return SuplidorAnterior != null;
+        }
+
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+
+            if (!ExisteEnLaBaseDeDatosSuplidores())
+            {
+                MessageBox.Show("Suplidor No Existe");
+                SuplidorIdTextBox.Focus();
+                return;
+            }
 
             entrada.UsuarioId = UsuarioId;
 
@@ -119,6 +133,12 @@ namespace Proyecto_Final.UI.Registros
         {
             CEntradas cEntradas = new CEntradas();
             cEntradas.Show();
+        }
+
+        private void ConsultarSuplidoresButton_Click(object sender, RoutedEventArgs e)
+        {
+            CSuplidores cSuplidores = new CSuplidores();
+            cSuplidores.Show();
         }
     }
 }
