@@ -32,22 +32,34 @@ namespace Proyecto_Final.UI.Menu
             switch(RegistrosComboBox.SelectedIndex)
             {
                 case 0:
-                    RUsuarios rUsuarios = new RUsuarios(UsuarioId);
-                    rUsuarios.Show();
+                    RCacaos rCacaos = new RCacaos(UsuarioId);
+                    rCacaos.Show();
                     break;
                 case 1:
+                    RClientes rClientes = new RClientes(UsuarioId);
+                    rClientes.Show();
+                    break;
+                case 2:
                     RContratos rContratos = new RContratos(UsuarioId);
                     rContratos.Show();
                     break;
-                case 2:
+                case 3:
                     REntradas rEntradas = new REntradas(UsuarioId);
                     rEntradas.Show();
                     break;
-                case 3:
+                case 4:
+                    RPagos rPagos = new RPagos(UsuarioId);
+                    rPagos.Show();
+                    break;
+                case 5:
                     RSuplidores rSuplidores = new RSuplidores(UsuarioId);
                     rSuplidores.Show();
                     break;
-                case 4:
+                case 6:
+                    RUsuarios rUsuarios = new RUsuarios(UsuarioId);
+                    rUsuarios.Show();
+                    break;
+                case 7:
                     RVentas rVentas = new RVentas(UsuarioId);
                     rVentas.Show();
                     break;
@@ -59,22 +71,34 @@ namespace Proyecto_Final.UI.Menu
             switch (ConsultasComboBox.SelectedIndex)
             {
                 case 0:
-                    CUsuarios cUsuarios = new CUsuarios();
-                    cUsuarios.Show();
+                    CCacaos cCacaos = new CCacaos();
+                    cCacaos.Show();
                     break;
                 case 1:
+                    CClientes cClientes = new CClientes();
+                    cClientes.Show();
+                    break;
+                case 2:
                     CContratos cContratos = new CContratos();
                     cContratos.Show();
                     break;
-                case 2:
+                case 3:
                     CEntradas cEntradas = new CEntradas();
                     cEntradas.Show();
                     break;
-                case 3:
+                case 4:
+                    CPagos cPagos = new CPagos();
+                    cPagos.Show();
+                    break;
+                case 5:
                     CSuplidores cSuplidores = new CSuplidores();
                     cSuplidores.Show();
                     break;
-                case 4:
+                case 6:
+                    CUsuarios cUsuarios = new CUsuarios();
+                    cUsuarios.Show();
+                    break;
+                case 7:
                     CVentas cVentas = new CVentas();
                     cVentas.Show();
                     break;

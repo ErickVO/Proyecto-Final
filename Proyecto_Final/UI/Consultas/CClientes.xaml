@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Consultas"
         mc:Ignorable="d"
-        Title="CClientes" Height="450" Width="800">
+        Title="                                                                                                   Consulta de Usuarios" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -32,8 +32,15 @@
 
         <StackPanel Grid.Row="0" Grid.Column="2">
             <Label Content="Filtro" FontSize="15"/>
-            <ComboBox x:Name="FiltroComboBox" Width="150" FontSize="15">
-
+            <ComboBox x:Name="FiltroComboBox" SelectedIndex="0" Width="150" FontSize="15">
+                <ComboBoxItem Content="Todo"/>
+                <ComboBoxItem Content="ClienteId"/>
+                <ComboBoxItem Content="UsuarioId"/>
+                <ComboBoxItem Content="Nombres"/>
+                <ComboBoxItem Content="Cedula"/>
+                <ComboBoxItem Content="Telefono"/>
+                <ComboBoxItem Content="Direccion"/>
+                <ComboBoxItem Content="Email"/>
             </ComboBox>
         </StackPanel>
 
@@ -44,7 +51,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="5" Grid.RowSpan="2" Margin="0,0,10,0">
             <Label Content=" " FontSize="14"/>
-            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="115">
+            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="115" Click="ConsultarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>

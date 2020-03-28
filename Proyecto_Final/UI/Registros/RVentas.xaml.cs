@@ -112,7 +112,7 @@ namespace Proyecto_Final.UI.Registros
             else
             {
                 Limpiar();
-                MessageBox.Show("Orden No Encontrada");
+                MessageBox.Show("Venta No Encontrada");
             }
         }
 
