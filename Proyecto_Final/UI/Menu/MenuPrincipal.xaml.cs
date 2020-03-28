@@ -53,5 +53,32 @@ namespace Proyecto_Final.UI.Menu
                     break;
             }
         }
+
+        private void ConsultasComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (ConsultasComboBox.SelectedIndex)
+            {
+                case 0:
+                    CUsuarios cUsuarios = new CUsuarios();
+                    cUsuarios.Show();
+                    break;
+                case 1:
+                    CContratos cContratos = new CContratos();
+                    cContratos.Show();
+                    break;
+                case 2:
+                    CEntradas cEntradas = new CEntradas();
+                    cEntradas.Show();
+                    break;
+                case 3:
+                    CSuplidores cSuplidores = new CSuplidores();
+                    cSuplidores.Show();
+                    break;
+                case 4:
+                    CVentas cVentas = new CVentas();
+                    cVentas.Show();
+                    break;
+            }
+        }
     }
 }
