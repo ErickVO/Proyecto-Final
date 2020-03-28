@@ -32,7 +32,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
                     <Binding Path="ClienteId" Mode="TwoWay">
                         <Binding.ValidationRules>

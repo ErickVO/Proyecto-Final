@@ -122,5 +122,41 @@ namespace Proyecto_Final.BLL
             }
             return Lista;
         }
+
+        public static decimal BuscarCantidadTotal(int Id)
+        {
+            Contratos contrato = new Contratos();
+            decimal cantidad = 0;
+            Contexto db = new Contexto();
+
+            try
+            {
+                contrato = db.Contratos.Find(Id);
+                cantidad = contrato.CantidadTotal;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return cantidad;
+        }
+
+        public static decimal BuscarDisponible(int Id) //posiblemente la eliminemos si es innecesario
+        {
+            decimal cantidadVendida = 0;
+            decimal cantidadTotal = 0;
+            decimal cantidadDisponible = 0;
+
+            cantidadVendida = ContratosBLL.cantidadVendida(Id);
+            cantidadTotal = BuscarCantidadTotal(Id);
+            cantidadDisponible = cantidadTotal - cantidadVendida;
+
+            return cantidadDisponible;
+        }
     }
 }

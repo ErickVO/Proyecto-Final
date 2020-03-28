@@ -63,7 +63,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ContratoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ContratoIdTextBox" FontSize="17" HorizontalAlignment="Stretch" TextChanged="ContratoIdTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding Path="ventasDetalle.ContratoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -173,8 +173,6 @@
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=VentaIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=ContratoIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=CantidadCacaoTextBox, Path=(Validation.HasError)}" Value="false" />
                                     <Condition Binding="{Binding ElementName=VentasDataGrid, Path=(Validation.HasError)}" Value="false" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="IsEnabled" Value="true" />

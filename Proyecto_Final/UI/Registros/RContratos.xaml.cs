@@ -39,10 +39,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void Limpiar()
         {
-            ContratoIdTextBox.Text = "0";
-            ClienteIdTextBox.Text = string.Empty;
-            FechaVencimientoDatePicker.SelectedDate = DateTime.Now;
-            CantidadTotalTextBox.Text = string.Empty;
+            contrato = new Contratos();
             Recargar();
         }
 

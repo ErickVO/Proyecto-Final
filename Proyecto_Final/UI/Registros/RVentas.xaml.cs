@@ -51,6 +51,7 @@ namespace Proyecto_Final.UI.Registros
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
+            ContratoIdTextBox.IsEnabled = true;
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -118,14 +119,23 @@ namespace Proyecto_Final.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            contenedor.ventas.VentaDetalle.Add(new VentasDetalle(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdTextBox.Text),
+            if (Convert.ToDecimal(CantidadCacaoTextBox.Text) <= Convert.ToDecimal(CantidadDisponibleTextBox.Text))
+            {
+                contenedor.ventas.VentaDetalle.Add(new VentasDetalle(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdTextBox.Text),
                 Convert.ToDecimal(CantidadCacaoTextBox.Text)));
 
-            Recargar();
+                Recargar();
+                decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
+                cantidadDisponible -= Convert.ToDecimal(CantidadCacaoTextBox.Text);
+                CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
 
-            ContratoIdTextBox.Clear();
-            CantidadCacaoTextBox.Clear();
-            ContratoIdTextBox.Focus();
+                CantidadCacaoTextBox.Clear();
+                CantidadCacaoTextBox.Focus();
+
+                ContratoIdTextBox.IsEnabled = false;
+            }
+            else
+                MessageBox.Show("Ha excedido la cantidad maxima para agregar");
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
@@ -135,16 +145,55 @@ namespace Proyecto_Final.UI.Registros
                 contenedor.ventas.VentaDetalle.RemoveAt(VentasDataGrid.SelectedIndex);
                 Recargar();
 
-                ContratoIdTextBox.Clear();
                 CantidadCacaoTextBox.Clear();
-                ContratoIdTextBox.Focus();
+                CantidadCacaoTextBox.Focus();
             }
+
+            if (VentasDataGrid.Items.Count == 1)
+                ContratoIdTextBox.IsEnabled = true;
         }
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
             CVentas cVentas = new CVentas();
             cVentas.Show();
+        }
+
+        private void ContratoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(ContratoIdTextBox.Text))
+            {
+                int id;
+                Contratos contrato = new Contratos();
+                int.TryParse(ContratoIdTextBox.Text, out id);
+
+                contrato = ContratosBLL.Buscar(id);
+                if (contrato != null)
+                {
+                    CantidadAcordadaTextBox.Text = Convert.ToString(VentasBLL.BuscarCantidadTotal(id));
+
+                    List<VentasDetalle> lista = (List<VentasDetalle>)VentasDataGrid.ItemsSource;
+
+                    if(lista != null)
+                    {
+                        decimal cantidadDisponible = Convert.ToDecimal(CantidadAcordadaTextBox.Text);
+                        foreach(var item in lista)
+                        {
+                            cantidadDisponible -= item.CantidadCacao;
+                        }
+                        CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
+                    }
+                    else
+                    {
+                        CantidadDisponibleTextBox.Text = Convert.ToString(CantidadAcordadaTextBox.Text);
+                    }
+                }
+                else
+                {
+                    CantidadAcordadaTextBox.Text = "No existe Tal Contrato";
+                    CantidadDisponibleTextBox.Text= "No existe Tal Contrato";
+                }
+            }
         }
     }
 }

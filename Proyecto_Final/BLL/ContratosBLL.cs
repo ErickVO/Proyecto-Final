@@ -120,5 +120,30 @@ namespace Proyecto_Final.BLL
 
             return Lista;
         }
+
+        public static decimal cantidadVendida(int Id)
+        {
+            Contexto db = new Contexto();
+            Contratos contrato = new Contratos();
+            decimal cantidad = 0;
+
+            try
+            {
+                contrato = db.Contratos.Include(v => v.VentaDetalle).Where(v => v.ContratoId == Id).SingleOrDefault();
+                foreach(var item in contrato.VentaDetalle)
+                {
+                    cantidad += item.CantidadCacao;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return cantidad;
+        }
     }
 }
