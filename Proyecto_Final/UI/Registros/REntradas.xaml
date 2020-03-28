@@ -172,5 +172,17 @@
             </Button>
         </StackPanel>
 
+        <StackPanel Grid.Row="2" Grid.Column="4">
+            <Label Content="Consultar Suplidores" FontSize="12"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="4">
+            <Button x:Name="ConsultarSuplidoresButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarSuplidoresButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
     </Grid>
 </Window>

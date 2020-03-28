@@ -54,9 +54,23 @@ namespace Proyecto_Final.UI.Registros
             return contratoAnterior != null;
         }
 
+        private bool ExisteEnlaBaseDeDatosClientes()
+        {
+            Clientes AnteriorCliente = ClientesBLL.Buscar(contrato.ClienteId);
+
+            return (AnteriorCliente != null);
+        }
+
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+
+            if(!ExisteEnlaBaseDeDatosClientes())
+            {
+                MessageBox.Show("ClienteId No Existe");
+                ClienteIdTextBox.Focus();
+                return;
+            }
 
             contrato.UsuarioId = UsuarioId;
 
@@ -117,6 +131,12 @@ namespace Proyecto_Final.UI.Registros
         {
             CContratos cContratos = new CContratos();
             cContratos.Show();
+        }
+
+        private void ConsultarClienteButton_Click(object sender, RoutedEventArgs e)
+        {
+            CClientes cClientes = new CClientes();
+            cClientes.Show();
         }
     }
 }

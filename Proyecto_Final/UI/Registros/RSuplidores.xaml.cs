@@ -45,6 +45,7 @@ namespace Proyecto_Final.UI.Registros
             EmailTextBox.Text = string.Empty;
             TelefonoTextBox.Text = string.Empty;
             CedulaTextBox.Text = string.Empty;
+            suplidor = new Suplidores();
             Recargar();
         }
 

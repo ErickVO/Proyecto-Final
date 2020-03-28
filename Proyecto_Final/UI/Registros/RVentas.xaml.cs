@@ -60,9 +60,22 @@ namespace Proyecto_Final.UI.Registros
             return VentaAnterior != null;
         }
 
+        private bool ExisteEnlaBaseDeDatosContratos()
+        {
+            Contratos contratoAnterior = ContratosBLL.Buscar(contenedor.ventasDetalle.ContratoId);
+            return contratoAnterior != null;
+        }
+
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+
+            if (!ExisteEnlaBaseDeDatosContratos())
+            {
+                MessageBox.Show("Suplidor No Existe");
+                ContratoIdTextBox.Focus();
+                return;
+            }
 
             contenedor.ventas.UsuarioId = UsuarioId;
 
@@ -159,10 +172,17 @@ namespace Proyecto_Final.UI.Registros
             cVentas.Show();
         }
 
+        private void ConsultarContratosButton_Click(object sender, RoutedEventArgs e)
+        {
+            CContratos cContratos = new CContratos();
+            cContratos.Show();
+        }
+
         private void ContratoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(ContratoIdTextBox.Text))
             {
+                AgregarButton.IsEnabled = true;
                 int id;
                 Contratos contrato = new Contratos();
                 int.TryParse(ContratoIdTextBox.Text, out id);
@@ -192,6 +212,7 @@ namespace Proyecto_Final.UI.Registros
                 {
                     CantidadAcordadaTextBox.Text = "No existe Tal Contrato";
                     CantidadDisponibleTextBox.Text= "No existe Tal Contrato";
+                    AgregarButton.IsEnabled = false;
                 }
             }
         }
