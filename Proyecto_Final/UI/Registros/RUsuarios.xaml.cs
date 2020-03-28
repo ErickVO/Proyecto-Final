@@ -25,6 +25,7 @@ namespace Proyecto_Final.UI.Registros
         {
             InitializeComponent();
             UsuarioId = usuarioId;
+            UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
             this.DataContext = usuario;
         }
 

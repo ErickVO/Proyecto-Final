@@ -25,6 +25,7 @@ namespace Proyecto_Final.UI.Registros
         {
             InitializeComponent();
             UsuarioId = usuarioId;
+            UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
             this.DataContext = cliente;
         }
 
@@ -36,6 +37,9 @@ namespace Proyecto_Final.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+
+            if (cliente.UsuarioId == 0)
+                cliente.UsuarioId = UsuarioId;
 
             if (cliente.ClienteId == 0)
             {

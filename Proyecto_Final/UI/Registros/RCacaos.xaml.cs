@@ -25,6 +25,7 @@ namespace Proyecto_Final.UI.Registros
         {
             InitializeComponent();
             UsuarioId = usuarioId;
+            UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
             this.DataContext = cacao;
         }
 
@@ -38,6 +39,8 @@ namespace Proyecto_Final.UI.Registros
             bool paso = false;
 
             cacao.Tipo = TipoComboBox.Text;
+            if (cacao.UsuarioId == 0)
+                cacao.UsuarioId = UsuarioId;
 
             if (cacao.CacaoId == 0)
             {
