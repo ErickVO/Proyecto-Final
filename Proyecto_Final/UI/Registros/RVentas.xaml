@@ -27,22 +27,10 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-                <TextBox.Text>
-                    <Binding Path="ventas.UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="0">
             <Label Content="VentaId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
+        <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="VentaIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
                     <Binding Path="ventas.VentaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -52,6 +40,14 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0">

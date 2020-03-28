@@ -63,6 +63,8 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
+            suplidor.UsuarioId = UsuarioId;
+
             if (SuplidorIdTextBox.Text == "0")
                 paso = SuplidoresBLL.Guardar(suplidor);
             else

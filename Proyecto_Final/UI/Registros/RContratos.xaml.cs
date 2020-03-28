@@ -61,6 +61,8 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
+            contrato.UsuarioId = UsuarioId;
+
             if (ContratoIdTextBox.Text == "0")
                 paso = ContratosBLL.Guardar(contrato);
             else

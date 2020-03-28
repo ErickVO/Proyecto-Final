@@ -60,6 +60,8 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
+            entrada.UsuarioId = UsuarioId;
+
             if (EntradaIdTextBox.Text == "0")
                 paso = EntradasBLL.Guardar(entrada);
             else

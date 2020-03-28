@@ -63,6 +63,8 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
+            contenedor.ventas.UsuarioId = UsuarioId;
+
             if (VentaIdTextBox.Text == "0")
             {
                 paso = VentasBLL.Guardar(contenedor.ventas);

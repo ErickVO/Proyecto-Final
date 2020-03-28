@@ -29,22 +29,10 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-                <TextBox.Text>
-                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="0">
             <Label Content="SuplidorId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
+        <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="SuplidorIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <Binding Path="SuplidorId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -54,6 +42,14 @@
             </TextBox>
         </StackPanel>
 
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
+        </StackPanel>
+        
         <StackPanel Grid.Row="2" Grid.Column="0">
             <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
