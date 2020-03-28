@@ -20,10 +20,13 @@
         <StackPanel Grid.Row="0" Grid.Column="0">
             <Label Content="Registros" FontSize="20"/>
             <ComboBox x:Name="RegistrosComboBox" FontSize="20" SelectionChanged="RegistrosComboBox_SelectionChanged">
-                <ComboBoxItem Content="Registrar Usuario"/>
+                <ComboBoxItem Content="Registrar Cacao"/>
+                <ComboBoxItem Content="Registrar Cliente"/>
                 <ComboBoxItem Content="Registrar Contrato"/>
                 <ComboBoxItem Content="Registrar Entrada"/>
+                <ComboBoxItem Content="Registrar Pago"/>
                 <ComboBoxItem Content="Registrar Suplidor"/>
+                <ComboBoxItem Content="Registrar Usuario"/>
                 <ComboBoxItem Content="Registrar Venta"/>
             </ComboBox>
         </StackPanel>
@@ -31,10 +34,13 @@
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Label Content="Consultas" FontSize="20"/>
             <ComboBox x:Name="ConsultasComboBox" FontSize="20" SelectionChanged="ConsultasComboBox_SelectionChanged">
-                <ComboBoxItem Content="Consultar Usuarios"/>
+                <ComboBoxItem Content="Consultar Cacaos"/>
+                <ComboBoxItem Content="Consultar Clientes"/>
                 <ComboBoxItem Content="Consultar Contratos"/>
                 <ComboBoxItem Content="Consultar Entradas"/>
+                <ComboBoxItem Content="Consultar Pagos"/>
                 <ComboBoxItem Content="Consultar Suplidores"/>
+                <ComboBoxItem Content="Consultar Usuarios"/>
                 <ComboBoxItem Content="Consultar Ventas"/>
             </ComboBox>
         </StackPanel>
