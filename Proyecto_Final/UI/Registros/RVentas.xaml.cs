@@ -72,7 +72,7 @@ namespace Proyecto_Final.UI.Registros
 
             if (!ExisteEnlaBaseDeDatosContratos())
             {
-                MessageBox.Show("Suplidor No Existe");
+                MessageBox.Show("Contrato No Existe");
                 ContratoIdTextBox.Focus();
                 return;
             }
