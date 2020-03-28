@@ -9,6 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Proyecto_Final.BLL;
+using Proyecto_Final.Entidades;
+using System.Linq;
 
 namespace Proyecto_Final.UI.Consultas
 {
@@ -20,6 +23,63 @@ namespace Proyecto_Final.UI.Consultas
         public CPagos()
         {
             InitializeComponent();
+        }
+
+        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        {
+            var Listado = new List<Pagos>();
+
+            if (CriterioTextBox.Text.Trim().Length > 0)
+            {
+                switch (FiltroComboBox.SelectedIndex)
+                {
+                    case 0://Todo
+                        Listado = PagosBLL.GetList(p => true);
+                        break;
+                    case 1://PagoId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = PagosBLL.GetList(p => p.PagoId == id);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
+                    case 2://UsuarioId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = PagosBLL.GetList(p => p.UsuarioId == id);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
+                    case 3://Monto
+                        try
+                        {
+                            decimal monto = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = PagosBLL.GetList(p => p.Monto == monto);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un monto valido");
+                        }
+                        break;
+                }
+                if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
+                    Listado = Listado.Where(p => p.Fecha.Date >= DesdeDatePicker.SelectedDate.Value && p.Fecha.Date <= HastaDatePicker.SelectedDate.Value).ToList();
+            }
+            else
+            {
+                Listado = PagosBLL.GetList(p => true);
+            }
+
+            ConsultaDataGrid.ItemsSource = null;
+            ConsultaDataGrid.ItemsSource = Listado;
         }
     }
 }
