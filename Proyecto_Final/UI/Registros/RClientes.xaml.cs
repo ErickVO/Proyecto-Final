@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Proyecto_Final.Entidades;
 using Proyecto_Final.BLL;
+using Proyecto_Final.UI.Consultas;
 
 namespace Proyecto_Final.UI.Registros
 {
@@ -88,6 +89,12 @@ namespace Proyecto_Final.UI.Registros
             }
             else
                 MessageBox.Show("No se Puede Eliminar un Cliente que no existe");
+        }
+
+        private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)
+        {
+            CClientes cClientes = new CClientes();
+            cClientes.Show();
         }
 
         private void limpiar()

@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Proyecto_Final.Entidades;
 using Proyecto_Final.BLL;
+using Proyecto_Final.UI.Consultas;
 
 namespace Proyecto_Final.UI.Registros
 {
@@ -89,6 +90,12 @@ namespace Proyecto_Final.UI.Registros
             }
             else
                 MessageBox.Show("No se puede eliminar a un usuario online");
+        }
+
+        private void ConsultarUsuariosButton_Click(object sender, RoutedEventArgs e)
+        {
+            CUsuarios cUsuarios = new CUsuarios();
+            cUsuarios.Show();
         }
 
         private void limpiar()

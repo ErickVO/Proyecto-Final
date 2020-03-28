@@ -115,6 +115,15 @@
             </TextBox>
         </StackPanel>
 
+        <StackPanel Grid.Row="7" Grid.Column="4">
+            <Label Content="Consultar Usuarios" FontSize="12"/>
+            <Button x:Name="ConsultarUsuariosButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarUsuariosButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
         <StackPanel Grid.Row="0" Grid.Column="3">
             <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90" Click="BuscarButton_Click">
                 <Button.Background>

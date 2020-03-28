@@ -103,7 +103,26 @@
             </TextBox>
         </StackPanel>
 
-       
+        <StackPanel Grid.Row="1" Grid.Column="4">
+            <Label Content="Consultar Entradas" FontSize="12"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="4">
+            <Button x:Name="ConsultarEntradasButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarEntradasButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="4">
+            <Label Content="Consultar Cacaos" FontSize="12"/>
+            <Button x:Name="ConsultarCacaosButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarCacaosButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
             <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90" Click="BuscarButton_Click">

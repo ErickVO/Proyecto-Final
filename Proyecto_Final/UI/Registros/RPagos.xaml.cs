@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using Proyecto_Final.BLL;
 using Proyecto_Final.Entidades;
 using Proyecto_Final.Contenedores;
+using Proyecto_Final.UI.Consultas;
 
 namespace Proyecto_Final.UI.Registros
 {
@@ -38,6 +39,12 @@ namespace Proyecto_Final.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+
+            if (!existeCliente())
+            {
+                MessageBox.Show("ClienteId no existe");
+                return;
+            }
 
             contenedor.pagos.UsuarioId = UsuarioId;
 
@@ -113,6 +120,18 @@ namespace Proyecto_Final.UI.Registros
             }
         }
 
+        private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)
+        {
+            CClientes cClientes = new CClientes();
+            cClientes.Show();
+        }
+
+        private void ConsultarPagosButton_Click(object sender, RoutedEventArgs e)
+        {
+            CPagos cPagos = new CPagos();
+            cPagos.Show();
+        }
+
         private void limpiar()
         {
             contenedor = new ContenedorPagos();
@@ -130,6 +149,12 @@ namespace Proyecto_Final.UI.Registros
             Pagos pago = PagosBLL.Buscar(contenedor.pagos.PagoId);
 
             return (pago != null);
+        }
+
+        private bool existeCliente()
+        {
+            Clientes cliente = ClientesBLL.Buscar(contenedor.pagosDetalle.ClienteId);
+            return (cliente != null);
         }
     }
 }

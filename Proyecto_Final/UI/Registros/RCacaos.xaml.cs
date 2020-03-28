@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Proyecto_Final.Entidades;
 using Proyecto_Final.BLL;
+using Proyecto_Final.UI.Consultas;
 
 namespace Proyecto_Final.UI.Registros
 {
@@ -38,9 +39,15 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
+            if (!existeEntrada())
+            {
+                MessageBox.Show("EntradaId no existe");
+                return;
+            }
+
             cacao.Tipo = TipoComboBox.Text;
-            if (cacao.UsuarioId == 0)
-                cacao.UsuarioId = UsuarioId;
+
+            cacao.UsuarioId = UsuarioId;
 
             if (cacao.CacaoId == 0)
             {
@@ -91,6 +98,18 @@ namespace Proyecto_Final.UI.Registros
                 MessageBox.Show("No se Puede Eliminar un cacao que no existe");
         }
 
+        private void ConsultarEntradasButton_Click(object sender, RoutedEventArgs e)
+        {
+            CEntradas cEntradas = new CEntradas();
+            cEntradas.Show();
+        }
+
+        private void ConsultarCacaosButton_Click(object sender, RoutedEventArgs e)
+        {
+            CCacaos cCacaos = new CCacaos();
+            cCacaos.Show();
+        }
+
         private void limpiar()
         {
             cacao = new Cacaos();
@@ -108,6 +127,12 @@ namespace Proyecto_Final.UI.Registros
             Cacaos AnteriorCacao = CacaosBLL.Buscar(cacao.CacaoId);
 
             return (AnteriorCacao != null);
+        }
+
+        private bool existeEntrada()
+        {
+            Entradas entradas = EntradasBLL.Buscar(cacao.EntradaId);
+            return (entradas != null);
         }
     }
 }
