@@ -117,7 +117,7 @@ namespace Proyecto_Final.UI.Registros
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
             contenedor.ventas.VentaDetalle.Add(new VentasDetalle(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdTextBox.Text),
-                Convert.ToDecimal(CantidadCacaoTextBox)));
+                Convert.ToDecimal(CantidadCacaoTextBox.Text)));
 
             Recargar();
 
@@ -132,6 +132,10 @@ namespace Proyecto_Final.UI.Registros
             {
                 contenedor.ventas.VentaDetalle.RemoveAt(VentasDataGrid.SelectedIndex);
                 Recargar();
+
+                ContratoIdTextBox.Clear();
+                CantidadCacaoTextBox.Clear();
+                ContratoIdTextBox.Focus();
             }
         }
 
