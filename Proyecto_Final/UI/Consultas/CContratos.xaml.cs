@@ -9,6 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Proyecto_Final.BLL;
+using Proyecto_Final.Entidades;
+using System.Linq;
 
 namespace Proyecto_Final.UI.Consultas
 {
@@ -20,6 +23,41 @@ namespace Proyecto_Final.UI.Consultas
         public CContratos()
         {
             InitializeComponent();
+        }
+
+        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        {
+            var Listado = new List<Contratos>();
+
+            if (CriterioTextBox.Text.Trim().Length > 0)
+            {
+                switch (FiltroComboBox.SelectedIndex)
+                {
+                    case 0://Todo
+                        Listado = ContratosBLL.GetList(c => true);
+                        break;
+                    case 1://Id
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = ContratosBLL.GetList(c => c.ContratoId == id);
+                            MessageBox.Show("ID");
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
+                }
+                Listado = Listado.Where(c => c.FechaCreacion.Date >= DesdeDatePicker.SelectedDate.Value && c.FechaCreacion.Date <= HastaDatePicker.SelectedDate.Value).ToList();
+            }
+            else
+            {
+                Listado = ContratosBLL.GetList(c => true);
+            }
+
+            ConsultaDataGrid.ItemsSource = null;
+            ConsultaDataGrid.ItemsSource = Listado;
         }
     }
 }

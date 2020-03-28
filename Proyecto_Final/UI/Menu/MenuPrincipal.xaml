@@ -30,8 +30,12 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Label Content="Consultas" FontSize="20"/>
-            <ComboBox x:Name="ConsultasComboBox" FontSize="20">
-                <ComboBoxItem Content="Consultar Clientes"/>
+            <ComboBox x:Name="ConsultasComboBox" FontSize="20" SelectionChanged="ConsultasComboBox_SelectionChanged">
+                <ComboBoxItem Content="Consultar Usuarios"/>
+                <ComboBoxItem Content="Consultar Contratos"/>
+                <ComboBoxItem Content="Consultar Entradas"/>
+                <ComboBoxItem Content="Consultar Suplidores"/>
+                <ComboBoxItem Content="Consultar Ventas"/>
             </ComboBox>
         </StackPanel>
     </Grid>
