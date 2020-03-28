@@ -25,10 +25,10 @@ namespace Proyecto_Final.Entidades
             Precio = 0;
         }
 
-        public PagosDetalle(int pagoId, int clienteId, string tipoCacao, decimal cantidad, decimal precio)
+        public PagosDetalle(int clienteId, string tipoCacao, decimal cantidad, decimal precio)
         {
             PagoDetalleId = 0;
-            PagoId = pagoId;
+            PagoId = 0;
             ClienteId = clienteId;
             TipoCacao = tipoCacao;
             Cantidad = cantidad;
