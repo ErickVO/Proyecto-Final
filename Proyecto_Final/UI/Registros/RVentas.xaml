@@ -137,6 +137,19 @@
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="false" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=VentaIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="true" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
 
@@ -196,6 +209,22 @@
         <StackPanel Grid.Row="5" Grid.Column="4">
             <Label Content="Consultar Ventas" FontSize="12"/>
             <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
+            <Label Content="Cantidad Acordada" FontSize="12"/>
+            <TextBox x:Name="CantidadAcordadaTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
+            <Label Content="Cantidad Disponible" FontSize="12"/>
+            <TextBox x:Name="CantidadDisponibleTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="4">
+            <Label Content="Consultar Contratos" FontSize="12"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="4">
+            <Button x:Name="ConsultarContratosButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>
