@@ -8,6 +8,10 @@
         mc:Ignorable="d"
         Title="                                                                                                    Registro de Pagos" Height="500" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Cacao-Ventanas.jpg"/>
+        </Grid.Background>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="300*"/>
@@ -29,7 +33,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="PagoId:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="PagoId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
@@ -45,7 +49,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
@@ -53,7 +57,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
@@ -61,7 +65,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Monto:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Monto:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
@@ -77,7 +81,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0">
-            <Label Content="ClienteId:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="ClienteId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
@@ -93,7 +97,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="0">
-            <Label Content="Tipo Cacao:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Tipo Cacao:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1">
@@ -105,7 +109,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="0">
-            <Label Content="Cantidad de Cacao:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Cantidad de Cacao:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="1">
@@ -121,7 +125,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="0">
-            <Label Content="Precio:" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Precio:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1">
@@ -193,7 +197,7 @@
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="4">
-            <Label Content="Consultar Clientes" FontSize="12"/>
+            <Label Content="Consultar Clientes" FontSize="12" Background="#FFDED3D3"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="4">
@@ -205,7 +209,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="4">
-            <Label Content="Consultar Pagos" FontSize="12"/>
+            <Label Content="Consultar Pagos" FontSize="12" Background="#FFDED3D3"/>
             <Button x:Name="ConsultarPagosButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarPagosButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>

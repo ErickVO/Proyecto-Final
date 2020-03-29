@@ -27,45 +27,6 @@ namespace Proyecto_Final.UI.Menu
             UsuarioId = usuarioId;
         }
 
-        private void ConsultasComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            /*switch (ConsultasComboBox.SelectedIndex)
-            {
-                case 0:
-                    CCacaos cCacaos = new CCacaos();
-                    cCacaos.Show();
-                    break;
-                case 1:
-                    CClientes cClientes = new CClientes();
-                    cClientes.Show();
-                    break;
-                case 2:
-                    CContratos cContratos = new CContratos();
-                    cContratos.Show();
-                    break;
-                case 3:
-                    CEntradas cEntradas = new CEntradas();
-                    cEntradas.Show();
-                    break;
-                case 4:
-                    CPagos cPagos = new CPagos();
-                    cPagos.Show();
-                    break;
-                case 5:
-                    CSuplidores cSuplidores = new CSuplidores();
-                    cSuplidores.Show();
-                    break;
-                case 6:
-                    CUsuarios cUsuarios = new CUsuarios();
-                    cUsuarios.Show();
-                    break;
-                case 7:
-                    CVentas cVentas = new CVentas();
-                    cVentas.Show();
-                    break;
-            }*/
-        }
-
         private void RegistrarCacaoMenuItem_Click(object sender, RoutedEventArgs e)
         {
             RCacaos rCacaos = new RCacaos(UsuarioId);
