@@ -144,18 +144,5 @@ namespace Proyecto_Final.BLL
 
             return cantidad;
         }
-
-        public static decimal BuscarDisponible(int Id) //posiblemente la eliminemos si es innecesario
-        {
-            decimal cantidadVendida = 0;
-            decimal cantidadTotal = 0;
-            decimal cantidadDisponible = 0;
-
-            cantidadVendida = ContratosBLL.cantidadVendida(Id);
-            cantidadTotal = BuscarCantidadTotal(Id);
-            cantidadDisponible = cantidadTotal - cantidadVendida;
-
-            return cantidadDisponible;
-        }
     }
 }

@@ -44,11 +44,5 @@ namespace Proyecto_Final.BLL.Tests
         {
             Assert.Fail();
         }
-
-        [TestMethod()]
-        public void BuscarDisponibleTest()
-        {
-            Assert.Fail();
-        }
     }
 }

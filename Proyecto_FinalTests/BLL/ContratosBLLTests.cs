@@ -40,7 +40,13 @@ namespace Proyecto_Final.BLL.Tests
         }
 
         [TestMethod()]
-        public void cantidadVendidaTest()
+        public void verificarPagoTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void pagarTest()
         {
             Assert.Fail();
         }
