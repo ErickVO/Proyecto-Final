@@ -9,7 +9,7 @@ using Proyecto_Final.DAL;
 namespace Proyecto_Final.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200326182230_Inicial")]
+    [Migration("20200329194832_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -238,7 +238,7 @@ namespace Proyecto_Final.Migrations
                             UsuarioId = 1,
                             Clave = "Admin",
                             Email = "Admin@outlook.com",
-                            Fecha = new DateTime(2020, 3, 26, 14, 22, 29, 522, DateTimeKind.Local).AddTicks(9360),
+                            Fecha = new DateTime(2020, 3, 29, 15, 48, 31, 918, DateTimeKind.Local).AddTicks(5281),
                             NombreUsuario = "Admin",
                             Nombres = "Administrador"
                         });
@@ -249,6 +249,9 @@ namespace Proyecto_Final.Migrations
                     b.Property<int>("VentaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("CantidadDisponible")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");

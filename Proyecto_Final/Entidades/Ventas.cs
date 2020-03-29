@@ -12,6 +12,7 @@ namespace Proyecto_Final.Entidades
         public int VentaId { get; set; }
         public int UsuarioId { get; set; }
         public DateTime Fecha { get; set; }
+        public decimal CantidadDisponible { get; set; }
 
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalle> VentaDetalle { get; set; }
@@ -21,6 +22,7 @@ namespace Proyecto_Final.Entidades
             VentaId = 0;
             UsuarioId = 0;
             Fecha = DateTime.Now;
+            CantidadDisponible = 0;
             VentaDetalle = new List<VentasDetalle>();
         }
 
