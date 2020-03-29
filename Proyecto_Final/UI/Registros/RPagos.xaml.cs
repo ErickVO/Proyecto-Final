@@ -34,6 +34,7 @@ namespace Proyecto_Final.UI.Registros
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             limpiar();
+            ClienteIdTextBox.IsEnabled = true;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -60,8 +61,13 @@ namespace Proyecto_Final.UI.Registros
                 else
                     paso = PagosBLL.Modificar(contenedor.pagos);
             }
+            decimal cantidadTotal = 0;
+            foreach( var item in contenedor.pagos.PagoDetalle)
+            {
+                cantidadTotal += item.Cantidad;
+            }
 
-            ContratosBLL.pagar(contenedor.pagosDetalle.ClienteId, contenedor.pagosDetalle.Cantidad);
+            ContratosBLL.pagar(contenedor.pagos.PagoDetalle[0].ClienteId, cantidadTotal);
 
             if (paso)
             {
@@ -76,11 +82,14 @@ namespace Proyecto_Final.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
+
             Pagos pago = PagosBLL.Buscar(contenedor.pagos.PagoId);
 
             if (pago != null)
             {
+                ClienteIdTextBox.IsEnabled = false;
                 contenedor.pagos = pago;
+                contenedor.pagosDetalle.ClienteId = contenedor.pagos.PagoDetalle[0].ClienteId;
                 reCargar();
             }
             else
@@ -111,12 +120,12 @@ namespace Proyecto_Final.UI.Registros
 
             contenedor.pagos.PagoDetalle.Add(new PagosDetalle(contenedor.pagosDetalle.ClienteId, TipoComboBox.Text, Convert.ToDecimal(CantidadCacaoTextBox.Text), Convert.ToDecimal(PrecioTextBox.Text)));
 
-            ClienteIdTextBox.Clear();
-            CantidadCacaoTextBox.Clear();
-            PrecioTextBox.Clear();
-            ClienteIdTextBox.Focus();
-
+            contenedor.pagos.Monto += contenedor.pagosDetalle.Cantidad * contenedor.pagosDetalle.Precio;
             reCargar();
+
+            CantidadCacaoTextBox.Clear();
+            CantidadCacaoTextBox.Focus();
+            ClienteIdTextBox.IsEnabled = false;
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
@@ -124,8 +133,12 @@ namespace Proyecto_Final.UI.Registros
             if (PagosDataGrid.Items.Count > 1 && PagosDataGrid.SelectedIndex < PagosDataGrid.Items.Count - 1)
             {
                 contenedor.pagos.PagoDetalle.RemoveAt(PagosDataGrid.SelectedIndex);
+                contenedor.pagos.Monto -= contenedor.pagosDetalle.Cantidad * contenedor.pagosDetalle.Precio;
                 reCargar();
             }
+
+            if (PagosDataGrid.Items.Count == 1)
+                ClienteIdTextBox.IsEnabled = true;
         }
 
         private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)

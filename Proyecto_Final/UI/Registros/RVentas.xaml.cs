@@ -120,7 +120,9 @@ namespace Proyecto_Final.UI.Registros
 
             if (VentaAnterior != null)
             {
+                ContratoIdTextBox.IsEnabled = false;
                 contenedor.ventas = VentaAnterior;
+                contenedor.ventasDetalle.ContratoId = contenedor.ventas.VentaDetalle[0].ContratoId;
                 Recargar();
             }
             else

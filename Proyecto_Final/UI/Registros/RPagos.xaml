@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
-        Title="                                                                                                    Registro de Pagos" Height="450" Width="800">
+        Title="                                                                                                    Registro de Pagos" Height="500" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -24,7 +24,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="140"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
@@ -35,7 +35,7 @@
         <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="PagoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
-                    <Binding Path="pagos.PagoId" Mode="TwoWay">
+                    <Binding Path="pagos.PagoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -57,7 +57,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" SelectedDate="{Binding Path=pagos.Fecha,Mode=TwoWay}"/>
+            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" SelectedDate="{Binding Path=pagos.Fecha,Mode=TwoWay}" IsEnabled="False"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
@@ -67,7 +67,7 @@
         <StackPanel Grid.Row="3" Grid.Column="1">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="MontoTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
                 <TextBox.Text>
-                    <Binding Path="pagos.Monto" Mode="TwoWay">
+                    <Binding Path="pagos.Monto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:MontoValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -83,7 +83,7 @@
         <StackPanel Grid.Row="4" Grid.Column="1">
             <TextBox x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
-                    <Binding Path="pagosDetalle.ClienteId" Mode="TwoWay">
+                    <Binding Path="pagosDetalle.ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdForaneaValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -97,7 +97,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1">
-            <ComboBox x:Name="TipoComboBox" SelectedIndex="0" FontSize="17" HorizontalAlignment="Stretch" SelectionChanged="TipoComboBox_SelectionChanged">
+            <ComboBox x:Name="TipoComboBox" FontSize="17" HorizontalAlignment="Stretch" SelectionChanged="TipoComboBox_SelectionChanged">
                 <ComboBoxItem Content="Sánchez"/>
                 <ComboBoxItem Content="Orgánico"/>
                 <ComboBoxItem Content="Española"/>
@@ -111,7 +111,7 @@
         <StackPanel Grid.Row="6" Grid.Column="1">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadCacaoTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
-                    <Binding Path="pagosDetalle.Cantidad" Mode="TwoWay">
+                    <Binding Path="pagosDetalle.Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:CantidadValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -127,7 +127,7 @@
         <StackPanel Grid.Row="7" Grid.Column="1">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="PrecioTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
                 <TextBox.Text>
-                    <Binding Path="pagosDetalle.Precio" Mode="TwoWay">
+                    <Binding Path="pagosDetalle.Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:PrecioValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -148,7 +148,7 @@
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=ClienteIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=CantidadTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=CantidadCacaoTextBox, Path=(Validation.HasError)}" Value="false" />
                                     <Condition Binding="{Binding ElementName=PrecioTextBox, Path=(Validation.HasError)}" Value="false" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="IsEnabled" Value="true" />
@@ -181,7 +181,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
-            <DataGrid Style="{StaticResource DataGridStyle}" x:Name="PagosDataGrid" Height="150">
+            <DataGrid Style="{StaticResource DataGridStyle}" x:Name="PagosDataGrid" Height="139">
                 <DataGrid.ItemsSource>
                     <Binding Path="pagos.PagoDetalle" Mode="TwoWay">
                         <Binding.ValidationRules>
