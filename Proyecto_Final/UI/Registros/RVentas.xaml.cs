@@ -138,9 +138,8 @@ namespace Proyecto_Final.UI.Registros
                 Convert.ToDecimal(CantidadCacaoTextBox.Text)));
 
                 Recargar();
-                decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
-                cantidadDisponible -= Convert.ToDecimal(CantidadCacaoTextBox.Text);
-                CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
+                List<VentasDetalle> lista = (List<VentasDetalle>)VentasDataGrid.ItemsSource;
+                calcularDisponible(lista);
 
                 CantidadCacaoTextBox.Clear();
                 CantidadCacaoTextBox.Focus();
@@ -157,6 +156,8 @@ namespace Proyecto_Final.UI.Registros
             {
                 contenedor.ventas.VentaDetalle.RemoveAt(VentasDataGrid.SelectedIndex);
                 Recargar();
+                List<VentasDetalle> lista = (List<VentasDetalle>)VentasDataGrid.ItemsSource;
+                calcularDisponible(lista);
 
                 CantidadCacaoTextBox.Clear();
                 CantidadCacaoTextBox.Focus();
@@ -196,16 +197,7 @@ namespace Proyecto_Final.UI.Registros
 
                     if(lista != null)
                     {
-                        decimal cantidadDisponible = Convert.ToDecimal(CantidadAcordadaTextBox.Text);
-                        foreach(var item in lista)
-                        {
-                            cantidadDisponible -= item.CantidadCacao;
-                        }
-                        CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
-                    }
-                    else
-                    {
-                        CantidadDisponibleTextBox.Text = Convert.ToString(CantidadAcordadaTextBox.Text);
+                        calcularDisponible(lista);
                     }
                 }
                 else
@@ -215,6 +207,16 @@ namespace Proyecto_Final.UI.Registros
                     AgregarButton.IsEnabled = false;
                 }
             }
+        }
+
+        private void calcularDisponible(List<VentasDetalle> lista)
+        {
+            decimal cantidadDisponible = Convert.ToDecimal(CantidadAcordadaTextBox.Text);
+            foreach (var item in lista)
+            {
+                cantidadDisponible -= item.CantidadCacao;
+            }
+            CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
         }
     }
 }

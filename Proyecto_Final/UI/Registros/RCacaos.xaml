@@ -23,7 +23,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="170"/>
+            <RowDefinition Height="130"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
@@ -32,7 +32,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CacaoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CacaoIdTextBox" FontSize="17" HorizontalAlignment="Stretch" TextChanged="CacaoIdTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding Path="CacaoId" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -56,7 +56,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EntradaIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EntradaIdTextBox" FontSize="17" HorizontalAlignment="Stretch" TextChanged="EntradaIdTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding Path="EntradaId" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -92,7 +92,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="17" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
                 <TextBox.Text>
                     <Binding Path="Cantidad" Mode="TwoWay">
                         <Binding.ValidationRules>

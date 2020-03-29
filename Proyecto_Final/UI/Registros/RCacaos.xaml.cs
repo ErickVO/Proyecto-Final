@@ -81,6 +81,7 @@ namespace Proyecto_Final.UI.Registros
             if (AnteriorCacao != null)
             {
                 cacao = AnteriorCacao;
+                EntradaIdTextBox.IsEnabled = false;
                 reCargar();
             }
             else
@@ -133,6 +134,62 @@ namespace Proyecto_Final.UI.Registros
         {
             Entradas entradas = EntradasBLL.Buscar(cacao.EntradaId);
             return (entradas != null);
+        }
+
+        private void EntradaIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(EntradaIdTextBox.Text))
+            {
+                int id = 0;
+                try
+                {
+                    id = Convert.ToInt32(cacao.CacaoId);
+                }
+                catch (FormatException)
+                {
+                    return;
+                }
+
+                if(id >= 1)
+                {
+                    return;
+                }
+
+                int entradaId;
+                Entradas entrada = new Entradas();
+                int.TryParse(EntradaIdTextBox.Text, out entradaId);
+
+                entrada = EntradasBLL.Buscar(entradaId);
+                if (entrada != null)
+                {
+                    CantidadTextBox.Text = Convert.ToString(entrada.Cantidad);
+                }
+                else
+                {
+                    CantidadTextBox.Text = "No existe Tal Entrada";
+                }
+            }
+        }
+
+        private void CacaoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(CacaoIdTextBox.Text))
+            {
+                int id = 0;
+                try
+                {
+                    id = Convert.ToInt32(cacao.CacaoId);
+                }
+                catch (FormatException)
+                {
+                    return;
+                }
+
+                if (id == 0)
+                    EntradaIdTextBox.IsEnabled = true;
+                else
+                    EntradaIdTextBox.IsEnabled = false;
+            }
         }
     }
 }

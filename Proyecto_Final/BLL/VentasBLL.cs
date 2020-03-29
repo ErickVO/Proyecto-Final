@@ -21,6 +21,8 @@ namespace Proyecto_Final.BLL
                 if (db.Ventas.Add(venta) != null)
                     paso = db.SaveChanges() > 0;
 
+
+
             }
             catch (Exception)
             {
