@@ -112,6 +112,7 @@ namespace Proyecto_Final.BLL
 
         public static bool comprarCacao(decimal cantidadTotal)
         {
+            //verifica si se puede comprar el cacao y si se puede comprar se resta
             List<Cacaos> lista = GetList(c => true);
 
             if (lista == null)
@@ -151,6 +152,7 @@ namespace Proyecto_Final.BLL
 
         public static bool EntradaValida(Cacaos cacao)
         {
+            //verifica si la entrada ya esta utilizada
             List<Cacaos> lista = GetList(c => true);
 
             foreach(var item in lista)

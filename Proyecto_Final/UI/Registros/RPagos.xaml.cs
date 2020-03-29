@@ -61,6 +61,8 @@ namespace Proyecto_Final.UI.Registros
                     paso = PagosBLL.Modificar(contenedor.pagos);
             }
 
+            ContratosBLL.pagar(contenedor.pagosDetalle.ClienteId, contenedor.pagosDetalle.Cantidad);
+
             if (paso)
             {
                 limpiar();
@@ -101,6 +103,12 @@ namespace Proyecto_Final.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
+            if(!ContratosBLL.verificarPago(contenedor.pagosDetalle.ClienteId,contenedor.pagosDetalle.Cantidad))
+            {
+                MessageBox.Show("Pago excedido");
+                return;
+            }
+
             contenedor.pagos.PagoDetalle.Add(new PagosDetalle(contenedor.pagosDetalle.ClienteId, TipoComboBox.Text, Convert.ToDecimal(CantidadCacaoTextBox.Text), Convert.ToDecimal(PrecioTextBox.Text)));
 
             ClienteIdTextBox.Clear();
@@ -155,6 +163,23 @@ namespace Proyecto_Final.UI.Registros
         {
             Clientes cliente = ClientesBLL.Buscar(contenedor.pagosDetalle.ClienteId);
             return (cliente != null);
+        }
+
+        private void TipoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(PrecioTextBox != null)
+            {
+                if (!string.IsNullOrWhiteSpace(PrecioTextBox.Text))
+                {
+                    if (TipoComboBox.SelectedIndex == 0)
+                        PrecioTextBox.Text = "1000.0";
+                    else if (TipoComboBox.SelectedIndex == 1)
+                        PrecioTextBox.Text = "2000.0";
+                    else
+                        PrecioTextBox.Text = "3000.0";
+                }
+            }
+            
         }
     }
 }
