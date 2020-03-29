@@ -48,6 +48,12 @@ namespace Proyecto_Final.UI.Registros
                 return;
             }
 
+            if(!CacaosBLL.EntradaValida(cacao))
+            {
+                MessageBox.Show("Ya ha sido utilizada esta EntradaId");
+                return;
+            }
+
             cacao.Tipo = TipoComboBox.Text;
 
             cacao.UsuarioId = UsuarioId;
