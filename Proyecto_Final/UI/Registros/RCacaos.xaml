@@ -32,9 +32,9 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CacaoIdTextBox" FontSize="17" HorizontalAlignment="Stretch" TextChanged="CacaoIdTextBox_TextChanged">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CacaoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
                 <TextBox.Text>
-                    <Binding Path="CacaoId" Mode="TwoWay">
+                    <Binding Path="CacaoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -58,7 +58,7 @@
         <StackPanel Grid.Row="2" Grid.Column="1">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EntradaIdTextBox" FontSize="17" HorizontalAlignment="Stretch" TextChanged="EntradaIdTextBox_TextChanged">
                 <TextBox.Text>
-                    <Binding Path="EntradaId" Mode="TwoWay">
+                    <Binding Path="EntradaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdForaneaValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -80,7 +80,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <ComboBox x:Name="TipoComboBox" FontSize="17" HorizontalAlignment="Stretch">
+            <ComboBox x:Name="TipoComboBox" SelectedIndex="0" FontSize="17" HorizontalAlignment="Stretch">
                 <ComboBoxItem Content="Sánchez"/>
                 <ComboBoxItem Content="Orgánico"/>
                 <ComboBoxItem Content="Española"/>
@@ -94,7 +94,7 @@
         <StackPanel Grid.Row="5" Grid.Column="1">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
                 <TextBox.Text>
-                    <Binding Path="Cantidad" Mode="TwoWay">
+                    <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:CantidadValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>

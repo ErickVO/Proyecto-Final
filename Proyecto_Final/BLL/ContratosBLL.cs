@@ -18,9 +18,12 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                if (db.Contratos.Add(contrato) != null)
-                    paso = db.SaveChanges() > 0;
-
+                if (CacaosBLL.comprarCacao(contrato.CantidadTotal))
+                {
+                    if (db.Contratos.Add(contrato) != null)
+                        paso = db.SaveChanges() > 0;
+                }
+                
             }
             catch (Exception)
             {

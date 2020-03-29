@@ -109,5 +109,44 @@ namespace Proyecto_Final.BLL
             }
             return Lista;
         }
+
+        public static bool comprarCacao(decimal cantidadTotal)
+        {
+            List<Cacaos> lista = GetList(c => true);
+
+            if (lista == null)
+                return false;
+
+            int verificando = 0;
+            List<int> usados = new List<int>();
+
+            foreach(var item in lista)
+            {
+                if (item.Cantidad > 0)
+                {
+                    usados.Add(verificando);
+                }
+
+                while(item.Cantidad>0 && cantidadTotal>0)
+                {
+                    item.Cantidad--;
+                    cantidadTotal--;
+                }
+
+                verificando++;
+            }
+
+            if (cantidadTotal == 0)
+            {
+                foreach(var item in usados)
+                {
+                    Modificar(lista[item]);
+                }
+
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

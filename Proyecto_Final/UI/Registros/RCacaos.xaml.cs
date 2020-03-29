@@ -33,6 +33,9 @@ namespace Proyecto_Final.UI.Registros
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             limpiar();
+            GuardarButton.IsEnabled = true;
+            EntradaIdTextBox.IsEnabled = true;
+            TipoComboBox.IsEnabled = true;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -81,6 +84,16 @@ namespace Proyecto_Final.UI.Registros
             if (AnteriorCacao != null)
             {
                 cacao = AnteriorCacao;
+
+                if (cacao.Tipo == "Sánchez")
+                    TipoComboBox.SelectedIndex = 0;
+                else if(cacao.Tipo == "Orgánico")
+                    TipoComboBox.SelectedIndex = 1;
+                else
+                    TipoComboBox.SelectedIndex = 2;
+
+                GuardarButton.IsEnabled = false;
+                TipoComboBox.IsEnabled = false;
                 EntradaIdTextBox.IsEnabled = false;
                 reCargar();
             }
@@ -168,27 +181,6 @@ namespace Proyecto_Final.UI.Registros
                 {
                     CantidadTextBox.Text = "No existe Tal Entrada";
                 }
-            }
-        }
-
-        private void CacaoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(CacaoIdTextBox.Text))
-            {
-                int id = 0;
-                try
-                {
-                    id = Convert.ToInt32(cacao.CacaoId);
-                }
-                catch (FormatException)
-                {
-                    return;
-                }
-
-                if (id == 0)
-                    EntradaIdTextBox.IsEnabled = true;
-                else
-                    EntradaIdTextBox.IsEnabled = false;
             }
         }
     }
