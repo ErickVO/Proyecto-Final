@@ -201,6 +201,10 @@ namespace Proyecto_Final.UI.Registros
                     {
                         calcularDisponible(lista);
                     }
+                    else
+                    {
+                        CantidadDisponibleTextBox.Text = Convert.ToString(CantidadAcordadaTextBox.Text);
+                    }
                 }
                 else
                 {
