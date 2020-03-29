@@ -132,8 +132,9 @@ namespace Proyecto_Final.UI.Registros
         {
             if (PagosDataGrid.Items.Count > 1 && PagosDataGrid.SelectedIndex < PagosDataGrid.Items.Count - 1)
             {
+                decimal montoEliminar = contenedor.pagos.PagoDetalle[PagosDataGrid.SelectedIndex].Cantidad * contenedor.pagos.PagoDetalle[PagosDataGrid.SelectedIndex].Precio;
                 contenedor.pagos.PagoDetalle.RemoveAt(PagosDataGrid.SelectedIndex);
-                contenedor.pagos.Monto -= contenedor.pagosDetalle.Cantidad * contenedor.pagosDetalle.Precio;
+                contenedor.pagos.Monto -= montoEliminar;
                 reCargar();
             }
 

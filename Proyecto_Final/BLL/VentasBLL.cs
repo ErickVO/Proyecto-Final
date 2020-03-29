@@ -144,5 +144,21 @@ namespace Proyecto_Final.BLL
 
             return cantidad;
         }
+
+        public static bool EntradaValida(Ventas ventas)
+        {
+            //verifica si el contrato ya esta utilizado
+            List<Ventas> lista = GetList(c => true);
+
+            foreach (var item in lista)
+            {
+                Ventas venta = Buscar(item.VentaId);
+
+                if (venta.VentaDetalle[0].ContratoId == ventas.VentaDetalle[0].ContratoId)
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
