@@ -3,6 +3,7 @@ using Proyecto_Final.BLL;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
@@ -12,31 +13,61 @@ namespace Proyecto_Final.BLL.Tests
         [TestMethod()]
         public void GuardarTest()
         {
-            Assert.Fail();
+            bool paso;
+            Suplidores s = new Suplidores();
+            s.SuplidorId = 0;
+            s.UsuarioId = 1;
+            s.Nombres = "Luis David";
+            s.Telefono = " 829566 ";
+            s.Cedula = " 056 ";
+            s.Direccion = " Duarte ";
+            s.Fecha = DateTime.Now;
+            paso = SuplidoresBLL.Guardar(s);
+
+            Assert.AreEqual(paso, true);
         }
 
         [TestMethod()]
         public void ModificarTest()
         {
-            Assert.Fail();
+            bool paso;
+            Suplidores s = new Suplidores();
+            s.SuplidorId = 2;
+            s.UsuarioId = 1;
+            s.Nombres = "Luis David Sanchez";
+            s.Telefono = " 829566 ";
+            s.Cedula = " 056 ";
+            s.Direccion = " Duarte ";
+            s.Fecha = DateTime.Now;
+            paso = SuplidoresBLL.Guardar(s);
+
+            Assert.AreEqual(paso, true);
         }
 
         [TestMethod()]
         public void BuscarTest()
         {
-            Assert.Fail();
+            Suplidores s = new Suplidores();
+            s = SuplidoresBLL.Buscar(2);
+
+            Assert.AreEqual(s, s);
         }
 
         [TestMethod()]
         public void EliminarTest()
         {
-            Assert.Fail();
+            bool paso;
+            paso = SuplidoresBLL.Eliminar(2);
+
+            Assert.AreEqual(paso, true);
         }
 
         [TestMethod()]
         public void GetListTest()
         {
-            Assert.Fail();
+            var listado = new List<Suplidores>();
+            listado = SuplidoresBLL.GetList(s => true);
+            Assert.AreEqual(listado, listado);
         }
     }
 }
