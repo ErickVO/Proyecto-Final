@@ -30,37 +30,67 @@ namespace Proyecto_Final.BLL.Tests
         [TestMethod()]
         public void ModificarTest()
         {
-            Assert.Fail();
+            Cacaos cacaos = new Cacaos();
+
+            cacaos.CacaoId = 1;
+            cacaos.UsuarioId = 1;
+            cacaos.EntradaId = 1;
+            cacaos.Fecha = DateTime.Now;
+            cacaos.Tipo = "Sanchéz";
+            cacaos.Cantidad = 400.0m;
+
+            bool paso = CacaosBLL.Modificar(cacaos);
+
+            Assert.IsTrue(paso);
         }
 
         [TestMethod()]
         public void BuscarTest()
         {
-            Assert.Fail();
+            Cacaos cacaos = CacaosBLL.Buscar(1);
+
+            Assert.IsTrue(cacaos != null);
         }
 
         [TestMethod()]
         public void EliminarTest()
         {
-            Assert.Fail();
+            bool paso = CacaosBLL.Eliminar(1);
+
+            Assert.IsTrue(paso);
         }
 
         [TestMethod()]
         public void GetListTest()
         {
-            Assert.Fail();
+            List<Cacaos> listado = new List<Cacaos>();
+
+            Assert.IsTrue(listado != null);
         }
 
         [TestMethod()]
         public void comprarCacaoTest()
         {
-            Assert.Fail();
+            bool paso = CacaosBLL.comprarCacao(200);
+
+            Assert.IsTrue(paso);
         }
 
         [TestMethod()]
         public void EntradaValidaTest()
         {
-            Assert.Fail();
+            Cacaos cacaos = new Cacaos();
+
+            cacaos.CacaoId = 0;
+            cacaos.UsuarioId = 1;
+            cacaos.EntradaId = 2;
+            cacaos.Fecha = DateTime.Now;
+            cacaos.Tipo = "Sanchéz";
+            cacaos.Cantidad = 300.0m;
+
+            bool paso = CacaosBLL.EntradaValida(cacaos);
+
+            Assert.IsTrue(paso);
         }
     }
 }
