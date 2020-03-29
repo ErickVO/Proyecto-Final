@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="                                                                                                      Consulta de Ventas" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Cacao-Ventanas.jpg"/>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -22,17 +25,17 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="Desde" FontSize="15"/>
+            <Label Content="Desde" FontSize="15" Background="#FFDED3D3"/>
             <DatePicker x:Name="DesdeDatePicker" Width="150" FontSize="15"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <Label Content="Hasta" FontSize="15"/>
+            <Label Content="Hasta" FontSize="15" Background="#FFDED3D3"/>
             <DatePicker x:Name="HastaDatePicker" Width="150" FontSize="15"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="2">
-            <Label Content="Filtro" FontSize="15"/>
+            <Label Content="Filtro" FontSize="15" Background="#FFDED3D3"/>
             <ComboBox SelectedIndex="0" x:Name="FiltroComboBox" Width="150" FontSize="15">
                 <ComboBoxItem Content="Todo"/>
                 <ComboBoxItem Content="Id"/>
@@ -40,7 +43,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
-            <Label Content="Criterio" FontSize="15"/>
+            <Label Content="Criterio" FontSize="15" Background="#FFDED3D3"/>
             <TextBox x:Name="CriterioTextBox" Width="220" FontSize="16"/>
         </StackPanel>
 

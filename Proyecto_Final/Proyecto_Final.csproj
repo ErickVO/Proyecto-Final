@@ -10,6 +10,8 @@
   <ItemGroup>
     <None Remove="Resources\Agregar.png" />
     <None Remove="Resources\buscar.png" />
+    <None Remove="Resources\Cacao-LoginMenu.jpg" />
+    <None Remove="Resources\Cacao-Ventanas.jpg" />
     <None Remove="Resources\eliminar.png" />
     <None Remove="Resources\guardar.png" />
     <None Remove="Resources\login.png" />
@@ -18,6 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Cacao-Ventanas.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Cacao-LoginMenu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\guardar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

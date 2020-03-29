@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="Menu Principal                                                                                 AgrocontsaApp" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Resources/Cacao-LoginMenu.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
@@ -17,32 +19,31 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="Registros" FontSize="20"/>
-            <ComboBox x:Name="RegistrosComboBox" FontSize="20" SelectionChanged="RegistrosComboBox_SelectionChanged">
-                <ComboBoxItem Content="Registrar Cacao"/>
-                <ComboBoxItem Content="Registrar Cliente"/>
-                <ComboBoxItem Content="Registrar Contrato"/>
-                <ComboBoxItem Content="Registrar Entrada"/>
-                <ComboBoxItem Content="Registrar Pago"/>
-                <ComboBoxItem Content="Registrar Suplidor"/>
-                <ComboBoxItem Content="Registrar Usuario"/>
-                <ComboBoxItem Content="Registrar Venta"/>
-            </ComboBox>
-        </StackPanel>
+        <StackPanel>
+            <Menu FontSize="20">
+                <MenuItem Header="Registrar">
+                    <MenuItem x:Name="RegistrarCacaoMenuItem" Header="Cacao" Click="RegistrarCacaoMenuItem_Click"/>
+                    <MenuItem x:Name="RegistrarClienteMenuItem" Header="Cliente" Click="RegistrarClienteMenuItem_Click"/>
+                    <MenuItem x:Name="RegistrarContratoMenuItem" Header="Contrato" Click="RegistrarContratoMenuItem_Click"/>
+                    <MenuItem x:Name="RegistrarEntradaMenuItem" Header="Entrada" Click="RegistrarEntradaMenuItem_Click"/>
+                    <MenuItem x:Name="RegistrarPagoMenuItem" Header="Pago" Click="RegistrarPagoMenuItem_Click"/>
+                    <MenuItem x:Name="RegistrarSuplidorMenuItem" Header="Suplidor" Click="RegistrarSuplidorMenuItem_Click"/>
+                    <MenuItem x:Name="RegistrarUsuarioMenuItem" Header="Usuario" Click="RegistrarUsuarioMenuItem_Click"/>
+                    <MenuItem x:Name="RegistrarVentaMenuItem" Header="Venta" Click="RegistrarVentaMenuItem_Click"/>
+                </MenuItem>
 
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <Label Content="Consultas" FontSize="20"/>
-            <ComboBox x:Name="ConsultasComboBox" FontSize="20" SelectionChanged="ConsultasComboBox_SelectionChanged">
-                <ComboBoxItem Content="Consultar Cacaos"/>
-                <ComboBoxItem Content="Consultar Clientes"/>
-                <ComboBoxItem Content="Consultar Contratos"/>
-                <ComboBoxItem Content="Consultar Entradas"/>
-                <ComboBoxItem Content="Consultar Pagos"/>
-                <ComboBoxItem Content="Consultar Suplidores"/>
-                <ComboBoxItem Content="Consultar Usuarios"/>
-                <ComboBoxItem Content="Consultar Ventas"/>
-            </ComboBox>
+                <MenuItem Header="Consultar">
+                    <MenuItem x:Name="ConsultarCacaosMenuItem" Header="Cacaos" Click="ConsultarCacaosMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultarClientesMenuItem" Header="Clientes" Click="ConsultarClientesMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultarContratosMenuItem" Header="Contratos" Click="ConsultarContratosMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultarEntradasMenuItem" Header="Entradas" Click="ConsultarEntradasMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultarPagosMenuItem" Header="Pagos" Click="ConsultarPagosMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultarSuplidoresMenuItem" Header="Suplidores" Click="ConsultarSuplidoresMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultarUsuariosMenuItem" Header="Usuarios" Click="ConsultarUsuariosMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultarVentasMenuItem" Header="Ventas" Click="ConsultarVentasMenuItem_Click"/>
+                </MenuItem>
+            </Menu>
         </StackPanel>
+        
     </Grid>
 </Window>
