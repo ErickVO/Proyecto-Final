@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace Proyecto_Final.BLL
 {
-    class PagosBLL
+    public class PagosBLL
     {
         public static bool Guardar(Pagos pago)
         {
