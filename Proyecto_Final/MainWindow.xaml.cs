@@ -34,6 +34,8 @@ namespace Proyecto_Final
         {
             if (UsuariosBLL.Existe(usuario))
             {
+                UsuarioTextBox.Clear();
+                ClaveTextBox.Clear();
                 MenuPrincipal menuPrincipal = new MenuPrincipal(UsuariosBLL.ObtenerId(usuario));
                 menuPrincipal.Show();
             }
