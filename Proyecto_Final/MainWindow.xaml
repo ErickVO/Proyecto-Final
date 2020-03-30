@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:Proyecto_Final"
         xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
+        Title="                                                                                                        Login de Usuario" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Cacao-LoginMenu.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="20*"/>
@@ -24,7 +27,7 @@
             <ColumnDefinition Width="30*"/>
             <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Usuario" Grid.Row="1" Grid.Column="1" FontSize="20"/>
+        <Label Content="Usuario" Grid.Row="1" Grid.Column="1" FontSize="20" Background="#FFDED3D3"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioTextBox" Grid.Row="1" Grid.Column="3" FontSize="20">
             <TextBox.Text>
                 <Binding Path="NombreUsuario" Mode="TwoWay">
@@ -35,7 +38,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20"/>
+        <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20" Background="#FFDED3D3"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="3" Grid.Column="3" FontSize="20">
             <TextBox.Text>
                 <Binding Path="Clave" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
