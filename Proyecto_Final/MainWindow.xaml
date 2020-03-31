@@ -32,15 +32,6 @@
 
         <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20" Background="#FFDED3D3"/>
         <PasswordBox x:Name="ClavePasswordBox" Grid.Row="3" Grid.Column="3" FontSize="20"/>
-        <!--<TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="3" Grid.Column="3" FontSize="20">
-            <TextBox.Text>
-                <Binding Path="Clave" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <src:CampoLlenoValidacion x:Name="claveValidacion" Message="Debes poner una clave." ValidatesOnTargetUpdated="True"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>-->
 
         <Button x:Name="LoginButton" Content="Login" Grid.Column="3" Grid.Row="5" FontSize="20" HorizontalContentAlignment="Right" Width="140" Click="LoginButton_Click">
             <Button.Background>

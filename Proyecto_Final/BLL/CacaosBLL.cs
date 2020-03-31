@@ -149,19 +149,5 @@ namespace Proyecto_Final.BLL
             else
                 return false;
         }
-
-        public static bool EntradaValida(Cacaos cacao)
-        {
-            //verifica si la entrada ya esta utilizada
-            List<Cacaos> lista = GetList(c => true);
-
-            foreach(var item in lista)
-            {
-                if (cacao.EntradaId == item.EntradaId)
-                    return false;
-            }
-
-            return true;
-        }
     }
 }

@@ -7,7 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    [TestClass()]
+    /*[TestClass()]
     public class PagosBLLTests
     {
         [TestMethod()]
@@ -66,5 +66,5 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.IsTrue(listado != null);
         }
-    }
+    }*/
 }

@@ -7,6 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
+    /*
     [TestClass()]
     public class ContratosBLLTests
     {
@@ -81,5 +82,5 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.AreEqual(paso, true);
         }
-    }
+    }*/
 }

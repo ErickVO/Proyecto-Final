@@ -7,7 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    [TestClass()]
+    /*[TestClass()]
     public class SuplidoresBLLTests
     {
         [TestMethod()]
@@ -69,5 +69,5 @@ namespace Proyecto_Final.BLL.Tests
             listado = SuplidoresBLL.GetList(s => true);
             Assert.AreEqual(listado, listado);
         }
-    }
+    }*/
 }

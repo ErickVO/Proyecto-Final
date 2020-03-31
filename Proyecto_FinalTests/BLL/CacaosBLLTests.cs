@@ -7,7 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    [TestClass()]
+    /*[TestClass()]
     public class CacaosBLLTests
     {
         [TestMethod()]
@@ -92,5 +92,5 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.IsTrue(paso);
         }
-    }
+    }*/
 }

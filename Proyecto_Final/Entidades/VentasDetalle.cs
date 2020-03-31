@@ -11,22 +11,25 @@ namespace Proyecto_Final.Entidades
         public int VentaDetalleId { get; set; }
         public int VentaId { get; set; }
         public int ContratoId { get; set; }
-        public decimal CantidadCacao { get; set; }
+        public decimal Cantidad { get; set; }
+        public decimal Precio { get; set; }
 
         public VentasDetalle()
         {
             VentaDetalleId = 0;
             VentaId = 0;
             ContratoId = 0;
-            CantidadCacao = 0;
+            Cantidad = 0;
+            Precio = 0;
         }
 
-        public VentasDetalle(int ventaId, int contratoId, decimal cantidadCacao)
+        public VentasDetalle(int ventaDetalleId, int ventaId, int contratoId, decimal cantidad, decimal precio)
         {
-            VentaDetalleId = 0;
+            VentaDetalleId = ventaDetalleId;
             VentaId = ventaId;
             ContratoId = contratoId;
-            CantidadCacao = cantidadCacao;
+            Cantidad = cantidad;
+            Precio = precio;
         }
     }
 }

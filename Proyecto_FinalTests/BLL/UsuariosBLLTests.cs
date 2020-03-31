@@ -7,7 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    [TestClass()]
+    /*[TestClass()]
     public class UsuariosBLLTests
     {
         [TestMethod()]
@@ -101,5 +101,5 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.IsTrue(id == 2);
         }
-    }
+    }*/
 }

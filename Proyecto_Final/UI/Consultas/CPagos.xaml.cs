@@ -61,8 +61,10 @@ namespace Proyecto_Final.UI.Consultas
                     case 3://Monto
                         try
                         {
+                            //revisar
+                            /*
                             decimal monto = Convert.ToInt32(CriterioTextBox.Text);
-                            Listado = PagosBLL.GetList(p => p.Monto == monto);
+                            Listado = PagosBLL.GetList(p => p.Monto == monto);*/
                         }
                         catch (FormatException)
                         {

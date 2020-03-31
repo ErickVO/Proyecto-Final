@@ -18,12 +18,15 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                if (CacaosBLL.comprarCacao(contrato.CantidadTotal))
+                //revisar
+                /*if (CacaosBLL.comprarCacao(contrato.CantidadTotal))
                 {
                     if (db.Contratos.Add(contrato) != null)
                         paso = db.SaveChanges() > 0;
-                }
-                
+                }*/
+                if (db.Contratos.Add(contrato) != null)
+                    paso = db.SaveChanges() > 0;
+
             }
             catch (Exception)
             {
@@ -130,7 +133,8 @@ namespace Proyecto_Final.BLL
             return Lista;
         }
 
-        public static bool verificarPago(int clienteId, decimal cantidad)
+        //revisar
+        /*public static bool verificarPago(int clienteId, decimal cantidad)
         {
             List<Contratos> lista = GetList(c => c.ClienteId == clienteId);
 
@@ -200,6 +204,6 @@ namespace Proyecto_Final.BLL
             }
             else
                 return false;
-        }
+        }*/
     }
 }

@@ -59,7 +59,8 @@ namespace Proyecto_Final.UI.Consultas
                         }
                         break;
                     case 3://EntradaId
-                        try
+                        //revisar
+                        /*try
                         {
                             int id = Convert.ToInt32(CriterioTextBox.Text);
                             Listado = CacaosBLL.GetList(c => c.EntradaId == id);
@@ -67,7 +68,7 @@ namespace Proyecto_Final.UI.Consultas
                         catch (FormatException)
                         {
                             MessageBox.Show("Por favor, ingrese un ID valido");
-                        }
+                        }*/
                         break;
                     case 4://Tipo
                         Listado = CacaosBLL.GetList(s => s.Tipo.Contains(CriterioTextBox.Text));

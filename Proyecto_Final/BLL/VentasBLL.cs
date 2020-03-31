@@ -122,7 +122,8 @@ namespace Proyecto_Final.BLL
             return Lista;
         }
 
-        public static decimal BuscarCantidadTotal(int Id)
+        //revisar
+        /*public static decimal BuscarCantidadTotal(int Id)
         {
             Contratos contrato = new Contratos();
             decimal cantidad = 0;
@@ -143,7 +144,7 @@ namespace Proyecto_Final.BLL
             }
 
             return cantidad;
-        }
+        }*/
 
         public static bool EntradaValida(Ventas ventas)
         {

@@ -42,18 +42,6 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            if (!existeEntrada())
-            {
-                MessageBox.Show("EntradaId no existe");
-                return;
-            }
-
-            if(!CacaosBLL.EntradaValida(cacao))
-            {
-                MessageBox.Show("Ya ha sido utilizada esta EntradaId");
-                return;
-            }
-
             cacao.Tipo = TipoComboBox.Text;
 
             cacao.UsuarioId = UsuarioId;
@@ -147,12 +135,6 @@ namespace Proyecto_Final.UI.Registros
             Cacaos AnteriorCacao = CacaosBLL.Buscar(cacao.CacaoId);
 
             return (AnteriorCacao != null);
-        }
-
-        private bool existeEntrada()
-        {
-            Entradas entradas = EntradasBLL.Buscar(cacao.EntradaId);
-            return (entradas != null);
         }
 
         private void EntradaIdTextBox_TextChanged(object sender, TextChangedEventArgs e)

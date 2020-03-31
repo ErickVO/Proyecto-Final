@@ -10,28 +10,47 @@ namespace Proyecto_Final.Entidades
     {
         [Key]
         public int VentaId { get; set; }
-        public int UsuarioId { get; set; }
         public DateTime Fecha { get; set; }
-        public decimal CantidadDisponible { get; set; }
+        public int ClienteId { get; set; }
+        public decimal Total { get; set; }
+        public decimal Balance { get; set; }
+        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaModificacion { get; set; }
+        public int UsuarioId { get; set; }
 
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalle> VentaDetalle { get; set; }
 
+        [ForeignKey("VentaId")]
+        public virtual List<PagosDetalle> PagoDetalle { get; set; }
+
         public Ventas()
         {
             VentaId = 0;
-            UsuarioId = 0;
             Fecha = DateTime.Now;
-            CantidadDisponible = 0;
+            ClienteId = 0;
+            Total = 0.0m;
+            Balance = 0.0m;
+            FechaCreacion = DateTime.Now;
+            FechaModificacion = DateTime.Now;
+            UsuarioId = 0;
+
             VentaDetalle = new List<VentasDetalle>();
+            PagoDetalle = new List<PagosDetalle>();
         }
 
-        public Ventas(int ventaId, int usuarioId, DateTime fecha, List<VentasDetalle> ventaDetalle)
+        public Ventas(int ventaId, DateTime fecha, int clienteId, decimal total, decimal balance, DateTime fechaCreacion, DateTime fechaModificacion, int usuarioId, List<VentasDetalle> ventaDetalle, List<PagosDetalle> pagoDetalle)
         {
             VentaId = ventaId;
-            UsuarioId = usuarioId;
             Fecha = fecha;
+            ClienteId = clienteId;
+            Total = total;
+            Balance = balance;
+            FechaCreacion = fechaCreacion;
+            FechaModificacion = fechaModificacion;
+            UsuarioId = usuarioId;
             VentaDetalle = ventaDetalle;
+            PagoDetalle = pagoDetalle;
         }
     }
 }

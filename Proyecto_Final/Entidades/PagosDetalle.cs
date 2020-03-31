@@ -10,29 +10,26 @@ namespace Proyecto_Final.Entidades
         [Key]
         public int PagoDetalleId { get; set; }
         public int PagoId { get; set; }
-        public int ClienteId { get; set; }
-        public string TipoCacao { get; set; }
-        public decimal Cantidad { get; set; }
-        public decimal Precio { get; set; }
+        public int VentaId { get; set; }
+        public decimal Monto { get; set; }
+        public decimal Saldo { get; set; }
 
         public PagosDetalle()
         {
             PagoDetalleId = 0;
             PagoId = 0;
-            ClienteId = 0;
-            TipoCacao = string.Empty;
-            Cantidad = 0;
-            Precio = 0;
+            VentaId = 0;
+            Monto = 0.0m;
+            Saldo = 0.0m;
         }
 
-        public PagosDetalle(int clienteId, string tipoCacao, decimal cantidad, decimal precio)
+        public PagosDetalle(int ventaId, decimal monto, decimal saldo)
         {
             PagoDetalleId = 0;
             PagoId = 0;
-            ClienteId = clienteId;
-            TipoCacao = tipoCacao;
-            Cantidad = cantidad;
-            Precio = precio;
+            VentaId = ventaId;
+            Monto = monto;
+            Saldo = saldo;
         }
     }
 }

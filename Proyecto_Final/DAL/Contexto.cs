@@ -6,7 +6,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.DAL
 {
-    public class Contexto :DbContext
+    public class Contexto : DbContext
     {
         public DbSet<Cacaos> Cacaos { get; set; }
         public DbSet<Clientes> Clientes { get; set; }
@@ -24,7 +24,7 @@ namespace Proyecto_Final.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Usuarios>().HasData(new Usuarios { UsuarioId = 1, Nombres = "Administrador", NombreUsuario="Admin", Clave = "Admin", Email="Admin@outlook.com" });
+            modelBuilder.Entity<Usuarios>().HasData(new Usuarios { UsuarioId = 1, Fecha = DateTime.Now, Nombres = "Administrador", NombreUsuario="Admin", Clave = "Admin", Email = "Admin@outlook.com", FechaCreacion = DateTime.Now, FechaModificacion = DateTime.Now, UsuarioIdCreacion = 1});
         }
     }
 }

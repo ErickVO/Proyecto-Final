@@ -84,7 +84,8 @@ namespace Proyecto_Final.UI.Registros
             }
 
             contenedor.ventas.UsuarioId = UsuarioId;
-            contenedor.ventas.CantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
+            //revisar
+            //contenedor.ventas.CantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
 
             if (VentaIdTextBox.Text == "0")
             {
@@ -144,8 +145,9 @@ namespace Proyecto_Final.UI.Registros
             //para evitar que se pague de mas
             if (Convert.ToDecimal(CantidadCacaoTextBox.Text) <= Convert.ToDecimal(CantidadDisponibleTextBox.Text))
             {
-                contenedor.ventas.VentaDetalle.Add(new VentasDetalle(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdTextBox.Text),
-                Convert.ToDecimal(CantidadCacaoTextBox.Text)));
+                //revisar
+                /*contenedor.ventas.VentaDetalle.Add(new VentasDetalle(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdTextBox.Text),
+                Convert.ToDecimal(CantidadCacaoTextBox.Text)));*/
 
                 Recargar();
 
@@ -158,9 +160,10 @@ namespace Proyecto_Final.UI.Registros
                 }
                 else
                 {
-                    decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
+                    //revisar
+                    /*decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
                     cantidadDisponible -= contenedor.ventasDetalle.CantidadCacao;
-                    CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
+                    CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);*/
                 }
 
                 CantidadCacaoTextBox.Clear();
@@ -177,15 +180,17 @@ namespace Proyecto_Final.UI.Registros
             if (VentasDataGrid.Items.Count > 1 && VentasDataGrid.SelectedIndex < VentasDataGrid.Items.Count - 1)
             {
                 //guardar los valores para realizar el calculo sin problemas
-                decimal cantidadEliminar = contenedor.ventas.VentaDetalle[VentasDataGrid.SelectedIndex].CantidadCacao;
-                decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
+                //revisar
+                /*decimal cantidadEliminar = contenedor.ventas.VentaDetalle[VentasDataGrid.SelectedIndex].CantidadCacao;
+                decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);*/
 
                 contenedor.ventas.VentaDetalle.RemoveAt(VentasDataGrid.SelectedIndex);
                 Recargar();
 
                 //aumentar la cantidad disponible por el valor que se elimina
-                cantidadDisponible += cantidadEliminar;
-                CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
+                //revisar
+                /*cantidadDisponible += cantidadEliminar;
+                CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);*/
 
                 CantidadCacaoTextBox.Clear();
                 CantidadCacaoTextBox.Focus();
@@ -219,17 +224,20 @@ namespace Proyecto_Final.UI.Registros
                 contrato = ContratosBLL.Buscar(contratoId);
                 if (contrato != null)
                 {
-                    CantidadAcordadaTextBox.Text = Convert.ToString(VentasBLL.BuscarCantidadTotal(contratoId));
+                    //revisar
+                    //CantidadAcordadaTextBox.Text = Convert.ToString(VentasBLL.BuscarCantidadTotal(contratoId));
 
                     int ventaId;
                     int.TryParse(VentaIdTextBox.Text, out ventaId);
 
                     //si la venta es nueva, la cantidad disponible sera igual a la del contrato
                     //sino sera igual a la que este guardada
-                    if(ventaId > 0)
+
+                    //revisar
+                    /*if(ventaId > 0)
                         CantidadDisponibleTextBox.Text = Convert.ToString(contenedor.ventas.CantidadDisponible);
                     else
-                        CantidadDisponibleTextBox.Text = Convert.ToString(CantidadAcordadaTextBox.Text);
+                        CantidadDisponibleTextBox.Text = Convert.ToString(CantidadAcordadaTextBox.Text);*/
                 }
                 else
                 {
@@ -246,7 +254,8 @@ namespace Proyecto_Final.UI.Registros
             decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
             foreach (var item in lista)
             {
-                cantidadDisponible -= item.CantidadCacao;
+                //revisar
+                //cantidadDisponible -= item.CantidadCacao;
             }
             CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
         }

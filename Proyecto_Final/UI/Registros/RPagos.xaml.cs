@@ -41,11 +41,12 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            if (!existeCliente())
+            //revisar
+            /*if (!existeCliente())
             {
                 MessageBox.Show("ClienteId no existe");
                 return;
-            }
+            }*/
 
             contenedor.pagos.UsuarioId = UsuarioId;
 
@@ -61,13 +62,14 @@ namespace Proyecto_Final.UI.Registros
                 else
                     paso = PagosBLL.Modificar(contenedor.pagos);
             }
-            decimal cantidadTotal = 0;
+            //revisar
+            /*decimal cantidadTotal = 0;
             foreach( var item in contenedor.pagos.PagoDetalle)
             {
                 cantidadTotal += item.Cantidad;
             }
 
-            ContratosBLL.pagar(contenedor.pagos.PagoDetalle[0].ClienteId, cantidadTotal);
+            ContratosBLL.pagar(contenedor.pagos.PagoDetalle[0].ClienteId, cantidadTotal);*/
 
             if (paso)
             {
@@ -89,7 +91,8 @@ namespace Proyecto_Final.UI.Registros
             {
                 ClienteIdTextBox.IsEnabled = false;
                 contenedor.pagos = pago;
-                contenedor.pagosDetalle.ClienteId = contenedor.pagos.PagoDetalle[0].ClienteId;
+                //revisar
+                //contenedor.pagosDetalle.ClienteId = contenedor.pagos.PagoDetalle[0].ClienteId;
                 reCargar();
             }
             else
@@ -112,7 +115,8 @@ namespace Proyecto_Final.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!ContratosBLL.verificarPago(contenedor.pagosDetalle.ClienteId,contenedor.pagosDetalle.Cantidad))
+            //revisar
+            /*if(!ContratosBLL.verificarPago(contenedor.pagosDetalle.ClienteId,contenedor.pagosDetalle.Cantidad))
             {
                 MessageBox.Show("Pago excedido");
                 return;
@@ -120,7 +124,7 @@ namespace Proyecto_Final.UI.Registros
 
             contenedor.pagos.PagoDetalle.Add(new PagosDetalle(contenedor.pagosDetalle.ClienteId, TipoComboBox.Text, Convert.ToDecimal(CantidadCacaoTextBox.Text), Convert.ToDecimal(PrecioTextBox.Text)));
 
-            contenedor.pagos.Monto += contenedor.pagosDetalle.Cantidad * contenedor.pagosDetalle.Precio;
+            contenedor.pagos.Monto += contenedor.pagosDetalle.Cantidad * contenedor.pagosDetalle.Precio;*/
             reCargar();
 
             CantidadCacaoTextBox.Clear();
@@ -132,9 +136,10 @@ namespace Proyecto_Final.UI.Registros
         {
             if (PagosDataGrid.Items.Count > 1 && PagosDataGrid.SelectedIndex < PagosDataGrid.Items.Count - 1)
             {
-                decimal montoEliminar = contenedor.pagos.PagoDetalle[PagosDataGrid.SelectedIndex].Cantidad * contenedor.pagos.PagoDetalle[PagosDataGrid.SelectedIndex].Precio;
+                //revisar
+                /*decimal montoEliminar = contenedor.pagos.PagoDetalle[PagosDataGrid.SelectedIndex].Cantidad * contenedor.pagos.PagoDetalle[PagosDataGrid.SelectedIndex].Precio;
                 contenedor.pagos.PagoDetalle.RemoveAt(PagosDataGrid.SelectedIndex);
-                contenedor.pagos.Monto -= montoEliminar;
+                contenedor.pagos.Monto -= montoEliminar;*/
                 reCargar();
             }
 
@@ -173,11 +178,12 @@ namespace Proyecto_Final.UI.Registros
             return (pago != null);
         }
 
-        private bool existeCliente()
+        //revisar
+        /*private bool existeCliente()
         {
             Clientes cliente = ClientesBLL.Buscar(contenedor.pagosDetalle.ClienteId);
             return (cliente != null);
-        }
+        }*/
 
         private void TipoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

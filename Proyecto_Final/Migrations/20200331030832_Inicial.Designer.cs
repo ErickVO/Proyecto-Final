@@ -9,7 +9,7 @@ using Proyecto_Final.DAL;
 namespace Proyecto_Final.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200329194832_Inicial")]
+    [Migration("20200331030832_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,10 +27,19 @@ namespace Proyecto_Final.Migrations
                     b.Property<decimal>("Cantidad")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("EntradaId")
-                        .HasColumnType("INTEGER");
+                    b.Property<decimal>("Costo")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaModificacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Precio")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Tipo")
@@ -53,6 +62,9 @@ namespace Proyecto_Final.Migrations
                     b.Property<string>("Cedula")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Celular")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Direccion")
                         .HasColumnType("TEXT");
 
@@ -60,6 +72,12 @@ namespace Proyecto_Final.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaModificacion")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")
@@ -82,16 +100,34 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("CantidadTotal")
+                    b.Property<int>("CacaoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Cantidad")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("CantidadPendiente")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ClienteId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("FechaModificacion")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("FechaVencimiento")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
@@ -108,14 +144,29 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("CacaoId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<decimal>("Cantidad")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaModificacion")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("SuplidorId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
@@ -131,10 +182,19 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Monto")
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaModificacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
@@ -151,26 +211,23 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Cantidad")
+                    b.Property<decimal>("Monto")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("PagoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Precio")
+                    b.Property<decimal>("Saldo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TipoCacao")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("VentaId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("PagoDetalleId");
 
-                    b.HasIndex("ClienteId");
-
                     b.HasIndex("PagoId");
+
+                    b.HasIndex("VentaId");
 
                     b.ToTable("PagosDetalle");
                 });
@@ -184,6 +241,9 @@ namespace Proyecto_Final.Migrations
                     b.Property<string>("Cedula")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Celular")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Direccion")
                         .HasColumnType("TEXT");
 
@@ -191,6 +251,12 @@ namespace Proyecto_Final.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaModificacion")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")
@@ -222,11 +288,20 @@ namespace Proyecto_Final.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaModificacion")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NombreUsuario")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("UsuarioIdCreacion")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("UsuarioId");
 
@@ -238,9 +313,12 @@ namespace Proyecto_Final.Migrations
                             UsuarioId = 1,
                             Clave = "Admin",
                             Email = "Admin@outlook.com",
-                            Fecha = new DateTime(2020, 3, 29, 15, 48, 31, 918, DateTimeKind.Local).AddTicks(5281),
+                            Fecha = new DateTime(2020, 3, 30, 23, 8, 32, 389, DateTimeKind.Local).AddTicks(7732),
+                            FechaCreacion = new DateTime(2020, 3, 30, 23, 8, 32, 389, DateTimeKind.Local).AddTicks(7778),
+                            FechaModificacion = new DateTime(2020, 3, 30, 23, 8, 32, 389, DateTimeKind.Local).AddTicks(7787),
                             NombreUsuario = "Admin",
-                            Nombres = "Administrador"
+                            Nombres = "Administrador",
+                            UsuarioIdCreacion = 1
                         });
                 });
 
@@ -250,10 +328,22 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("CantidadDisponible")
+                    b.Property<decimal>("Balance")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaModificacion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
@@ -270,11 +360,14 @@ namespace Proyecto_Final.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("CantidadCacao")
+                    b.Property<decimal>("Cantidad")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ContratoId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
@@ -290,15 +383,15 @@ namespace Proyecto_Final.Migrations
 
             modelBuilder.Entity("Proyecto_Final.Entidades.PagosDetalle", b =>
                 {
-                    b.HasOne("Proyecto_Final.Entidades.Clientes", null)
-                        .WithMany("PagoDetalle")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Proyecto_Final.Entidades.Pagos", null)
                         .WithMany("PagoDetalle")
                         .HasForeignKey("PagoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Proyecto_Final.Entidades.Ventas", null)
+                        .WithMany("PagoDetalle")
+                        .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
