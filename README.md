@@ -2,7 +2,7 @@
 
 # **Diagrama de Base de Datos**
 
-![Diagrama de Base de Datos](https://user-images.githubusercontent.com/59859052/77968332-17132880-72b5-11ea-9955-01ccfd830329.jpeg)
+![WhatsApp Image 2020-03-30 at 9 36 47 PM](https://user-images.githubusercontent.com/59859052/77977940-d1635980-72ce-11ea-8f3e-5a728f80a0bb.jpeg)
 
 # **Cronograma de Trabajo**
 
