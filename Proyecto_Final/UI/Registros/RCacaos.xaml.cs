@@ -21,28 +21,24 @@ namespace Proyecto_Final.UI.Registros
     public partial class RCacaos : Window
     {
         Cacaos cacao = new Cacaos();
-        public int UsuarioId { get; set; }
-        public RCacaos(int usuarioId)
+        int UsuarioId = 0;
+
+        public RCacaos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
-            UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
+            UsuarioLabel.Content = usuarioNombre;
             this.DataContext = cacao;
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             limpiar();
-            GuardarButton.IsEnabled = true;
-            EntradaIdTextBox.IsEnabled = true;
-            TipoComboBox.IsEnabled = true;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
-
-            cacao.Tipo = TipoComboBox.Text;
 
             cacao.UsuarioId = UsuarioId;
 
@@ -78,17 +74,6 @@ namespace Proyecto_Final.UI.Registros
             if (AnteriorCacao != null)
             {
                 cacao = AnteriorCacao;
-
-                if (cacao.Tipo == "Sánchez")
-                    TipoComboBox.SelectedIndex = 0;
-                else if(cacao.Tipo == "Orgánico")
-                    TipoComboBox.SelectedIndex = 1;
-                else
-                    TipoComboBox.SelectedIndex = 2;
-
-                GuardarButton.IsEnabled = false;
-                TipoComboBox.IsEnabled = false;
-                EntradaIdTextBox.IsEnabled = false;
                 reCargar();
             }
             else
@@ -104,12 +89,6 @@ namespace Proyecto_Final.UI.Registros
             }
             else
                 MessageBox.Show("No se Puede Eliminar un cacao que no existe");
-        }
-
-        private void ConsultarEntradasButton_Click(object sender, RoutedEventArgs e)
-        {
-            CEntradas cEntradas = new CEntradas();
-            cEntradas.Show();
         }
 
         private void ConsultarCacaosButton_Click(object sender, RoutedEventArgs e)
@@ -137,7 +116,7 @@ namespace Proyecto_Final.UI.Registros
             return (AnteriorCacao != null);
         }
 
-        private void EntradaIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        /*private void EntradaIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(EntradaIdTextBox.Text))
             {
@@ -170,6 +149,6 @@ namespace Proyecto_Final.UI.Registros
                     CantidadTextBox.Text = "No existe Tal Entrada";
                 }
             }
-        }
+        }*/
     }
 }

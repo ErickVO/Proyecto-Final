@@ -63,7 +63,7 @@
         <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16"/>
 
         <Label Content="Cliente:" Grid.Row="5" Grid.Column="1" FontSize="16"/>
-        <ComboBox x:Name="ClienteComboBox" Grid.Row="5" Grid.Column="3" FontSize="17"/>
+        <ComboBox x:Name="ClientesComboBox" Grid.Row="5" Grid.Column="3" FontSize="17"/>
 
         <Label Content="Total:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TotalTextBox" Grid.Row="7" Grid.Column="3" FontSize="17">
@@ -91,15 +91,15 @@
         </TextBox>
 
         <Label Content="Saldo:" Grid.Row="13" Grid.Column="1" FontSize="16"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="SaldoTextBox" Grid.Row="13" Grid.Column="3"  FontSize="17">
-            <TextBox.Text>
-                <Binding Path="pagosDetalle.Saldo" Mode="TwoWay">
+        <Label Grid.Row="13" Grid.Column="3">
+            <Label.Content>
+                <Binding>
                     <Binding.ValidationRules>
-
+                        
                     </Binding.ValidationRules>
                 </Binding>
-            </TextBox.Text>
-        </TextBox>
+            </Label.Content>
+        </Label>
 
         <DataGrid Style="{StaticResource DataGridStyle}" x:Name="PagosDataGrid" Grid.Row="15" Grid.Column="1" Grid.RowSpan="4" Grid.ColumnSpan="3">
             <DataGrid.ItemsSource>
@@ -222,12 +222,12 @@
         </Button>
 
         <Label Content="Fecha Creacion: " Grid.Row="16" Grid.Column="5" FontSize="16"/>
-        <Label Content="" Grid.Row="17" Grid.Column="5" FontSize="16"/>
+        <Label Grid.Row="17" Grid.Column="5" FontSize="16"/>
         <Label Content="Fecha Modificacion: " Grid.Row="19" Grid.Column="5" FontSize="16"/>
-        <Label Content="" Grid.Row="21" Grid.Column="5" FontSize="16"/>
+        <Label Grid.Row="21" Grid.Column="5" FontSize="16"/>
 
         <Label Content="Creado por: " Grid.Row="23" Grid.Column="1" FontSize="16"/>
-        <Label Content="" Grid.Row="23" Grid.Column="3" FontSize="16"/>
+        <Label x:Name="UsuarioLabel" Grid.Row="23" Grid.Column="3" FontSize="16"/>
 
         <!--<StackPanel Grid.Row="8" Grid.Column="0">
 

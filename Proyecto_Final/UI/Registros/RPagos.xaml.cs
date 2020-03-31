@@ -22,19 +22,20 @@ namespace Proyecto_Final.UI.Registros
     public partial class RPagos : Window
     {
         ContenedorPagos contenedor = new ContenedorPagos();
-        public int UsuarioId { get; set; }
-        public RPagos(int usuarioId)
+        int UsuarioId = 0;
+        List<int> ClientesId = new List<int>();
+        public RPagos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
+            UsuarioLabel.Content = usuarioNombre;
             this.DataContext = contenedor;
-            UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             limpiar();
-            ClienteIdTextBox.IsEnabled = true;
+            //ClienteIdTextBox.IsEnabled = true;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -89,7 +90,7 @@ namespace Proyecto_Final.UI.Registros
 
             if (pago != null)
             {
-                ClienteIdTextBox.IsEnabled = false;
+                //ClienteIdTextBox.IsEnabled = false;
                 contenedor.pagos = pago;
                 //revisar
                 //contenedor.pagosDetalle.ClienteId = contenedor.pagos.PagoDetalle[0].ClienteId;
@@ -127,9 +128,9 @@ namespace Proyecto_Final.UI.Registros
             contenedor.pagos.Monto += contenedor.pagosDetalle.Cantidad * contenedor.pagosDetalle.Precio;*/
             reCargar();
 
-            CantidadCacaoTextBox.Clear();
+            /*CantidadCacaoTextBox.Clear();
             CantidadCacaoTextBox.Focus();
-            ClienteIdTextBox.IsEnabled = false;
+            ClienteIdTextBox.IsEnabled = false;*/
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
@@ -144,7 +145,7 @@ namespace Proyecto_Final.UI.Registros
             }
 
             if (PagosDataGrid.Items.Count == 1)
-                ClienteIdTextBox.IsEnabled = true;
+                //ClienteIdTextBox.IsEnabled = true;
         }
 
         private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)
@@ -178,6 +179,17 @@ namespace Proyecto_Final.UI.Registros
             return (pago != null);
         }
 
+        private void obtenerClientes()
+        {
+            List<Clientes> clientes = ClientesBLL.GetList(p => true);
+
+            foreach (var item in clientes)
+            {
+                ClientesComboBox.Items.Add(item.Nombres);
+                ClientesId.Add(item.ClienteId);
+            }
+        }
+
         //revisar
         /*private bool existeCliente()
         {
@@ -185,7 +197,7 @@ namespace Proyecto_Final.UI.Registros
             return (cliente != null);
         }*/
 
-        private void TipoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /*private void TipoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(PrecioTextBox != null)
             {
@@ -200,6 +212,6 @@ namespace Proyecto_Final.UI.Registros
                 }
             }
             
-        }
+        }*/
     }
 }

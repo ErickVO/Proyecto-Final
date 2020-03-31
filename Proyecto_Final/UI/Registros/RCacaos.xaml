@@ -173,11 +173,11 @@
         </Button>
 
         <Label Content="Fecha Creacion: " Grid.Row="11" Grid.Column="5" FontSize="16"/>
-        <Label Content="" Grid.Row="13" Grid.Column="5" FontSize="16"/>
+        <Label Grid.Row="13" Grid.Column="5" FontSize="16"/>
         <Label Content="Fecha Modificacion: " Grid.Row="15" Grid.Column="5" FontSize="16"/>
-        <Label Content="" Grid.Row="17" Grid.Column="5" FontSize="16"/>
+        <Label Grid.Row="17" Grid.Column="5" FontSize="16"/>
 
         <Label Content="Creado por: " Grid.Row="13" Grid.Column="1" FontSize="16"/>
-        <Label Content="" Grid.Row="13" Grid.Column="3" FontSize="16"/>
+        <Label x:Name="UsuarioLabel" Grid.Row="13" Grid.Column="3" FontSize="16"/>
     </Grid>
 </Window>
