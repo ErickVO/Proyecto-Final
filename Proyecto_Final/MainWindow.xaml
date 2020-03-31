@@ -8,9 +8,6 @@
         mc:Ignorable="d"
         Title="                                                                                                        Login de Usuario" Height="450" Width="800">
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Cacao-LoginMenu.jpg"/>
-        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="20*"/>
@@ -27,10 +24,10 @@
             <ColumnDefinition Width="30*"/>
             <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Usuario" Grid.Row="1" Grid.Column="1" FontSize="20" Background="#FFDED3D3"/>
+        <Label Content="Usuario" Grid.Row="1" Grid.Column="1" FontSize="20"/>
         <TextBox x:Name="UsuarioTextBox" Grid.Row="1" Grid.Column="3" FontSize="20"/>
 
-        <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20" Background="#FFDED3D3"/>
+        <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20"/>
         <PasswordBox x:Name="ClavePasswordBox" Grid.Row="3" Grid.Column="3" FontSize="20"/>
 
         <Button x:Name="LoginButton" Content="Login" Grid.Column="3" Grid.Row="5" FontSize="20" HorizontalContentAlignment="Right" Width="140" Click="LoginButton_Click">

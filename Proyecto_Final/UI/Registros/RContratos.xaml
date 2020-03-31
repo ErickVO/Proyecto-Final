@@ -8,10 +8,6 @@
         mc:Ignorable="d"
         Title="                                                                                                     Registro de Contratos" Height="500" Width="800">
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Cacao-Ventanas.jpg"/>
-        </Grid.Background>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="300*"/>
@@ -31,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="ContratoId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="ContratoId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
@@ -48,7 +44,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
@@ -56,7 +52,7 @@
         </StackPanel>
         
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="ClienteId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="ClienteId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
@@ -72,7 +68,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Fecha de Creación:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="Fecha de Creación:" FontSize="16" HorizontalAlignment="Left" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
@@ -80,7 +76,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0">
-            <Label Content="Fecha de Vencimiento:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="Fecha de Vencimiento:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
@@ -96,7 +92,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="0">
-            <Label Content="Cantidad Total:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="Cantidad Total:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1">
@@ -186,7 +182,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="4">
-            <Label Content="Consultar Contratos" FontSize="12" Background="#FFDED3D3"/>
+            <Label Content="Consultar Contratos" FontSize="12"/>
             <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
@@ -195,7 +191,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="4">
-            <Label Content="Consultar Clientes" FontSize="12" Background="#FFDED3D3"/>
+            <Label Content="Consultar Clientes" FontSize="12"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="4">
