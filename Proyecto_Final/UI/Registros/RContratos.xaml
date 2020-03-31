@@ -9,29 +9,47 @@
         Title="                                                                                                     Registro de Contratos" Height="500" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="300*"/>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="ContratoId:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Grid.Row="1" Grid.Column="1" Content="ContratoId:" FontSize="16" HorizontalAlignment="Left"/>
 
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ContratoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="1" Grid.Column="3">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ContratoIdTextBox" FontSize="17">
                 <TextBox.Text>
                     <Binding Path="ContratoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -40,65 +58,64 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
-        </StackPanel>
-        
-        <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="ClienteId:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClienteIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
-                <TextBox.Text>
-                    <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:IdForaneaValidacion ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
-
-        <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Fecha de Creación:" FontSize="16" HorizontalAlignment="Left" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <DatePicker x:Name="FechaCreacionDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False" SelectedDate="{Binding Path=FechaCreacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Label Content="Fecha:" FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="0">
-            <Label Content="Fecha de Vencimiento:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="4" Grid.Column="1">
-            <DatePicker Style="{StaticResource DatePickerStyle}" x:Name="FechaVencimientoDatePicker" FontSize="16" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="3" Grid.Column="3">
+            <DatePicker x:Name="FechaDatePicker"  FontSize="16">
                 <DatePicker.SelectedDate>
-                    <Binding Path="FechaVencimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <src:FechaValidacion ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </DatePicker.SelectedDate>
             </DatePicker>
         </StackPanel>
 
-        <StackPanel Grid.Row="5" Grid.Column="0">
-            <Label Content="Cantidad Total:" FontSize="16" HorizontalAlignment="Left"/>
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <Label Content="ClienteId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTotalTextBox" FontSize="17" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="5" Grid.Column="3">
+            <ComboBox x:Name="ClienteIdComboBox" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="1">
+            <Label Content="Fecha Vencimiento:" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="3">
+            <DatePicker x:Name="FechaVencimientoDatePicker"  FontSize="16">
+                <DatePicker.SelectedDate>
+                    <Binding Path="FechaVencimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+        </StackPanel>
+
+        <StackPanel Grid.Row="9" Grid.Column="1">
+            <Label Content="CacaoId:" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="9" Grid.Column="3">
+            <ComboBox x:Name="CacaoIdComboBox" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="11" Grid.Column="1">
+            <Label Content="Cantidad:" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="11" Grid.Column="3">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="16" HorizontalAlignment="Stretch">
                 <TextBox.Text>
-                    <Binding Path="CantidadTotal" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:CantidadValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -107,7 +124,47 @@
             </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="3">
+        <StackPanel Grid.Row="13" Grid.Column="1">
+            <Label Content="Precio:" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="13" Grid.Column="3">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="PrecioTextBox" FontSize="16" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:PrecioValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="15" Grid.Column="1">
+            <Label Content="Total:" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="15" Grid.Column="3">
+            <Label x:Name="TotalLabel" Content="" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="17" Grid.Column="1">
+            <Label Content="Cantidad Pendiente:" FontSize="13"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="17" Grid.Column="3">
+            <Label x:Name="CantidadPendienteLabel" Content="" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="19" Grid.Column="1">
+            <Label Content="Creado Por:" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="19" Grid.Column="3">
+            <Label x:Name="UsuarioLabel" Content=" " FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="5">
             <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90" Click="BuscarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
@@ -128,7 +185,35 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="0">
+        <StackPanel Grid.Row="5" Grid.Column="5">
+            <Label Content="Consultar Contratos" FontSize="12" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="5">
+            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="11" Grid.Column="5">
+            <Label Content="Fecha Creacion: " FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="13" Grid.Column="5">
+            <Label x:Name="FechaCreacionLabel" Content="" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="15" Grid.Column="5">
+            <Label Content="Fecha Modificacion: "  FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="17" Grid.Column="5">
+            <Label x:Name="FechaModificacionLabel" Content=""  FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="23" Grid.Column="1">
             <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
@@ -136,7 +221,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="1">
+        <StackPanel Grid.Row="23" Grid.Column="3">
             <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
@@ -148,9 +233,10 @@
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=ContratoIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=ClienteIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=CantidadTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=PrecioTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=FechaDatePicker, Path=(Validation.HasError)}" Value="false" />
                                     <Condition Binding="{Binding ElementName=FechaVencimientoDatePicker, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=CantidadTotalTextBox, Path=(Validation.HasError)}" Value="false" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="IsEnabled" Value="true" />
                             </MultiDataTrigger>
@@ -160,7 +246,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="3">
+        <StackPanel Grid.Row="23" Grid.Column="5">
             <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
@@ -180,27 +266,6 @@
                 </Button.Style>
             </Button>
         </StackPanel>
-
-        <StackPanel Grid.Row="6" Grid.Column="4">
-            <Label Content="Consultar Contratos" FontSize="12"/>
-            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
-                </Button.Background>
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="4">
-            <Label Content="Consultar Clientes" FontSize="12"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2" Grid.Column="4">
-            <Button x:Name="ConsultarClienteButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarClienteButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
-                </Button.Background>
-            </Button>
-        </StackPanel>
-
+        
     </Grid>
 </Window>

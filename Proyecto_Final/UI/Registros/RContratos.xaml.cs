@@ -22,13 +22,17 @@ namespace Proyecto_Final.UI.Registros
     {
         Contratos contrato = new Contratos();
         private int UsuarioId { get; set; }
-        public RContratos(int usuarioId)
+        private string UsuarioNombre { get; set; }
+        public RContratos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
+            UsuarioNombre = usuarioNombre;
+            UsuarioLabel.Content = UsuarioNombre;
+            FechaCreacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            FechaModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            ContratoIdTextBox.Text = "0";
             this.DataContext = contrato;
-            UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
-            ClienteIdTextBox.Text = "0";
         }
 
         private void Recargar()
@@ -68,7 +72,7 @@ namespace Proyecto_Final.UI.Registros
             if(!ExisteEnlaBaseDeDatosClientes())
             {
                 MessageBox.Show("ClienteId No Existe");
-                ClienteIdTextBox.Focus();
+                //ClienteIdTextBox.Focus();
                 return;
             }
 
@@ -131,12 +135,6 @@ namespace Proyecto_Final.UI.Registros
         {
             CContratos cContratos = new CContratos();
             cContratos.Show();
-        }
-
-        private void ConsultarClienteButton_Click(object sender, RoutedEventArgs e)
-        {
-            CClientes cClientes = new CClientes();
-            cClientes.Show();
         }
     }
 }

@@ -117,7 +117,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="13" Grid.Column="3">
-            <Label Name="TotalLabel" Content="" FontSize="16"/>
+            <Label x:Name="TotalLabel" Content="" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="1">
@@ -125,7 +125,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="3">
-            <Label Name="UsuarioIdLabel" Content=" " FontSize="16"/>
+            <Label x:Name="UsuarioLabel" Content=" " FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="5">
@@ -166,7 +166,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="13" Grid.Column="5">
-            <Label Name="FechaCreacionLabel" Content="" FontSize="16"/>
+            <Label x:Name="FechaCreacionLabel" Content="" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="5">
@@ -174,7 +174,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="17" Grid.Column="5">
-            <Label Name="FechaModificacionLabel" Content=""  FontSize="16"/>
+            <Label x:Name="FechaModificacionLabel" Content=""  FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="19" Grid.Column="1">

@@ -22,13 +22,17 @@ namespace Proyecto_Final.UI.Registros
     {
         Entradas entrada = new Entradas();
         private int UsuarioId { get; set; }
-        public REntradas(int usuarioId)
+        private string UsuarioNombre { get; set; }
+        public REntradas(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
-            this.DataContext = entrada;
-            //UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
+            UsuarioNombre = usuarioNombre;
+            UsuarioLabel.Content = UsuarioNombre;
+            FechaCreacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            FechaModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             EntradaIdTextBox.Text = "0";
+            this.DataContext = entrada;
         }
 
         private void Recargar()
