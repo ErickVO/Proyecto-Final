@@ -9,192 +9,175 @@
         Title="                                                                                                   Registro de Cacaos" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="300*"/>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="130"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="CacaoId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
-        </StackPanel>
+        <Label Content="CacaoId:" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CacaoIdTextBox" Grid.Row="1" Grid.Column="3" FontSize="17">
+            <TextBox.Text>
+                <Binding Path="CacaoId" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <src:IdValidacion ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CacaoIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
-                <TextBox.Text>
-                    <Binding Path="CacaoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:IdValidacion ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+        <Label Content="Fecha:" Grid.Row="3" Grid.Column="1" FontSize="16"/>
+        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Content="Tipo:" Grid.Row="5" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TipoTextBox" Grid.Row="5" Grid.Column="3" FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Tipo" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False"/>
-        </StackPanel>
+        <Label Content="Cantidad:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" Grid.Row="7" Grid.Column="3" FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Cantidad" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="EntradaId:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Content="Costo:" Grid.Row="9" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CostoTextBox" Grid.Row="9" Grid.Column="3"  FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Costo" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EntradaIdTextBox" FontSize="17" HorizontalAlignment="Stretch" TextChanged="EntradaIdTextBox_TextChanged">
-                <TextBox.Text>
-                    <Binding Path="EntradaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:IdForaneaValidacion ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+        <Label Content="Precio:" Grid.Row="11" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="PrecioTextBox" Grid.Row="11" Grid.Column="3"  FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Precio" Mode="TwoWay">
+                    <Binding.ValidationRules>
 
-        <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="3" Grid.Column="1">
-            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False" SelectedDate="{Binding Path=Fecha,Mode=TwoWay}"/>
-        </StackPanel>
+        <Label Content="Consultar Cacaos" Grid.Row="5" Grid.Column="5" FontSize="12" HorizontalAlignment="Center"/>
+        <Button x:Name="ConsultarCacaosButton" Content="Consultar" Grid.Row="7" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarCacaosButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+            </Button.Background>
+        </Button>
 
-        <StackPanel Grid.Row="4" Grid.Column="0">
-            <Label Content="Tipo Cacao:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Button x:Name="BuscarButton" Content="Buscar" Grid.Row="1" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="18" Width="100" Click="BuscarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=CacaoIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
-        <StackPanel Grid.Row="4" Grid.Column="1">
-            <ComboBox x:Name="TipoComboBox" SelectedIndex="0" FontSize="17" HorizontalAlignment="Stretch">
-                <ComboBoxItem Content="Sánchez"/>
-                <ComboBoxItem Content="Orgánico"/>
-                <ComboBoxItem Content="Española"/>
-            </ComboBox>
-        </StackPanel>
+        <Button x:Name="NuevoButton" Content="Nuevo" Grid.Row="21" Grid.Column="1" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
+            </Button.Background>
+        </Button>
 
-        <StackPanel Grid.Row="5" Grid.Column="0">
-            <Label Content="Cantidad:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Button x:Name="GuardarButton" Content="Guardar" Grid.Row="21" Grid.Column="3" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
-        <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="17" HorizontalAlignment="Stretch" IsEnabled="False">
-                <TextBox.Text>
-                    <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:CantidadValidacion ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+        <Button x:Name="EliminarButton" Content="Eliminar" Grid.Row="21" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=CacaoIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
-        <StackPanel Grid.Row="1" Grid.Column="4">
-            <Label Content="Consultar Entradas" FontSize="12"/>
-        </StackPanel>
+        <Label Content="Fecha Creacion: " Grid.Row="11" Grid.Column="5" FontSize="16"/>
+        <Label Content="" Grid.Row="13" Grid.Column="5" FontSize="16"/>
+        <Label Content="Fecha Modificacion: " Grid.Row="15" Grid.Column="5" FontSize="16"/>
+        <Label Content="" Grid.Row="17" Grid.Column="5" FontSize="16"/>
 
-        <StackPanel Grid.Row="2" Grid.Column="4">
-            <Button x:Name="ConsultarEntradasButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarEntradasButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
-                </Button.Background>
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="6" Grid.Column="4">
-            <Label Content="Consultar Cacaos" FontSize="12"/>
-            <Button x:Name="ConsultarCacaosButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarCacaosButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
-                </Button.Background>
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="0" Grid.Column="3">
-            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90" Click="BuscarButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
-                </Button.Background>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="IsEnabled" Value="false" />
-                        <Style.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding ElementName=CacaoIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="IsEnabled" Value="true" />
-                            </MultiDataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="8" Grid.Column="0">
-            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
-                </Button.Background>
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="8" Grid.Column="1">
-            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
-                </Button.Background>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="IsEnabled" Value="false" />
-                        <Style.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding ElementName=CacaoIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=EntradaIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=CantidadTextBox, Path=(Validation.HasError)}" Value="false" />
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="IsEnabled" Value="true" />
-                            </MultiDataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="8" Grid.Column="3">
-            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
-                </Button.Background>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="IsEnabled" Value="false" />
-                        <Style.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding ElementName=CacaoIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="IsEnabled" Value="true" />
-                            </MultiDataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-        </StackPanel>
+        <Label Content="Creado por: " Grid.Row="13" Grid.Column="1" FontSize="16"/>
+        <Label Content="" Grid.Row="13" Grid.Column="3" FontSize="16"/>
     </Grid>
 </Window>
