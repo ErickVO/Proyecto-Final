@@ -27,7 +27,7 @@ namespace Proyecto_Final.UI.Registros
             InitializeComponent();
             UsuarioId = usuarioId;
             this.DataContext = entrada;
-            UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
+            //UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
             EntradaIdTextBox.Text = "0";
         }
 
@@ -40,7 +40,7 @@ namespace Proyecto_Final.UI.Registros
         private void Limpiar()
         {
             EntradaIdTextBox.Text = "0";
-            SuplidorIdTextBox.Text = string.Empty;
+            //SuplidorIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             entrada = new Entradas();
             Recargar();
@@ -70,7 +70,7 @@ namespace Proyecto_Final.UI.Registros
             if (!ExisteEnLaBaseDeDatosSuplidores())
             {
                 MessageBox.Show("Suplidor No Existe");
-                SuplidorIdTextBox.Focus();
+                //SuplidorIdTextBox.Focus();
                 return;
             }
 

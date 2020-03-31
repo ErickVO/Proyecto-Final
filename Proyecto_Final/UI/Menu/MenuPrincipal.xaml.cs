@@ -29,8 +29,8 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarCacaoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RCacaos rCacaos = new RCacaos(UsuarioId);
-            rCacaos.Show();
+            //RCacaos rCacaos = new RCacaos(UsuarioId);
+            //rCacaos.Show();
         }
 
         private void RegistrarClienteMenuItem_Click(object sender, RoutedEventArgs e)
@@ -53,8 +53,8 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarPagoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RPagos rPagos = new RPagos(UsuarioId);
-            rPagos.Show();
+            //RPagos rPagos = new RPagos(UsuarioId);
+            //rPagos.Show();
         }
 
         private void RegistrarSuplidorMenuItem_Click(object sender, RoutedEventArgs e)

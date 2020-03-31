@@ -125,7 +125,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="3">
-            <Label Name="UsuarioId" Content=" " FontSize="16"/>
+            <Label Name="UsuarioIdLabel" Content=" " FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="5">
