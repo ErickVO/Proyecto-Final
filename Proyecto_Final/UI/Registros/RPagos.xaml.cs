@@ -144,7 +144,7 @@ namespace Proyecto_Final.UI.Registros
                 reCargar();
             }
 
-            if (PagosDataGrid.Items.Count == 1)
+            //if (PagosDataGrid.Items.Count == 1)
                 //ClienteIdTextBox.IsEnabled = true;
         }
 
