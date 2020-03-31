@@ -1,5 +1,13 @@
 # Proyecto-Final AgrocontsaApp
 
+# **Diagrama de Base de Datos**
+
+![Diagrama de Base de Datos](https://user-images.githubusercontent.com/59859052/77968332-17132880-72b5-11ea-9955-01ccfd830329.jpeg)
+
+# **Cronograma de Trabajo**
+
+![image](https://user-images.githubusercontent.com/59859052/77968000-48d7bf80-72b4-11ea-8050-91790ee9d4f1.png)
+
 # **Inicio**📄
 
 Bienvenidos, estas instrucciones te permitirán utilizar el software de manera correcta y con esto evitar futuros errores.
