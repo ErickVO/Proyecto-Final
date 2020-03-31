@@ -8,10 +8,6 @@
         mc:Ignorable="d"
         Title="                                                                                                    Registro de Entradas" Height="450" Width="800">
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Cacao-Ventanas.jpg"/>
-        </Grid.Background>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="300*"/>
@@ -30,7 +26,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="EntradaId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="EntradaId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
@@ -46,7 +42,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
@@ -54,7 +50,7 @@
         </StackPanel>
         
         <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="SuplidorId:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="SuplidorId:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
@@ -70,7 +66,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1">
@@ -78,7 +74,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0">
-            <Label Content="Cantidad:" FontSize="16" HorizontalAlignment="Left" Background="#FFDED3D3"/>
+            <Label Content="Cantidad:" FontSize="16" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1">
@@ -167,7 +163,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="4">
-            <Label Content="Consultar Entradas" FontSize="12" Background="#FFDED3D3"/>
+            <Label Content="Consultar Entradas" FontSize="12"/>
             <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
@@ -176,7 +172,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="4">
-            <Label Content="Consultar Suplidores" FontSize="12" Background="#FFDED3D3"/>
+            <Label Content="Consultar Suplidores" FontSize="12"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="4">
