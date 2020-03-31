@@ -22,25 +22,33 @@ namespace Proyecto_Final.UI.Registros
     {
         Cacaos cacao = new Cacaos();
         int UsuarioId = 0;
+        string UsuarioNombre = string.Empty;
 
         public RCacaos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
-            UsuarioLabel.Content = usuarioNombre;
+            UsuarioNombre = usuarioNombre;
+            UsuarioLabel.Content = UsuarioNombre;
+            CreacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            ModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             this.DataContext = cacao;
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             limpiar();
+            UsuarioLabel.Content = UsuarioNombre;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
 
-            cacao.UsuarioId = UsuarioId;
+            if(cacao.CacaoId == 0)
+                cacao.UsuarioId = UsuarioId;
+
+            cacao.FechaModificacion = DateTime.Now;
 
             if (cacao.CacaoId == 0)
             {
@@ -74,6 +82,7 @@ namespace Proyecto_Final.UI.Registros
             if (AnteriorCacao != null)
             {
                 cacao = AnteriorCacao;
+                UsuarioLabel.Content = obtenerNombreUsuario(cacao.UsuarioId);
                 reCargar();
             }
             else
@@ -114,6 +123,13 @@ namespace Proyecto_Final.UI.Registros
             Cacaos AnteriorCacao = CacaosBLL.Buscar(cacao.CacaoId);
 
             return (AnteriorCacao != null);
+        }
+
+        private string obtenerNombreUsuario(int id)
+        {
+            Usuarios usuarios = UsuariosBLL.Buscar(id);
+
+            return usuarios.NombreUsuario;
         }
 
         /*private void EntradaIdTextBox_TextChanged(object sender, TextChangedEventArgs e)

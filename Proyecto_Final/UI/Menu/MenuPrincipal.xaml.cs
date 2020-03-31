@@ -20,17 +20,19 @@ namespace Proyecto_Final.UI.Menu
     /// </summary>
     public partial class MenuPrincipal : Window
     {
-        private int UsuarioId { get; set; }
-        public MenuPrincipal(int usuarioId)
+        int UsuarioId = 0;
+        string UsuarioNombre = string.Empty;
+        public MenuPrincipal(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
+            UsuarioNombre = usuarioNombre;
         }
 
         private void RegistrarCacaoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            //RCacaos rCacaos = new RCacaos(UsuarioId);
-            //rCacaos.Show();
+            RCacaos rCacaos = new RCacaos(UsuarioId,UsuarioNombre);
+            rCacaos.Show();
         }
 
         private void RegistrarClienteMenuItem_Click(object sender, RoutedEventArgs e)
