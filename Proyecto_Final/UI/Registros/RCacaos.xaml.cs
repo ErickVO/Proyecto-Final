@@ -131,40 +131,5 @@ namespace Proyecto_Final.UI.Registros
 
             return usuarios.NombreUsuario;
         }
-
-        /*private void EntradaIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(EntradaIdTextBox.Text))
-            {
-                int id = 0;
-                try
-                {
-                    id = Convert.ToInt32(cacao.CacaoId);
-                }
-                catch (FormatException)
-                {
-                    return;
-                }
-
-                if(id >= 1)
-                {
-                    return;
-                }
-
-                int entradaId;
-                Entradas entrada = new Entradas();
-                int.TryParse(EntradaIdTextBox.Text, out entradaId);
-
-                entrada = EntradasBLL.Buscar(entradaId);
-                if (entrada != null)
-                {
-                    CantidadTextBox.Text = Convert.ToString(entrada.Cantidad);
-                }
-                else
-                {
-                    CantidadTextBox.Text = "No existe Tal Entrada";
-                }
-            }
-        }*/
     }
 }

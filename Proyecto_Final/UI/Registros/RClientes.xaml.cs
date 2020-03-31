@@ -21,25 +21,30 @@ namespace Proyecto_Final.UI.Registros
     public partial class RClientes : Window
     {
         Clientes cliente = new Clientes();
-        public int UsuarioId { get; set; }
-        public RClientes(int usuarioId)
+        int UsuarioId = 0;
+        string UsuarioNombre = string.Empty;
+        public RClientes(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
-            //UsuarioIdTextBox.Text = Convert.ToString(UsuarioId);
+            UsuarioNombre = usuarioNombre;
+            UsuarioLabel.Content = UsuarioLabel;
+            CreacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            ModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             this.DataContext = cliente;
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             limpiar();
+            UsuarioLabel.Content = UsuarioNombre;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
 
-            if (cliente.UsuarioId == 0)
+            if (cliente.ClienteId == 0)
                 cliente.UsuarioId = UsuarioId;
 
             if (cliente.ClienteId == 0)
@@ -74,6 +79,7 @@ namespace Proyecto_Final.UI.Registros
             if (AnteriorCliente != null)
             {
                 cliente = AnteriorCliente;
+                UsuarioLabel.Content = obtenerNombreUsuario(cliente.UsuarioId);
                 reCargar();
             }
             else
@@ -114,6 +120,13 @@ namespace Proyecto_Final.UI.Registros
             Clientes AnteriorCliente = ClientesBLL.Buscar(cliente.ClienteId);
 
             return (AnteriorCliente != null);
+        }
+
+        private string obtenerNombreUsuario(int id)
+        {
+            Usuarios usuarios = UsuariosBLL.Buscar(id);
+
+            return usuarios.NombreUsuario;
         }
     }
 }
