@@ -9,194 +9,186 @@
         Title="                                                                                                   Registro de Usuarios" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="300*"/>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="170"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="UsuarioId:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Content="UsuarioId:" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioIdTextBox" Grid.Row="1" Grid.Column="3" FontSize="17">
+            <TextBox.Text>
+                <Binding Path="UsuarioId" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <src:IdValidacion ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioIdTextBox" FontSize="17" HorizontalAlignment="Stretch">
-                <TextBox.Text>
-                    <Binding Path="UsuarioId" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:IdValidacion ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+        <Label Content="Fecha:" Grid.Row="3" Grid.Column="1" FontSize="16"/>
+        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="Nombres:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Content="Tipo:" Grid.Row="5" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TipoTextBox" Grid.Row="5" Grid.Column="3" FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Tipo" Mode="TwoWay">
+                    <Binding.ValidationRules>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" FontSize="17" HorizontalAlignment="Stretch">
-                <TextBox.Text>
-                    <Binding Path="Nombres" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:NombreValidacion ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="2" Grid.Column="0">
-            <Label Content="Fecha:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Content="Nombres:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" Grid.Row="7" Grid.Column="3" FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Nombres" Mode="TwoWay">
+                    <Binding.ValidationRules>
 
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <DatePicker x:Name="FechaDatePicker" FontSize="16" HorizontalAlignment="Stretch" IsEnabled="False" SelectedDate="{Binding Path=Fecha,Mode=TwoWay}"/>
-        </StackPanel>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="3" Grid.Column="0">
-            <Label Content="Nombre Usuario:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Content="Nombre Usuario:" Grid.Row="9" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioTextBox" Grid.Row="9" Grid.Column="3"  FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Usuario" Mode="TwoWay">
+                    <Binding.ValidationRules>
 
-        <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombreUsuarioTextBox" FontSize="17" HorizontalAlignment="Stretch">
-                <TextBox.Text>
-                    <Binding Path="NombreUsuario" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un nombre de usuario."/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="4" Grid.Column="0">
-            <Label Content="Clave:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Content="Clave:" Grid.Row="11" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="11" Grid.Column="3"  FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Clave" Mode="TwoWay">
+                    <Binding.ValidationRules>
 
-        <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" FontSize="17" HorizontalAlignment="Stretch">
-                <TextBox.Text>
-                    <Binding Path="Clave" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner una clave."/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="5" Grid.Column="0">
-            <Label Content="Email:" FontSize="16" HorizontalAlignment="Left"/>
-        </StackPanel>
+        <Label Content="Email:" Grid.Row="13" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EmailTextBox" Grid.Row="11" Grid.Column="3"  FontSize="17">
+            <TextBox.Text>
+                <Binding Path="Email" Mode="TwoWay">
+                    <Binding.ValidationRules>
 
-        <StackPanel Grid.Row="5" Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EmailTextBox" FontSize="17" HorizontalAlignment="Stretch">
-                <TextBox.Text>
-                    <Binding Path="Email" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un email."/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
-        <StackPanel Grid.Row="7" Grid.Column="4">
-            <Label Content="Consultar Usuarios" FontSize="12"/>
-            <Button x:Name="ConsultarUsuariosButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarUsuariosButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
-                </Button.Background>
-            </Button>
-        </StackPanel>
+        <Label Content="Consultar Usuarios" Grid.Row="5" Grid.Column="5" FontSize="12" HorizontalAlignment="Center"/>
+        <Button x:Name="ConsultarUsuariosButton" Content="Consultar" Grid.Row="7" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarUsuariosButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+            </Button.Background>
+        </Button>
 
-        <StackPanel Grid.Row="0" Grid.Column="3">
-            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="18" Width="90" Click="BuscarButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
-                </Button.Background>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="IsEnabled" Value="false" />
-                        <Style.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding ElementName=UsuarioIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="IsEnabled" Value="true" />
-                            </MultiDataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-        </StackPanel>
+        <Button x:Name="BuscarButton" Content="Buscar" Grid.Row="1" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="18" Width="100" Click="BuscarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=UsuarioIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
-        <StackPanel Grid.Row="8" Grid.Column="0">
-            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
-                </Button.Background>
-            </Button>
-        </StackPanel>
+        <Button x:Name="NuevoButton" Content="Nuevo" Grid.Row="21" Grid.Column="1" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
+            </Button.Background>
+        </Button>
 
-        <StackPanel Grid.Row="8" Grid.Column="1">
-            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
-                </Button.Background>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="IsEnabled" Value="false" />
-                        <Style.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding ElementName=UsuarioIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=NombresTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=NombreUsuarioTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=ClaveTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false" />
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="IsEnabled" Value="true" />
-                            </MultiDataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-        </StackPanel>
+        <Button x:Name="GuardarButton" Content="Guardar" Grid.Row="21" Grid.Column="3" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
 
-        <StackPanel Grid.Row="8" Grid.Column="3">
-            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
-                </Button.Background>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="IsEnabled" Value="false" />
-                        <Style.Triggers>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding ElementName=UsuarioIdTextBox, Path=(Validation.HasError)}" Value="false" />
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="IsEnabled" Value="true" />
-                            </MultiDataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-        </StackPanel>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="EliminarButton" Content="Eliminar" Grid.Row="21" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=UsarioIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Label Content="Fecha Creacion: " Grid.Row="11" Grid.Column="5" FontSize="16"/>
+        <Label Content="" Grid.Row="13" Grid.Column="5" FontSize="16"/>
+        <Label Content="Fecha Modificacion: " Grid.Row="15" Grid.Column="5" FontSize="16"/>
+        <Label Content="" Grid.Row="17" Grid.Column="5" FontSize="16"/>
+
+        <Label Content="Creado por: " Grid.Row="15" Grid.Column="1" FontSize="16"/>
+        <Label Content="" Grid.Row="13" Grid.Column="3" FontSize="16"/>
     </Grid>
 </Window>
