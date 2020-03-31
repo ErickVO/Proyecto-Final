@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace Proyecto_Final.Validaciones
 {
-    public class FechaValidacion : ValidationRule
+    public class FechaVencimientoValidacion : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
