@@ -43,12 +43,6 @@ namespace Proyecto_Final.UI.Registros
 
         private void Limpiar()
         {
-            SuplidorIdTextBox.Text = "0";
-            NombresTextBox.Text = string.Empty;
-            DireccionTextBox.Text = string.Empty;
-            EmailTextBox.Text = string.Empty;
-            TelefonoTextBox.Text = string.Empty;
-            CedulaTextBox.Text = string.Empty;
             suplidor = new Suplidores();
             Recargar();
         }
@@ -68,7 +62,7 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            //suplidor.UsuarioId = UsuarioId;
+            suplidor.UsuarioId = UsuarioId;
 
             if (SuplidorIdTextBox.Text == "0")
                 paso = SuplidoresBLL.Guardar(suplidor);

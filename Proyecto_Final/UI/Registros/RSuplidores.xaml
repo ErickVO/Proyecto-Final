@@ -62,7 +62,15 @@
         </StackPanel>
 
         <Label Content="Fecha:" Grid.Row="3" Grid.Column="1" FontSize="16"/>
-        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16"/>
+        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
+            <DatePicker.SelectedDate>
+                <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <src:FechaValidacion ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </DatePicker.SelectedDate>
+        </DatePicker>
 
         <Label Content="Nombres:" Grid.Row="5" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" Grid.Row="5" Grid.Column="3" FontSize="17">
@@ -173,6 +181,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding ElementName=SuplidorIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=FechaDatePicker, Path=(Validation.HasError)}" Value="false" />
                                 <Condition Binding="{Binding ElementName=NombresTextBox, Path=(Validation.HasError)}" Value="false" />
                                 <Condition Binding="{Binding ElementName=DireccionTextBox, Path=(Validation.HasError)}" Value="false" />
                                 <Condition Binding="{Binding ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false" />
@@ -206,9 +215,9 @@
         </Button>
 
         <Label Content="Fecha Creacion: " Grid.Row="11" Grid.Column="5" FontSize="16"/>
-        <Label x:Name="FechaCreacionLabel" Content="" Grid.Row="13" Grid.Column="5" FontSize="16"/>
+        <Label x:Name="FechaCreacionLabel" Content="{Binding Path=FechaCreacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="13" Grid.Column="5" FontSize="16"/>
         <Label Content="Fecha Modificacion: " Grid.Row="15" Grid.Column="5" FontSize="16"/>
-        <Label x:Name="FechaModificacionLabel" Content="" Grid.Row="17" Grid.Column="5" FontSize="16"/>
+        <Label x:Name="FechaModificacionLabel" Content="{Binding Path=FechaModificacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="17" Grid.Column="5" FontSize="16"/>
 
         <Label Content="Creado por: " Grid.Row="17" Grid.Column="1" FontSize="16"/>
         <Label x:Name="UsuarioLabel" Content="" Grid.Row="17" Grid.Column="3" FontSize="16"/>

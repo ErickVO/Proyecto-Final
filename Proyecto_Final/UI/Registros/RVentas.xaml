@@ -101,7 +101,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="9" Grid.Column="3">
-            <Label x:Name="BalanceLabel" Content="" FontSize="16"/>
+            <Label x:Name="BalanceLabel" Content="{Binding Path=venta.Total, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="11" Grid.Column="1">
@@ -135,7 +135,7 @@
         <StackPanel Grid.Row="15" Grid.Column="3">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="PrecioTextBox" FontSize="16" HorizontalAlignment="Stretch">
                 <TextBox.Text>
-                    <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding Path="ventasDetalle.Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:PrecioValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -213,7 +213,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="13" Grid.Column="5">
-            <Label x:Name="FechaCreacionLabel" Content="" FontSize="12"/>
+            <Label x:Name="FechaCreacionLabel" Content="{Binding Path=ventas.FechaCreacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="12"/>
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="5">
@@ -221,7 +221,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="17" Grid.Column="5">
-            <Label x:Name="FechaModificacionLabel" Content=""  FontSize="12"/>
+            <Label x:Name="FechaModificacionLabel" Content="{Binding Path=ventas.FechaModificacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  FontSize="12"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="5">

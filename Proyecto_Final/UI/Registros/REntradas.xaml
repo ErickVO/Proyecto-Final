@@ -61,7 +61,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="3">
-            <DatePicker x:Name="FechaDatePicker"  FontSize="16"/>
+            <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
+                <DatePicker.SelectedDate>
+                    <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:FechaValidacion ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
         </StackPanel>
         
         <StackPanel Grid.Row="5" Grid.Column="1">
@@ -117,7 +125,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="13" Grid.Column="3">
-            <Label x:Name="TotalLabel" Content="" FontSize="16"/>
+            <Label x:Name="TotalLabel" Content="{Binding Path=Total, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="1">
@@ -166,7 +174,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="13" Grid.Column="5">
-            <Label x:Name="FechaCreacionLabel" Content="" FontSize="16"/>
+            <Label x:Name="FechaCreacionLabel" Content="{Binding Path=FechaCreacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="5">
@@ -174,7 +182,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="17" Grid.Column="5">
-            <Label x:Name="FechaModificacionLabel" Content=""  FontSize="16"/>
+            <Label x:Name="FechaModificacionLabel" Content="{Binding Path=FechaModificacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="19" Grid.Column="1">
@@ -198,6 +206,8 @@
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=EntradaIdTextBox, Path=(Validation.HasError)}" Value="false" />
                                     <Condition Binding="{Binding ElementName=CantidadTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=CostoTextBox, Path=(Validation.HasError)}" Value="false" />
+                                    <Condition Binding="{Binding ElementName=FechaDatePicker, Path=(Validation.HasError)}" Value="false" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="IsEnabled" Value="true" />
                             </MultiDataTrigger>

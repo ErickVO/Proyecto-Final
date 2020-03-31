@@ -43,25 +43,25 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarContratoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RContratos rContratos = new RContratos(UsuarioId);
+            RContratos rContratos = new RContratos(UsuarioId, UsuarioNombre);
             rContratos.Show();
         }
 
         private void RegistrarEntradaMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            REntradas rEntradas = new REntradas(UsuarioId);
+            REntradas rEntradas = new REntradas(UsuarioId, UsuarioNombre);
             rEntradas.Show();
         }
 
         private void RegistrarPagoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            //RPagos rPagos = new RPagos(UsuarioId);
-            //rPagos.Show();
+            RPagos rPagos = new RPagos(UsuarioId, UsuarioNombre);
+            rPagos.Show();
         }
 
         private void RegistrarSuplidorMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RSuplidores rSuplidores = new RSuplidores(UsuarioId);
+            RSuplidores rSuplidores = new RSuplidores(UsuarioId, UsuarioNombre);
             rSuplidores.Show();
         }
 
@@ -73,7 +73,7 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarVentaMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RVentas rVentas = new RVentas(UsuarioId);
+            RVentas rVentas = new RVentas(UsuarioId, UsuarioNombre);
             rVentas.Show();
         }
 
