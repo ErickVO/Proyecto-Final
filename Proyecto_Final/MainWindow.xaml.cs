@@ -32,12 +32,17 @@ namespace Proyecto_Final
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (UsuariosBLL.Existe(usuario))
+            if(string.IsNullOrWhiteSpace(UsuarioTextBox.Text) || string.IsNullOrWhiteSpace(ClavePasswordBox.Password))
             {
-                UsuarioTextBox.Clear();
-                ClaveTextBox.Clear();
-                MenuPrincipal menuPrincipal = new MenuPrincipal(UsuariosBLL.ObtenerId(usuario));
+                MessageBox.Show("Debe llenar los campos");
+                return;
+            }
+
+            if (UsuariosBLL.Existe(UsuarioTextBox.Text,ClavePasswordBox.Password))
+            {
+                MenuPrincipal menuPrincipal = new MenuPrincipal(UsuariosBLL.ObtenerId(UsuarioTextBox.Text, ClavePasswordBox.Password));
                 menuPrincipal.Show();
+                this.Close();
             }
             else
                 MessageBox.Show("Usuario no existente");

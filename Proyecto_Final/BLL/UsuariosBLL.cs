@@ -110,15 +110,14 @@ namespace Proyecto_Final.BLL
             return Lista;
         }
 
-        public static bool Existe(Usuarios usuario)
+        public static bool Existe(string usuario,string clave)
         {
             bool paso = false;
             Contexto db = new Contexto();
-            Usuarios AnteriorUsuario = new Usuarios();
 
             try
             {
-                if (db.Usuarios.Where(u => u.NombreUsuario == usuario.NombreUsuario && u.Clave == usuario.Clave).SingleOrDefault() != null)
+                if (db.Usuarios.Where(u => u.NombreUsuario == usuario && u.Clave == clave).SingleOrDefault() != null)
                     paso = true;
             }
             catch (Exception)
@@ -133,13 +132,13 @@ namespace Proyecto_Final.BLL
             return paso;
         }
 
-        public static int ObtenerId(Usuarios usuario)
+        public static int ObtenerId(string usuario, string clave)
         {
             Contexto db = new Contexto();
-
+            int id;
             try
             {
-                usuario = db.Usuarios.Where(u => u.NombreUsuario == usuario.NombreUsuario && u.Clave == usuario.Clave).SingleOrDefault();
+                id = db.Usuarios.Where(u => u.NombreUsuario == usuario && u.Clave == clave).SingleOrDefault().UsuarioId;
             }
             catch (Exception)
             {
@@ -150,7 +149,7 @@ namespace Proyecto_Final.BLL
                 db.Dispose();
             }
 
-            return usuario.UsuarioId;
+            return id;
         }
     }
 }

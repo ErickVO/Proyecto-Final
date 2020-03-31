@@ -28,18 +28,11 @@
             <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Usuario" Grid.Row="1" Grid.Column="1" FontSize="20" Background="#FFDED3D3"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioTextBox" Grid.Row="1" Grid.Column="3" FontSize="20">
-            <TextBox.Text>
-                <Binding Path="NombreUsuario" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <src:CampoLlenoValidacion x:Name="usuarioValidacion" Message="Debes poner un usuario." ValidatesOnTargetUpdated="True"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <TextBox x:Name="UsuarioTextBox" Grid.Row="1" Grid.Column="3" FontSize="20"/>
 
         <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20" Background="#FFDED3D3"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="3" Grid.Column="3" FontSize="20">
+        <PasswordBox x:Name="ClavePasswordBox" Grid.Row="3" Grid.Column="3" FontSize="20"/>
+        <!--<TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="3" Grid.Column="3" FontSize="20">
             <TextBox.Text>
                 <Binding Path="Clave" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -47,26 +40,12 @@
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
-        </TextBox>
+        </TextBox>-->
 
         <Button x:Name="LoginButton" Content="Login" Grid.Column="3" Grid.Row="5" FontSize="20" HorizontalContentAlignment="Right" Width="140" Click="LoginButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/login.png" Stretch="Uniform" AlignmentX="Left"/>
             </Button.Background>
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="IsEnabled" Value="false" />
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding ElementName=UsuarioTextBox, Path=(Validation.HasError)}" Value="false" />
-                                <Condition Binding="{Binding ElementName=ClaveTextBox, Path=(Validation.HasError)}" Value="false" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="IsEnabled" Value="true" />
-                        </MultiDataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
         </Button>
     </Grid>
 </Window>
