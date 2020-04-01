@@ -23,9 +23,9 @@ namespace Proyecto_Final.Entidades
             Precio = 0;
         }
 
-        public VentasDetalle(int ventaDetalleId, int ventaId, int contratoId, decimal cantidad, decimal precio)
+        public VentasDetalle(int ventaId, int contratoId, decimal cantidad, decimal precio)
         {
-            VentaDetalleId = ventaDetalleId;
+            VentaDetalleId = 0;
             VentaId = ventaId;
             ContratoId = contratoId;
             Cantidad = cantidad;

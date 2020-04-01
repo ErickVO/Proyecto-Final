@@ -93,7 +93,7 @@
             <TextBox.Text>
                 <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
+                        <src:TelefonoValidacion Message="Telefono no valido" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -104,7 +104,7 @@
             <TextBox.Text>
                 <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
+                        <src:TelefonoValidacion Message="Celular no valido" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -133,7 +133,7 @@
         </TextBox>
 
         <Label Content="Consultar Clientes" Grid.Row="5" Grid.Column="5" FontSize="12" HorizontalAlignment="Center"/>
-        <Button x:Name="ConsultarClientesButton" Content="Consultar" Grid.Row="7" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarClientesButton_Click">
+        <Button Style="{StaticResource ButtonStyle}" x:Name="ConsultarClientesButton" Content="Consultar" Grid.Row="7" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarClientesButton_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
             </Button.Background>

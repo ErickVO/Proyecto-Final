@@ -83,7 +83,6 @@ namespace Proyecto_Final.UI.Registros
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-
             Pagos pago = PagosBLL.Buscar(contenedor.pagos.PagoId);
 
             if (pago != null)
@@ -93,7 +92,7 @@ namespace Proyecto_Final.UI.Registros
                 UsuarioLabel.Content = obtenerNombreUsuario(contenedor.pagos.UsuarioId);
 
                 ClientesComboBox.IsEnabled = false;
-                VentaComboBox.IsEnabled = false;
+                VentaComboBox.IsEnabled = true;
 
                 reCargar();
             }
@@ -106,6 +105,12 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (contenedor.pagos.PagoId == 0)
+            {
+                MessageBox.Show("No se puede eliminar el 0");
+                return;
+            }
+
             if (PagosBLL.Eliminar(contenedor.pagos.PagoId))
             {
                 limpiar();
@@ -161,7 +166,7 @@ namespace Proyecto_Final.UI.Registros
             VentaComboBox.Items.Clear();
 
             ClientesComboBox.IsEnabled = true;
-            VentaComboBox.IsEnabled = true;
+            VentaComboBox.IsEnabled = false;
 
             reCargar();
         }

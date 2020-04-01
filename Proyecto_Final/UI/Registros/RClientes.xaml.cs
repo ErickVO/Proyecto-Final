@@ -57,7 +57,11 @@ namespace Proyecto_Final.UI.Registros
                     MessageBox.Show("No se puede modificar un cliente que no existe");
                     return;
                 }
-                paso = ClientesBLL.Modificar(cliente);
+                else
+                {
+                    cliente.FechaModificacion = DateTime.Now;
+                    paso = ClientesBLL.Modificar(cliente);
+                }
             }
 
             if (paso)

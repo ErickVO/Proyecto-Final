@@ -120,46 +120,6 @@ namespace Proyecto_Final.BLL
                 return false;
         }
 
-        public static bool comprarCacao(decimal cantidadTotal)
-        {
-            //verifica si se puede comprar el cacao y si se puede comprar se resta
-            List<Cacaos> lista = GetList(c => true);
-
-            if (lista == null)
-                return false;
-
-            int verificando = 0;
-            List<int> usados = new List<int>();
-
-            foreach(var item in lista)
-            {
-                if (item.Cantidad > 0)
-                {
-                    usados.Add(verificando);
-                }
-
-                while(item.Cantidad>0 && cantidadTotal>0)
-                {
-                    item.Cantidad--;
-                    cantidadTotal--;
-                }
-
-                verificando++;
-            }
-
-            if (cantidadTotal == 0)
-            {
-                foreach(var item in usados)
-                {
-                    Modificar(lista[item]);
-                }
-
-                return true;
-            }
-            else
-                return false;
-        }
-
         public static void ActualizarCacao(int id, decimal cantidad, decimal costo)
         {
             Cacaos cacao = Buscar(id);
@@ -168,6 +128,21 @@ namespace Proyecto_Final.BLL
             cacao.Costo = costo;
 
             Modificar(cacao);
+        }
+
+        public static bool ContratarCacao(int id, decimal cantidad)
+        {
+            Cacaos cacao = Buscar(id);
+
+            cacao.Cantidad -= cantidad;
+
+            if (cacao.Cantidad >= 0)
+            {
+                Modificar(cacao);
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

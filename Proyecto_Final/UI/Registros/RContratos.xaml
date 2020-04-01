@@ -10,7 +10,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="1*"/>
@@ -69,7 +69,7 @@
                 <DatePicker.SelectedDate>
                     <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:FechaValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </DatePicker.SelectedDate>
@@ -85,7 +85,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1">
-            <Label Content="Fecha Vencimiento:" FontSize="14"/>
+            <Label Content="Fecha Vencimiento:" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="3">
@@ -93,7 +93,7 @@
                 <DatePicker.SelectedDate>
                     <Binding Path="FechaVencimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <src:FechaVencimientoValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </DatePicker.SelectedDate>
@@ -105,7 +105,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="9" Grid.Column="3">
-            <ComboBox x:Name="CacaoIdComboBox" FontSize="16"/>
+            <ComboBox x:Name="CacaoIdComboBox" FontSize="16" SelectionChanged="CacaoIdComboBox_SelectionChanged"/>
         </StackPanel>
 
         <StackPanel Grid.Row="11" Grid.Column="1">
@@ -113,7 +113,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="11" Grid.Column="3">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="16" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="16" HorizontalAlignment="Stretch" TextChanged="CantidadTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -129,15 +129,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="13" Grid.Column="3">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="PrecioTextBox" FontSize="16" HorizontalAlignment="Stretch">
-                <TextBox.Text>
-                    <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <src:PrecioValidacion ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+            <Label x:Name="PrecioLabel" FontSize="16" Content="{Binding Path=Precio, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
         
         <StackPanel Grid.Row="15" Grid.Column="1">
@@ -145,15 +137,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="3">
-            <Label x:Name="TotalLabel" Content="" FontSize="16"/>
+            <Label x:Name="TotalLabel" Content="{Binding Path=Total, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="17" Grid.Column="1">
-            <Label Content="Cantidad Pendiente:" FontSize="13"/>
+            <Label Content="Cantidad Pendiente:" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="17" Grid.Column="3">
-            <Label x:Name="CantidadPendienteLabel" Content="" FontSize="16"/>
+            <Label x:Name="CantidadPendienteLabel" Content="{Binding Path=CantidadPendiente, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="19" Grid.Column="1">
@@ -170,7 +162,7 @@
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>
                 <Button.Style>
-                    <Style TargetType="{x:Type Button}">
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                         <Setter Property="IsEnabled" Value="false" />
                         <Style.Triggers>
                             <MultiDataTrigger>
@@ -190,7 +182,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="5">
-            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
+            <Button Style="{StaticResource ButtonStyle}" x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -202,7 +194,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="13" Grid.Column="5">
-            <Label x:Name="FechaCreacionLabel" Content="" FontSize="16"/>
+            <Label x:Name="FechaCreacionLabel" Content="{Binding Path=FechaCreacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="15" Grid.Column="5">
@@ -210,11 +202,11 @@
         </StackPanel>
 
         <StackPanel Grid.Row="17" Grid.Column="5">
-            <Label x:Name="FechaModificacionLabel" Content=""  FontSize="16"/>
+            <Label x:Name="FechaModificacionLabel" Content="{ Binding Path=FechaModificacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="23" Grid.Column="1">
-            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
+            <Button Style="{StaticResource ButtonStyle}" x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
                 </Button.Background>
@@ -227,14 +219,13 @@
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
                 </Button.Background>
                 <Button.Style>
-                    <Style TargetType="{x:Type Button}">
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                         <Setter Property="IsEnabled" Value="false" />
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=ContratoIdTextBox, Path=(Validation.HasError)}" Value="false" />
                                     <Condition Binding="{Binding ElementName=CantidadTextBox, Path=(Validation.HasError)}" Value="false" />
-                                    <Condition Binding="{Binding ElementName=PrecioTextBox, Path=(Validation.HasError)}" Value="false" />
                                     <Condition Binding="{Binding ElementName=FechaDatePicker, Path=(Validation.HasError)}" Value="false" />
                                     <Condition Binding="{Binding ElementName=FechaVencimientoDatePicker, Path=(Validation.HasError)}" Value="false" />
                                 </MultiDataTrigger.Conditions>
@@ -252,7 +243,7 @@
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
                 </Button.Background>
                 <Button.Style>
-                    <Style TargetType="{x:Type Button}">
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                         <Setter Property="IsEnabled" Value="false" />
                         <Style.Triggers>
                             <MultiDataTrigger>

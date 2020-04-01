@@ -9,11 +9,13 @@ namespace Proyecto_Final.Contenedores
     {
         public Ventas ventas { get; set; }
         public VentasDetalle ventasDetalle { get; set; }
+        public List<ListaVentas> listaVentas { get; set; }
 
         public ContenedorVentas()
         {
             ventas = new Ventas();
             ventasDetalle = new VentasDetalle();
+            listaVentas = new List<ListaVentas>();
         }
     }
 }

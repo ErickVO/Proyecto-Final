@@ -59,15 +59,21 @@ namespace Proyecto_Final.UI.Registros
         {
             VentaIdTextBox.Text = "0";
             BalanceLabel.Content = "";
-            contenedor.ventas = new Ventas();
-            contenedor.ventasDetalle = new VentasDetalle();
+
+            UsuarioLabel.Content = UsuarioNombre;
+            ClientesComboBox.SelectedIndex = -1;
+            ContratoIdComboBox.Items.Clear();
+
+            ClientesComboBox.IsEnabled = true;
+            ContratoIdComboBox.IsEnabled = false;
+
+            contenedor = new ContenedorVentas();
             Recargar();
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
-            //ContratoIdTextBox.IsEnabled = true;
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -76,22 +82,9 @@ namespace Proyecto_Final.UI.Registros
             return VentaAnterior != null;
         }
 
-        private bool ExisteEnlaBaseDeDatosContratos()
-        {
-            Contratos contratoAnterior = ContratosBLL.Buscar(contenedor.ventasDetalle.ContratoId);
-            return contratoAnterior != null;
-        }
-
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
-
-            if (!ExisteEnlaBaseDeDatosContratos())
-            {
-                MessageBox.Show("Contrato No Existe");
-                //ContratoIdTextBox.Focus();
-                return;
-            }
 
             if (!VentasBLL.EntradaValida(contenedor.ventas))
             {
@@ -99,9 +92,10 @@ namespace Proyecto_Final.UI.Registros
                 return;
             }
 
-            contenedor.ventas.UsuarioId = UsuarioId;
-            //revisar
-            //contenedor.ventas.CantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
+            if(contenedor.ventas.VentaId == 0)
+                contenedor.ventas.UsuarioId = UsuarioId;
+
+            contenedor.ventas.ClienteId = ClientesId[ClientesComboBox.SelectedIndex];
 
             if (VentaIdTextBox.Text == "0")
             {
@@ -115,7 +109,10 @@ namespace Proyecto_Final.UI.Registros
                     return;
                 }
                 else
+                {
+                    contenedor.ventas.FechaModificacion = DateTime.Now;
                     paso = VentasBLL.Modificar(contenedor.ventas);
+                }
             }
 
             if (paso)
@@ -129,6 +126,12 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (contenedor.ventas.VentaId == 0)
+            {
+                MessageBox.Show("No se puede eliminar el 0");
+                return;
+            }
+
             if (VentasBLL.Eliminar(contenedor.ventas.VentaId))
             {
                 Limpiar();
@@ -144,9 +147,13 @@ namespace Proyecto_Final.UI.Registros
 
             if (VentaAnterior != null)
             {
-                //ContratoIdTextBox.IsEnabled = false;
                 contenedor.ventas = VentaAnterior;
-                contenedor.ventasDetalle.ContratoId = contenedor.ventas.VentaDetalle[0].ContratoId;
+                llenarDataGrid();
+                UsuarioLabel.Content = obtenerNombreUsuario(contenedor.ventas.UsuarioId);
+
+                ClientesComboBox.IsEnabled = false;
+                ContratoIdComboBox.IsEnabled = true;
+
                 Recargar();
             }
             else
@@ -156,39 +163,40 @@ namespace Proyecto_Final.UI.Registros
             }
         }
 
+        private void llenarDataGrid()
+        {
+            contenedor.listaVentas = new List<ListaVentas>();
+
+            foreach (var item in contenedor.ventas.VentaDetalle)
+            {
+                contenedor.listaVentas.Add(new ListaVentas(item.VentaId, item.ContratoId, item.Cantidad, item.Precio, item.Cantidad * item.Precio));
+            }
+        }
+
+        private string obtenerNombreUsuario(int id)
+        {
+            Usuarios usuarios = UsuariosBLL.Buscar(id);
+
+            return usuarios.NombreUsuario;
+        }
+
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            //para evitar que se pague de mas
-            //if (Convert.ToDecimal(CantidadCacaoTextBox.Text) <= Convert.ToDecimal(CantidadDisponibleTextBox.Text))
-            /*{
-                //revisar
-                /*contenedor.ventas.VentaDetalle.Add(new VentasDetalle(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdTextBox.Text),
-                Convert.ToDecimal(CantidadCacaoTextBox.Text)));
-
-                Recargar();
-
-                //si la venta es nueva al agregar se restara a la cantidad acordada cada elemento del datagrid
-                //sino solo se restara la que se este agregando
-                if(contenedor.ventas.VentaId == 0)
-                {
-                    //List<VentasDetalle> lista = (List<VentasDetalle>)VentasDataGrid.ItemsSource;
-                   // calcularDisponible(lista);
-                }
-                else
-                {
-                    //revisar
-                    /*decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
-                    cantidadDisponible -= contenedor.ventasDetalle.CantidadCacao;
-                    CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
-                }
-
-                //CantidadCacaoTextBox.Clear();
-                //CantidadCacaoTextBox.Focus();
-
-                //ContratoIdTextBox.IsEnabled = false;
+            if(contenedor.ventasDetalle.Cantidad > Convert.ToDecimal(CantidadPendienteLabel.Content))
+            {
+                MessageBox.Show("Ha excedido la cantidad disponible");
+                return;
             }
-            else
-                MessageBox.Show("Ha excedido la cantidad maxima para agregar");*/
+
+            contenedor.listaVentas.Add(new ListaVentas(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdComboBox.SelectedItem), contenedor.ventasDetalle.Cantidad, obtenerPrecio()));
+            //continuar
+        }
+
+        private decimal obtenerPrecio()
+        {
+            Contratos contrato = ContratosBLL.Buscar(Convert.ToInt32(ContratoIdComboBox.SelectedItem));
+
+            return contrato.Precio;
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)

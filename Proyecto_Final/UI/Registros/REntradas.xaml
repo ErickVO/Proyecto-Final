@@ -93,7 +93,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="9" Grid.Column="3">
-            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="16" HorizontalAlignment="Stretch">
+            <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="16" HorizontalAlignment="Stretch" TextChanged="CantidadTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>

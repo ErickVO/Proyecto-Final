@@ -24,6 +24,7 @@ namespace Proyecto_Final.UI.Registros
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
         List<int> SuplidoresId = new List<int>();
+        List<int> CacaosId = new List<int>();
         public REntradas(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
@@ -34,6 +35,9 @@ namespace Proyecto_Final.UI.Registros
             FechaModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             EntradaIdTextBox.Text = "0";
             ObtenerSuplidor();
+            ObtenerCacaos();
+            CantidadTextBox.IsEnabled = false;
+            CostoTextBox.IsEnabled = false;
             this.DataContext = entrada;
         }
 
@@ -45,6 +49,17 @@ namespace Proyecto_Final.UI.Registros
             {
                 SuplidorIdComboBox.Items.Add(item.Nombres);
                 SuplidoresId.Add(item.SuplidorId);
+            }
+        }
+
+        private void ObtenerCacaos()
+        {
+            List<Cacaos> cacaos = CacaosBLL.GetList(p => true);
+
+            foreach (var item in cacaos)
+            {
+                CacaoIdComboBox.Items.Add(item.Tipo);
+                CacaosId.Add(item.CacaoId);
             }
         }
 
@@ -63,6 +78,11 @@ namespace Proyecto_Final.UI.Registros
             CacaoIdComboBox.SelectedIndex = -1;
 
             UsuarioLabel.Content = UsuarioNombre;
+
+            SuplidorIdComboBox.IsEnabled = true;
+            CacaoIdComboBox.IsEnabled = true;
+            CantidadTextBox.IsEnabled = false;
+            CostoTextBox.IsEnabled = false;
 
             entrada = new Entradas();
             Recargar();
@@ -89,7 +109,11 @@ namespace Proyecto_Final.UI.Registros
             if (SuplidorIdComboBox.SelectedIndex < 0)
                 return;
 
+            if (CacaoIdComboBox.SelectedIndex < 0)
+                return;
+
             entrada.SuplidorId = SuplidoresId[SuplidorIdComboBox.SelectedIndex]; //obtener el id del suplidor seleccionado
+            entrada.CacaoId = CacaosId[CacaoIdComboBox.SelectedIndex];
 
             if (EntradaIdTextBox.Text == "0")
                 paso = EntradasBLL.Guardar(entrada);
@@ -143,13 +167,32 @@ namespace Proyecto_Final.UI.Registros
             if (entradaAnterior != null)
             {
                 entrada = entradaAnterior;
+                obtenerListado();
                 UsuarioLabel.Content = obtenerNombreUsuario(entrada.UsuarioId);
+
+                SuplidorIdComboBox.IsEnabled = false;
+                CacaoIdComboBox.IsEnabled = false;
                 Recargar();
             }
             else
             {
                 Limpiar();
                 MessageBox.Show("Entrada no encontrada");
+            }
+        }
+
+        private void obtenerListado()
+        {
+            for(int i = 0; i < SuplidoresId.Count; i++)
+            {
+                if (SuplidoresId[i] == entrada.SuplidorId)
+                    SuplidorIdComboBox.SelectedIndex = i;
+            }
+
+            for (int i = 0; i < CacaosId.Count; i++)
+            {
+                if (CacaosId[i] == entrada.CacaoId)
+                    CacaoIdComboBox.SelectedIndex = i;
             }
         }
 
@@ -166,6 +209,33 @@ namespace Proyecto_Final.UI.Registros
             return usuarios.NombreUsuario;
         }
 
+        private void CantidadTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(CantidadTextBox.Text))
+                return;
+
+            if (string.IsNullOrWhiteSpace(CostoTextBox.Text))
+                return;
+
+            decimal cantidad;
+            decimal costo;
+
+            try
+            {
+                cantidad = Convert.ToDecimal(CantidadTextBox.Text);
+                costo = Convert.ToDecimal(CostoTextBox.Text);
+            }
+            catch (FormatException)
+            {
+                TotalLabel.Content = "0";
+                return;
+            }
+
+            decimal total = cantidad * costo;
+
+            TotalLabel.Content = Convert.ToString(total);
+        }
+
         private void CacaoIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CacaoIdComboBox.SelectedIndex < 0)
@@ -180,17 +250,33 @@ namespace Proyecto_Final.UI.Registros
                 CantidadTextBox.IsEnabled = true;
                 CostoTextBox.IsEnabled = true;
             }
-
-
         }
 
         private void CostoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(CostoTextBox.Text))
+            if (string.IsNullOrWhiteSpace(CantidadTextBox.Text))
+                return;
+
+            if (string.IsNullOrWhiteSpace(CostoTextBox.Text))
+                return;
+
+            decimal cantidad;
+            decimal costo;
+
+            try
             {
-                entrada.Total = entrada.Cantidad * entrada.Costo;
-                Recargar();
+                cantidad = Convert.ToDecimal(CantidadTextBox.Text);
+                costo = Convert.ToDecimal(CostoTextBox.Text);
             }
+            catch (FormatException)
+            {
+                TotalLabel.Content = "0";
+                return;
+            }
+
+            decimal total = cantidad * costo;
+
+            TotalLabel.Content = Convert.ToString(total);
         }
     }
 }
