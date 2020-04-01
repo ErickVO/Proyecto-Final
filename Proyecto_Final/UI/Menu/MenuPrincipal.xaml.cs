@@ -37,7 +37,7 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarClienteMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RClientes rClientes = new RClientes(UsuarioId);
+            RClientes rClientes = new RClientes(UsuarioId, UsuarioNombre);
             rClientes.Show();
         }
 
@@ -67,7 +67,7 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarUsuarioMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RUsuarios rUsuarios = new RUsuarios(UsuarioId);
+            RUsuarios rUsuarios = new RUsuarios(UsuarioId, UsuarioNombre);
             rUsuarios.Show();
         }
 
