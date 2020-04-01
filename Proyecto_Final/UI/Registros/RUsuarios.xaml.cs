@@ -21,11 +21,16 @@ namespace Proyecto_Final.UI.Registros
     public partial class RUsuarios : Window
     {
         Usuarios usuario = new Usuarios();
-        public int UsuarioId { get; set; }
-        public RUsuarios(int usuarioId)
+        int UsuarioId = 0;
+        string UsuarioNombre = string.Empty;
+        public RUsuarios(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
+            UsuarioNombre = usuarioNombre;
+            UsuarioLabel.Content = UsuarioNombre;
+            CreacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            ModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             this.DataContext = usuario;
         }
 
@@ -37,6 +42,9 @@ namespace Proyecto_Final.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+
+            if (usuario.UsuarioId == 0)
+                usuario.UsuarioIdCreacion = UsuarioId;
 
             if (usuario.UsuarioId == 0)
             {
@@ -70,6 +78,7 @@ namespace Proyecto_Final.UI.Registros
             if (AnteriorUsuario != null)
             {
                 usuario = AnteriorUsuario;
+                UsuarioLabel.Content = obtenerNombreUsuario(usuario.UsuarioIdCreacion);
                 reCargar();
             }
             else
@@ -101,6 +110,9 @@ namespace Proyecto_Final.UI.Registros
         private void limpiar()
         {
             usuario = new Usuarios();
+
+            UsuarioLabel.Content = UsuarioNombre;
+
             reCargar();
         }
         
@@ -115,6 +127,13 @@ namespace Proyecto_Final.UI.Registros
             Usuarios AnteriorUsuario = UsuariosBLL.Buscar(usuario.UsuarioId);
 
             return (AnteriorUsuario != null);
+        }
+
+        private string obtenerNombreUsuario(int id)
+        {
+            Usuarios usuarios = UsuariosBLL.Buscar(id);
+
+            return usuarios.NombreUsuario;
         }
     }
 }

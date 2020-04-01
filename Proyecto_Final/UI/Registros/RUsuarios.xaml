@@ -56,58 +56,55 @@
         </TextBox>
 
         <Label Content="Fecha:" Grid.Row="3" Grid.Column="1" FontSize="16"/>
-        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16"/>
-
-        <Label Content="Tipo:" Grid.Row="5" Grid.Column="1" FontSize="16"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TipoTextBox" Grid.Row="5" Grid.Column="3" FontSize="17">
-            <TextBox.Text>
-                <Binding Path="Tipo" Mode="TwoWay">
+        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
+            <DatePicker.SelectedDate>
+                <Binding Path="Fecha" Mode="TwoWay">
                     <Binding.ValidationRules>
-
+                        <src:FechaValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
-            </TextBox.Text>
-        </TextBox>
+            </DatePicker.SelectedDate>
+        </DatePicker>
 
-        <Label Content="Nombres:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" Grid.Row="7" Grid.Column="3" FontSize="17">
+        <Label Content="Nombres:" Grid.Row="5" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" Grid.Row="5" Grid.Column="3" FontSize="17">
             <TextBox.Text>
                 <Binding Path="Nombres" Mode="TwoWay">
                     <Binding.ValidationRules>
-
+                        <src:NombreValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
-        <Label Content="Nombre Usuario:" Grid.Row="9" Grid.Column="1" FontSize="16"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioTextBox" Grid.Row="9" Grid.Column="3"  FontSize="17">
+        <Label Content="Nombre Usuario:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioTextBox" Grid.Row="7" Grid.Column="3"  FontSize="17">
             <TextBox.Text>
                 <Binding Path="Usuario" Mode="TwoWay">
                     <Binding.ValidationRules>
-
+                        <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
-        <Label Content="Clave:" Grid.Row="11" Grid.Column="1" FontSize="16"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="11" Grid.Column="3"  FontSize="17">
+        <Label Content="Clave:" Grid.Row="9" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="9" Grid.Column="3" FontSize="17">
             <TextBox.Text>
                 <Binding Path="Clave" Mode="TwoWay">
                     <Binding.ValidationRules>
-
+                        <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
-        <Label Content="Email:" Grid.Row="13" Grid.Column="1" FontSize="16"/>
-        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EmailTextBox" Grid.Row="11" Grid.Column="3"  FontSize="17">
+        <Label Content="Email:" Grid.Row="11" Grid.Column="1" FontSize="16"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EmailTextBox" Grid.Row="11" Grid.Column="3" FontSize="17">
             <TextBox.Text>
                 <Binding Path="Email" Mode="TwoWay">
                     <Binding.ValidationRules>
-
+                        <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -155,7 +152,12 @@
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-
+                                <Condition Binding="{Binding ElementName=UsuarioIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=FechaDatePicker, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=NombresTextBox, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=UsuarioTextBox, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=ClaveTextBox, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=EmailTextBox, Path=(Validation.HasError)}" Value="false" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="true" />
                         </MultiDataTrigger>
@@ -184,11 +186,11 @@
         </Button>
 
         <Label Content="Fecha Creacion: " Grid.Row="11" Grid.Column="5" FontSize="16"/>
-        <Label Content="" Grid.Row="13" Grid.Column="5" FontSize="16"/>
+        <Label x:Name="CreacionLabel" Grid.Row="13" Grid.Column="5" FontSize="16" Content="{Binding Path=FechaCreacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <Label Content="Fecha Modificacion: " Grid.Row="15" Grid.Column="5" FontSize="16"/>
-        <Label Content="" Grid.Row="17" Grid.Column="5" FontSize="16"/>
+        <Label x:Name="ModificacionLabel" Grid.Row="17" Grid.Column="5" FontSize="16" Content="{Binding Path=FechaModificacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         <Label Content="Creado por: " Grid.Row="15" Grid.Column="1" FontSize="16"/>
-        <Label Content="" Grid.Row="13" Grid.Column="3" FontSize="16"/>
+        <Label x:Name="UsuarioLabel" Grid.Row="13" Grid.Column="3" FontSize="16"/>
     </Grid>
 </Window>

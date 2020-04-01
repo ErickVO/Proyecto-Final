@@ -161,5 +161,45 @@ namespace Proyecto_Final.BLL
 
             return true;
         }
+
+        public static decimal obtenerBalance(int id)
+        {
+            Contexto db = new Contexto();
+            decimal balance = 0.0m;
+
+            try
+            {
+                balance = db.Ventas.Find(id).Balance;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return balance;
+        }
+
+        public static decimal obtenerTotal(int id)
+        {
+            Contexto db = new Contexto();
+            decimal total = 0.0m;
+
+            try
+            {
+                total = db.Ventas.Find(id).Total;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return total;
+        }
     }
 }

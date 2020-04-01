@@ -37,7 +37,6 @@ namespace Proyecto_Final.UI.Registros
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             limpiar();
-            UsuarioLabel.Content = UsuarioNombre;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -106,6 +105,9 @@ namespace Proyecto_Final.UI.Registros
         private void limpiar()
         {
             cliente = new Clientes();
+
+            UsuarioLabel.Content = UsuarioNombre;
+
             reCargar();
         }
 

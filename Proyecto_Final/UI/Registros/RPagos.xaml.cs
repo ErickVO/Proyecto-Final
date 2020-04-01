@@ -23,33 +23,31 @@ namespace Proyecto_Final.UI.Registros
     {
         ContenedorPagos contenedor = new ContenedorPagos();
         int UsuarioId = 0;
+        string UsuarioNombre = string.Empty;
         List<int> ClientesId = new List<int>();
         public RPagos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
-            UsuarioLabel.Content = usuarioNombre;
+            UsuarioNombre = usuarioNombre;
+            UsuarioLabel.Content = UsuarioNombre;
+            CreacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            ModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            obtenerClientes();
             this.DataContext = contenedor;
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             limpiar();
-            //ClienteIdTextBox.IsEnabled = true;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
 
-            //revisar
-            /*if (!existeCliente())
-            {
-                MessageBox.Show("ClienteId no existe");
-                return;
-            }*/
-
-            contenedor.pagos.UsuarioId = UsuarioId;
+            if(contenedor.pagos.PagoId == 0)
+                contenedor.pagos.UsuarioId = UsuarioId;
 
             if (contenedor.pagos.PagoId == 0)
                 paso = PagosBLL.Guardar(contenedor.pagos);
@@ -63,14 +61,6 @@ namespace Proyecto_Final.UI.Registros
                 else
                     paso = PagosBLL.Modificar(contenedor.pagos);
             }
-            //revisar
-            /*decimal cantidadTotal = 0;
-            foreach( var item in contenedor.pagos.PagoDetalle)
-            {
-                cantidadTotal += item.Cantidad;
-            }
-
-            ContratosBLL.pagar(contenedor.pagos.PagoDetalle[0].ClienteId, cantidadTotal);*/
 
             if (paso)
             {
@@ -90,10 +80,13 @@ namespace Proyecto_Final.UI.Registros
 
             if (pago != null)
             {
-                //ClienteIdTextBox.IsEnabled = false;
                 contenedor.pagos = pago;
-                //revisar
-                //contenedor.pagosDetalle.ClienteId = contenedor.pagos.PagoDetalle[0].ClienteId;
+                llenarDataGrid();
+                UsuarioLabel.Content = obtenerNombreUsuario(contenedor.pagos.UsuarioId);
+
+                ClientesComboBox.IsEnabled = false;
+                VentaComboBox.IsEnabled = false;
+
                 reCargar();
             }
             else
@@ -116,42 +109,32 @@ namespace Proyecto_Final.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            //revisar
-            /*if(!ContratosBLL.verificarPago(contenedor.pagosDetalle.ClienteId,contenedor.pagosDetalle.Cantidad))
+            
+            if (contenedor.pagosDetalle.Monto > Convert.ToDecimal(BalanceLabel.Content))
             {
-                MessageBox.Show("Pago excedido");
+                MessageBox.Show("Ha excedido el pago posible");
                 return;
             }
 
-            contenedor.pagos.PagoDetalle.Add(new PagosDetalle(contenedor.pagosDetalle.ClienteId, TipoComboBox.Text, Convert.ToDecimal(CantidadCacaoTextBox.Text), Convert.ToDecimal(PrecioTextBox.Text)));
-
-            contenedor.pagos.Monto += contenedor.pagosDetalle.Cantidad * contenedor.pagosDetalle.Precio;*/
+            contenedor.listaPagos.Add(new ListaPagos(contenedor.pagos.PagoId, Convert.ToInt32(VentaComboBox.SelectedItem), contenedor.pagosDetalle.Monto));
+            calcularSaldo(contenedor.listaPagos);
             reCargar();
 
-            /*CantidadCacaoTextBox.Clear();
-            CantidadCacaoTextBox.Focus();
-            ClienteIdTextBox.IsEnabled = false;*/
+            MontoTextBox.Clear();
+            MontoTextBox.Focus();
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
             if (PagosDataGrid.Items.Count > 1 && PagosDataGrid.SelectedIndex < PagosDataGrid.Items.Count - 1)
             {
-                //revisar
-                /*decimal montoEliminar = contenedor.pagos.PagoDetalle[PagosDataGrid.SelectedIndex].Cantidad * contenedor.pagos.PagoDetalle[PagosDataGrid.SelectedIndex].Precio;
-                contenedor.pagos.PagoDetalle.RemoveAt(PagosDataGrid.SelectedIndex);
-                contenedor.pagos.Monto -= montoEliminar;*/
+                contenedor.listaPagos.RemoveAt(PagosDataGrid.SelectedIndex);
+                calcularSaldo(contenedor.listaPagos);
                 reCargar();
             }
 
-            //if (PagosDataGrid.Items.Count == 1)
-                //ClienteIdTextBox.IsEnabled = true;
-        }
-
-        private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)
-        {
-            CClientes cClientes = new CClientes();
-            cClientes.Show();
+            if (PagosDataGrid.Items.Count == 1)
+                ClientesComboBox.IsEnabled = true;
         }
 
         private void ConsultarPagosButton_Click(object sender, RoutedEventArgs e)
@@ -163,6 +146,16 @@ namespace Proyecto_Final.UI.Registros
         private void limpiar()
         {
             contenedor = new ContenedorPagos();
+
+            TotalLabel.Content = "";
+            BalanceLabel.Content = "";
+            UsuarioLabel.Content = UsuarioNombre;
+            ClientesComboBox.SelectedIndex = -1;
+            VentaComboBox.Items.Clear();
+
+            ClientesComboBox.IsEnabled = true;
+            VentaComboBox.IsEnabled = true;
+
             reCargar();
         }
 
@@ -190,28 +183,70 @@ namespace Proyecto_Final.UI.Registros
             }
         }
 
-        //revisar
-        /*private bool existeCliente()
+        private void obtenerVentas(int id)
         {
-            Clientes cliente = ClientesBLL.Buscar(contenedor.pagosDetalle.ClienteId);
-            return (cliente != null);
-        }*/
+            VentaComboBox.Items.Clear();
 
-        /*private void TipoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(PrecioTextBox != null)
+            List<Ventas> ventas = VentasBLL.GetList(v => v.ClienteId == id);
+
+            foreach (var item in ventas)
             {
-                if (!string.IsNullOrWhiteSpace(PrecioTextBox.Text))
-                {
-                    if (TipoComboBox.SelectedIndex == 0)
-                        PrecioTextBox.Text = "1000.0";
-                    else if (TipoComboBox.SelectedIndex == 1)
-                        PrecioTextBox.Text = "2000.0";
-                    else
-                        PrecioTextBox.Text = "3000.0";
-                }
+                VentaComboBox.Items.Add(item.VentaId);
             }
-            
-        }*/
+        }
+
+        private string obtenerNombreUsuario(int id)
+        {
+            Usuarios usuarios = UsuariosBLL.Buscar(id);
+
+            return usuarios.NombreUsuario;
+        }
+
+        private void ClientesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ClientesComboBox.SelectedIndex < 0)
+                return;
+
+            PagosDataGrid.ItemsSource = new List<ListaPagos>();
+
+            obtenerVentas(ClientesId[ClientesComboBox.SelectedIndex]);
+
+            reCargar();
+        }
+
+        private void VentaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (VentaComboBox.SelectedIndex < 0)
+                return;
+
+            contenedor.listaPagos = new List<ListaPagos>();
+
+            BalanceLabel.Content = VentasBLL.obtenerBalance(Convert.ToInt32(VentaComboBox.SelectedItem));
+
+            reCargar();
+        }
+
+        private void calcularSaldo(List<ListaPagos> listaPagos)
+        {
+            decimal total = VentasBLL.obtenerTotal(Convert.ToInt32(VentaComboBox.SelectedItem));
+            contenedor.pagos.Total = 0;
+
+            foreach(var item in listaPagos)
+            {
+                total -= item.Monto;
+                item.Saldo = total;
+                contenedor.pagos.Total += item.Monto;
+            }
+        }
+
+        private void llenarDataGrid()
+        {
+            contenedor.listaPagos = new List<ListaPagos>();
+
+            foreach(var item in contenedor.pagos.PagoDetalle)
+            {
+                contenedor.listaPagos.Add(new ListaPagos(item.PagoId, item.VentaId, item.Monto, item.Saldo));
+            }
+        }
     }
 }
