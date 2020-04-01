@@ -29,6 +29,8 @@ namespace Proyecto_Final.UI.Menu
             UsuarioNombre = usuarioNombre;
         }
 
+        //Registros
+
         private void RegistrarCacaoMenuItem_Click(object sender, RoutedEventArgs e)
         {
             RCacaos rCacaos = new RCacaos(UsuarioId,UsuarioNombre);
@@ -43,20 +45,35 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarContratoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RContratos rContratos = new RContratos(UsuarioId, UsuarioNombre);
-            rContratos.Show();
+            if (ClientesBLL.ExisteCliente() && EntradasBLL.ExisteEntrada())
+            {
+                RContratos rContratos = new RContratos(UsuarioId, UsuarioNombre);
+                rContratos.Show();
+            }
+            else
+                MessageBox.Show("Necesita un cliente y una entrada");
         }
 
         private void RegistrarEntradaMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            REntradas rEntradas = new REntradas(UsuarioId, UsuarioNombre);
-            rEntradas.Show();
+            if(SuplidoresBLL.ExisteSuplidor() && CacaosBLL.ExisteCacao())
+            {
+                REntradas rEntradas = new REntradas(UsuarioId, UsuarioNombre);
+                rEntradas.Show();
+            }
+            else
+                MessageBox.Show("Necesita un suplidor y un cacao");
         }
 
         private void RegistrarPagoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RPagos rPagos = new RPagos(UsuarioId, UsuarioNombre);
-            rPagos.Show();
+            if (VentasBLL.ExisteVenta())
+            {
+                RPagos rPagos = new RPagos(UsuarioId, UsuarioNombre);
+                rPagos.Show();
+            }
+            else
+                MessageBox.Show("Necesita una venta");
         }
 
         private void RegistrarSuplidorMenuItem_Click(object sender, RoutedEventArgs e)
@@ -73,9 +90,16 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarVentaMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RVentas rVentas = new RVentas(UsuarioId, UsuarioNombre);
-            rVentas.Show();
+            if (ContratosBLL.ExisteContrato())
+            {
+                RVentas rVentas = new RVentas(UsuarioId, UsuarioNombre);
+                rVentas.Show();
+            }
+            else
+                MessageBox.Show("Necesita un contrato");
         }
+
+        //Consultas
 
         private void ConsultarCacaosMenuItem_Click(object sender, RoutedEventArgs e)
         {

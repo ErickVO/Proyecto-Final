@@ -119,5 +119,15 @@ namespace Proyecto_Final.BLL
 
             return Lista;
         }
+
+        public static bool ExisteSuplidor()
+        {
+            List<Suplidores> suplidores = GetList(c => true);
+
+            if (suplidores.Count > 0)
+                return true;
+            else
+                return false;
+        }
     }
 }

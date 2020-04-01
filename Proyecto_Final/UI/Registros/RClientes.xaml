@@ -102,7 +102,7 @@
         <Label Content="Celular:" Grid.Row="11" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CelularTextBox" Grid.Row="11" Grid.Column="3"  FontSize="17">
             <TextBox.Text>
-                <Binding Path="Celular" Mode="TwoWay">
+                <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -124,7 +124,7 @@
         <Label Content="Email:" Grid.Row="15" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EmailTextBox" Grid.Row="15" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="Email" Mode="TwoWay">
+                <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:EmailValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>

@@ -133,6 +133,16 @@ namespace Proyecto_Final.BLL
             return Lista;
         }
 
+        public static bool ExisteContrato()
+        {
+            List<Contratos> contratos = GetList(c => true);
+
+            if (contratos.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
         //revisar
         /*public static bool verificarPago(int clienteId, decimal cantidad)
         {

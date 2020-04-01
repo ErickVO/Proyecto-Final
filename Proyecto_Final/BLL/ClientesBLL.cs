@@ -109,5 +109,15 @@ namespace Proyecto_Final.BLL
             }
             return Lista;
         }
+
+        public static bool ExisteCliente()
+        {
+            List<Clientes> clientes = GetList(c => true);
+
+            if (clientes.Count > 0)
+                return true;
+            else
+                return false;
+        }
     }
 }

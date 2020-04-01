@@ -110,6 +110,16 @@ namespace Proyecto_Final.BLL
             return Lista;
         }
 
+        public static bool ExisteCacao()
+        {
+            List<Cacaos> cacaos = GetList(c => true);
+
+            if (cacaos.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
         public static bool comprarCacao(decimal cantidadTotal)
         {
             //verifica si se puede comprar el cacao y si se puede comprar se resta

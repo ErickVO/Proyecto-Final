@@ -122,6 +122,16 @@ namespace Proyecto_Final.BLL
             return Lista;
         }
 
+        public static bool ExisteVenta()
+        {
+            List<Ventas> ventas = GetList(c => true);
+
+            if (ventas.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
         //revisar
         /*public static decimal BuscarCantidadTotal(int Id)
         {

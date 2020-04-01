@@ -120,5 +120,15 @@ namespace Proyecto_Final.BLL
 
             return Lista;
         }
+
+        public static bool ExisteEntrada()
+        {
+            List<Entradas> entradas = GetList(c => true);
+
+            if (entradas.Count > 0)
+                return true;
+            else
+                return false;
+        }
     }
 }
