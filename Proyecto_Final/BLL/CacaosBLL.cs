@@ -159,5 +159,15 @@ namespace Proyecto_Final.BLL
             else
                 return false;
         }
+
+        public static void ActualizarCacao(int id, decimal cantidad, decimal costo)
+        {
+            Cacaos cacao = Buscar(id);
+
+            cacao.Cantidad += cantidad;
+            cacao.Costo = costo;
+
+            Modificar(cacao);
+        }
     }
 }

@@ -23,7 +23,6 @@ namespace Proyecto_Final.UI.Registros
         Suplidores suplidor = new Suplidores();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
-        List<int> UsuariosId = new List<int>();
         public RSuplidores(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
@@ -45,6 +44,9 @@ namespace Proyecto_Final.UI.Registros
         private void Limpiar()
         {
             suplidor = new Suplidores();
+
+            UsuarioLabel.Content = UsuarioNombre;
+
             Recargar();
         }
 
@@ -63,7 +65,8 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            suplidor.UsuarioId = UsuarioId;
+            if(suplidor.SuplidorId == 0)
+                suplidor.UsuarioId = UsuarioId;
 
             if (SuplidorIdTextBox.Text == "0")
                 paso = SuplidoresBLL.Guardar(suplidor);
@@ -71,6 +74,7 @@ namespace Proyecto_Final.UI.Registros
             {
                 if (ExisteEnLaBaseDeDatos())
                 {
+                    suplidor.FechaModificacion = DateTime.Now;
                     paso = SuplidoresBLL.Modificar(suplidor);
                 }
                 else
@@ -93,6 +97,12 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            if(suplidor.SuplidorId == 0)
+            {
+                MessageBox.Show("No se puede eliminar el 0");
+                return;
+            }
+
             if (SuplidoresBLL.Eliminar(suplidor.SuplidorId))
             {
                 MessageBox.Show("Eliminado");
@@ -109,6 +119,7 @@ namespace Proyecto_Final.UI.Registros
             if (supidordaAnterior != null)
             {
                 suplidor = supidordaAnterior;
+                UsuarioLabel.Content = obtenerNombreUsuario(suplidor.UsuarioId);
                 Recargar();
             }
             else
@@ -122,6 +133,13 @@ namespace Proyecto_Final.UI.Registros
         {
             CSuplidores cSuplidores = new CSuplidores();
             cSuplidores.Show();
+        }
+
+        private string obtenerNombreUsuario(int id)
+        {
+            Usuarios usuarios = UsuariosBLL.Buscar(id);
+
+            return usuarios.NombreUsuario;
         }
     }
 }

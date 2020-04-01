@@ -39,12 +39,12 @@ namespace Proyecto_Final.UI.Registros
 
         private void ObtenerSuplidor()
         {
-            List<Clientes> clientes = ClientesBLL.GetList(p => true);
+            List<Suplidores> suplidores = SuplidoresBLL.GetList(p => true);
 
-            foreach (var item in clientes)
+            foreach (var item in suplidores)
             {
                 SuplidorIdComboBox.Items.Add(item.Nombres);
-                SuplidoresId.Add(item.ClienteId);
+                SuplidoresId.Add(item.SuplidorId);
             }
         }
 
@@ -57,8 +57,13 @@ namespace Proyecto_Final.UI.Registros
         private void Limpiar()
         {
             EntradaIdTextBox.Text = "0";
-            //SuplidorIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
+
+            SuplidorIdComboBox.SelectedIndex = -1;
+            CacaoIdComboBox.SelectedIndex = -1;
+
+            UsuarioLabel.Content = UsuarioNombre;
+
             entrada = new Entradas();
             Recargar();
         }
@@ -74,24 +79,17 @@ namespace Proyecto_Final.UI.Registros
             return EntradatoAnterior != null;
         }
 
-        private bool ExisteEnLaBaseDeDatosSuplidores()
-        {
-            Suplidores SuplidorAnterior = SuplidoresBLL.Buscar(entrada.SuplidorId);
-            return SuplidorAnterior != null;
-        }
-
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
 
-            if (!ExisteEnLaBaseDeDatosSuplidores())
-            {
-                MessageBox.Show("Suplidor No Existe");
-                //SuplidorIdTextBox.Focus();
-                return;
-            }
+            if(entrada.EntradaId == 0)
+                entrada.UsuarioId = UsuarioId;
 
-            entrada.UsuarioId = UsuarioId;
+            if (SuplidorIdComboBox.SelectedIndex < 0)
+                return;
+
+            entrada.SuplidorId = SuplidoresId[SuplidorIdComboBox.SelectedIndex]; //obtener el id del suplidor seleccionado
 
             if (EntradaIdTextBox.Text == "0")
                 paso = EntradasBLL.Guardar(entrada);
@@ -99,6 +97,7 @@ namespace Proyecto_Final.UI.Registros
             {
                 if (ExisteEnLaBaseDeDatos())
                 {
+                    entrada.FechaModificacion = DateTime.Now;
                     paso = EntradasBLL.Modificar(entrada);
                 }
                 else
@@ -110,6 +109,7 @@ namespace Proyecto_Final.UI.Registros
 
             if (paso)
             {
+                CacaosBLL.ActualizarCacao(entrada.CacaoId, entrada.Cantidad, entrada.Costo);
                 Limpiar();
                 MessageBox.Show("Guardado");
             }
@@ -121,7 +121,13 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ContratosBLL.Eliminar(entrada.EntradaId))
+            if (entrada.EntradaId == 0)
+            {
+                MessageBox.Show("No se puede eliminar el 0");
+                return;
+            }
+
+            if (EntradasBLL.Eliminar(entrada.EntradaId))
             {
                 MessageBox.Show("Eliminado");
                 Limpiar();
@@ -137,6 +143,7 @@ namespace Proyecto_Final.UI.Registros
             if (entradaAnterior != null)
             {
                 entrada = entradaAnterior;
+                UsuarioLabel.Content = obtenerNombreUsuario(entrada.UsuarioId);
                 Recargar();
             }
             else
@@ -146,16 +153,44 @@ namespace Proyecto_Final.UI.Registros
             }
         }
 
-        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        private void ConsultarEntradasButton_Click(object sender, RoutedEventArgs e)
         {
             CEntradas cEntradas = new CEntradas();
             cEntradas.Show();
         }
 
-        private void ConsultarSuplidoresButton_Click(object sender, RoutedEventArgs e)
+        private string obtenerNombreUsuario(int id)
         {
-            CSuplidores cSuplidores = new CSuplidores();
-            cSuplidores.Show();
+            Usuarios usuarios = UsuariosBLL.Buscar(id);
+
+            return usuarios.NombreUsuario;
+        }
+
+        private void CacaoIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CacaoIdComboBox.SelectedIndex < 0)
+            {
+                CantidadTextBox.Clear();
+                CostoTextBox.Clear();
+                CantidadTextBox.IsEnabled = false;
+                CostoTextBox.IsEnabled = false;
+            }
+            else
+            {
+                CantidadTextBox.IsEnabled = true;
+                CostoTextBox.IsEnabled = true;
+            }
+
+
+        }
+
+        private void CostoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(!string.IsNullOrWhiteSpace(CantidadTextBox.Text) && !string.IsNullOrWhiteSpace(CostoTextBox.Text))
+            {
+                entrada.Total = entrada.Cantidad * entrada.Costo;
+                Recargar();
+            }
         }
     }
 }

@@ -60,7 +60,11 @@ namespace Proyecto_Final.UI.Registros
                     MessageBox.Show("No se puede modificar un cacao que no existe");
                     return;
                 }
-                paso = CacaosBLL.Modificar(cacao);
+                else
+                {
+                    cacao.FechaModificacion = DateTime.Now;
+                    paso = CacaosBLL.Modificar(cacao);
+                }
             }
 
             if (paso)
@@ -90,6 +94,12 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (cacao.CacaoId == 0)
+            {
+                MessageBox.Show("No se puede eliminar el 0");
+                return;
+            }
+
             if (CacaosBLL.Eliminar(cacao.CacaoId))
             {
                 limpiar();

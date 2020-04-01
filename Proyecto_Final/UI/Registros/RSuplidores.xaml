@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Title="                                                                                                   Registro de Suplidores" Height="450" Width="800">
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="8*"/>
@@ -86,7 +85,7 @@
         <Label Content="Cedula:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CedulaTextBox" Grid.Row="7" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="Cedula" Mode="TwoWay">
+                <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:CedulaValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -97,9 +96,9 @@
         <Label Content="Telefono:" Grid.Row="9" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TelefonoTextBox" Grid.Row="9" Grid.Column="3"  FontSize="17">
             <TextBox.Text>
-                <Binding Path="Telefono" Mode="TwoWay">
+                <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
+                        <src:TelefonoValidacion Message="Telefono no valido" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -108,9 +107,9 @@
         <Label Content="Celular:" Grid.Row="11" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CelularTextBox" Grid.Row="11" Grid.Column="3"  FontSize="17">
             <TextBox.Text>
-                <Binding Path="Celular" Mode="TwoWay">
+                <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
+                        <src:TelefonoValidacion Message="Celular no valido" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -130,16 +129,16 @@
         <Label Content="Email:" Grid.Row="15" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="EmailTextBox" Grid.Row="15" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="Email" Mode="TwoWay">
+                <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un email."/>
+                        <src:EmailValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
 
         <Label Content="Consultar Suplidores" Grid.Row="5" Grid.Column="5" FontSize="12" HorizontalAlignment="Center"/>
-        <Button x:Name="ConsultarButton" Content="Consultar" Grid.Row="7" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
+        <Button Style="{StaticResource ButtonStyle}" x:Name="ConsultarButton" Content="Consultar" Grid.Row="7" Grid.Column="5" HorizontalContentAlignment="Right" FontSize="20" Width="120" Click="ConsultarButton_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
             </Button.Background>
@@ -150,12 +149,12 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
             </Button.Background>
             <Button.Style>
-                <Style TargetType="{x:Type Button}">
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                     <Setter Property="IsEnabled" Value="false" />
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding ElementName=ClienteIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=SuplidorIdTextBox, Path=(Validation.HasError)}" Value="false" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="true" />
                         </MultiDataTrigger>
@@ -164,7 +163,7 @@
             </Button.Style>
         </Button>
 
-        <Button x:Name="NuevoButton" Content="Nuevo" Grid.Row="21" Grid.Column="1" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
+        <Button Style="{StaticResource ButtonStyle}" x:Name="NuevoButton" Content="Nuevo" Grid.Row="21" Grid.Column="1" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
             </Button.Background>
@@ -175,7 +174,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
             </Button.Background>
             <Button.Style>
-                <Style TargetType="{x:Type Button}">
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                     <Setter Property="IsEnabled" Value="false" />
                     <Style.Triggers>
                         <MultiDataTrigger>
@@ -200,12 +199,12 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
             </Button.Background>
             <Button.Style>
-                <Style TargetType="{x:Type Button}">
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                     <Setter Property="IsEnabled" Value="false" />
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding ElementName=ClienteIdTextBox, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=SuplidorIdTextBox, Path=(Validation.HasError)}" Value="false" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="true" />
                         </MultiDataTrigger>

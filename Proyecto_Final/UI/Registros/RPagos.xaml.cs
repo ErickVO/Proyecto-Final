@@ -49,6 +49,11 @@ namespace Proyecto_Final.UI.Registros
             if(contenedor.pagos.PagoId == 0)
                 contenedor.pagos.UsuarioId = UsuarioId;
 
+            if (ClientesComboBox.SelectedIndex < 0)
+                return;
+
+            contenedor.pagos.ClienteId = ClientesId[ClientesComboBox.SelectedIndex];
+
             if (contenedor.pagos.PagoId == 0)
                 paso = PagosBLL.Guardar(contenedor.pagos);
             else
@@ -59,7 +64,10 @@ namespace Proyecto_Final.UI.Registros
                     return;
                 }
                 else
+                {
+                    contenedor.pagos.FechaModificacion = DateTime.Now;
                     paso = PagosBLL.Modificar(contenedor.pagos);
+                }
             }
 
             if (paso)
@@ -98,7 +106,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (VentasBLL.Eliminar(contenedor.pagos.PagoId))//aca dice ventas en ves de PagosBLL
+            if (PagosBLL.Eliminar(contenedor.pagos.PagoId))
             {
                 limpiar();
                 MessageBox.Show("Eliminado");
@@ -147,7 +155,6 @@ namespace Proyecto_Final.UI.Registros
         {
             contenedor = new ContenedorPagos();
 
-            TotalLabel.Content = "";
             BalanceLabel.Content = "";
             UsuarioLabel.Content = UsuarioNombre;
             ClientesComboBox.SelectedIndex = -1;
