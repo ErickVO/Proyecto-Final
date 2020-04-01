@@ -23,6 +23,7 @@ namespace Proyecto_Final.UI.Registros
         Suplidores suplidor = new Suplidores();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
+        List<int> UsuariosId = new List<int>();
         public RSuplidores(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();

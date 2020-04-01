@@ -23,6 +23,7 @@ namespace Proyecto_Final.UI.Registros
         Entradas entrada = new Entradas();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
+        List<int> SuplidoresId = new List<int>();
         public REntradas(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
@@ -32,7 +33,19 @@ namespace Proyecto_Final.UI.Registros
             FechaCreacionLabel.ContentStringFormat = "MM/dd/yyyy";
             FechaModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             EntradaIdTextBox.Text = "0";
+            ObtenerSuplidor();
             this.DataContext = entrada;
+        }
+
+        private void ObtenerSuplidor()
+        {
+            List<Clientes> clientes = ClientesBLL.GetList(p => true);
+
+            foreach (var item in clientes)
+            {
+                SuplidorIdComboBox.Items.Add(item.Nombres);
+                SuplidoresId.Add(item.ClienteId);
+            }
         }
 
         private void Recargar()

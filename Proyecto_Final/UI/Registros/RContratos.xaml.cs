@@ -23,6 +23,8 @@ namespace Proyecto_Final.UI.Registros
         Contratos contrato = new Contratos();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
+
+        List<int> ClientesId = new List<int>();
         public RContratos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace Proyecto_Final.UI.Registros
             FechaCreacionLabel.ContentStringFormat = "MM/dd/yyyy";
             FechaModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             ContratoIdTextBox.Text = "0";
+            obtenerClientes();
             this.DataContext = contrato;
         }
 
@@ -44,6 +47,14 @@ namespace Proyecto_Final.UI.Registros
         private void Limpiar()
         {
             contrato = new Contratos();
+            TotalLabel.Content = "";
+            CantidadPendienteLabel.Content = "";
+            ClienteIdComboBox.SelectedIndex = -1;
+            CacaoIdComboBox.Items.Clear();
+
+            ClienteIdComboBox.IsEnabled = true;
+            CacaoIdComboBox.IsEnabled = true;
+
             Recargar();
         }
 
@@ -58,25 +69,26 @@ namespace Proyecto_Final.UI.Registros
             return contratoAnterior != null;
         }
 
-        private bool ExisteEnlaBaseDeDatosClientes()
+        /*private bool ExisteEnlaBaseDeDatosClientes()
         {
             Clientes AnteriorCliente = ClientesBLL.Buscar(contrato.ClienteId);
 
             return (AnteriorCliente != null);
-        }
+        }*/
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
 
-            if(!ExisteEnlaBaseDeDatosClientes())
+            /*if(!ExisteEnlaBaseDeDatosClientes())
             {
                 MessageBox.Show("ClienteId No Existe");
                 //ClienteIdTextBox.Focus();
                 return;
-            }
+            }*/
 
-            contrato.UsuarioId = UsuarioId;
+            if(contrato.ContratoId == 0)
+                contrato.UsuarioId = UsuarioId;
 
             if (ContratoIdTextBox.Text == "0")
                 paso = ContratosBLL.Guardar(contrato);
@@ -122,6 +134,10 @@ namespace Proyecto_Final.UI.Registros
             if (ContratoAnterior != null)
             {
                 contrato = ContratoAnterior;
+
+                ClienteIdComboBox.IsEnabled = false;
+                CacaoIdComboBox.IsEnabled = false;
+
                 Recargar();
             }
             else
@@ -136,5 +152,43 @@ namespace Proyecto_Final.UI.Registros
             CContratos cContratos = new CContratos();
             cContratos.Show();
         }
+
+        private void obtenerClientes()
+        {
+            List<Clientes> clientes = ClientesBLL.GetList(p => true);
+
+            foreach (var item in clientes)
+            {
+                ClienteIdComboBox.Items.Add(item.Nombres);
+                ClientesId.Add(item.ClienteId);
+            }
+        }
+        /*
+        private void ClienteIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ClienteIdComboBox.SelectedIndex < 0)
+                return;
+
+            obtenerVentas(ClientesId[ClientesComboBox.SelectedIndex]);
+
+            reCargar();
+        }
+
+        private void obtenerCacao(int id)
+        {
+            CacaoIdComboBox.Items.Clear();
+
+            List<Cacaos> cacao = CacaosBLL.GetList(c => c.CacaoId == id);
+            //esto hay que cehquearlo ya que no hay contratoId en cacao
+            foreach (var item in cacao)
+            {
+                CacaoIdComboBox.Items.Add(item.CacaoId);
+            }
+        }
+
+        private void CacaoIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }*/
     }
 }

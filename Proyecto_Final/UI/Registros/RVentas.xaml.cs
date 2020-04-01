@@ -24,6 +24,7 @@ namespace Proyecto_Final.UI.Registros
         ContenedorVentas contenedor = new ContenedorVentas();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
+        List<int> ClientesId = new List<int>();
         public RVentas(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
@@ -33,7 +34,19 @@ namespace Proyecto_Final.UI.Registros
             FechaCreacionLabel.ContentStringFormat = "MM/dd/yyyy";
             FechaModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             VentaIdTextBox.Text = "0";
+            obtenerClientes();
             this.DataContext = contenedor;
+        }
+
+        private void obtenerClientes()
+        {
+            List<Clientes> clientes = ClientesBLL.GetList(p => true);
+
+            foreach (var item in clientes)
+            {
+                ClientesComboBox.Items.Add(item.Nombres);
+                ClientesId.Add(item.ClienteId);
+            }
         }
 
         private void Recargar()
@@ -45,8 +58,7 @@ namespace Proyecto_Final.UI.Registros
         private void Limpiar()
         {
             VentaIdTextBox.Text = "0";
-            //ContratoIdTextBox.Text = string.Empty;
-            //CantidadCacaoTextBox.Text = string.Empty;
+            BalanceLabel.Content = "";
             contenedor.ventas = new Ventas();
             contenedor.ventasDetalle = new VentasDetalle();
             Recargar();

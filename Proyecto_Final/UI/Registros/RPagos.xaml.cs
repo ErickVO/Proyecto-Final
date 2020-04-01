@@ -98,7 +98,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (VentasBLL.Eliminar(contenedor.pagos.PagoId))
+            if (VentasBLL.Eliminar(contenedor.pagos.PagoId))//aca dice ventas en ves de PagosBLL
             {
                 limpiar();
                 MessageBox.Show("Eliminado");
