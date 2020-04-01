@@ -28,7 +28,7 @@ namespace Proyecto_Final.UI.Registros
             InitializeComponent();
             UsuarioId = usuarioId;
             UsuarioNombre = usuarioNombre;
-            UsuarioLabel.Content = UsuarioLabel;
+            UsuarioLabel.Content = UsuarioNombre;
             CreacionLabel.ContentStringFormat = "MM/dd/yyyy";
             ModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             this.DataContext = cliente;

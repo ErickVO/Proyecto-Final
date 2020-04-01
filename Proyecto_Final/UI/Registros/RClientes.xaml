@@ -126,7 +126,7 @@
             <TextBox.Text>
                 <Binding Path="Email" Mode="TwoWay">
                     <Binding.ValidationRules>
-                        <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner un email."/>
+                        <src:EmailValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
