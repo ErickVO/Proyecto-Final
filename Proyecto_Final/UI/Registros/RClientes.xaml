@@ -144,7 +144,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
             </Button.Background>
             <Button.Style>
-                <Style TargetType="{x:Type Button}">
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                     <Setter Property="IsEnabled" Value="false" />
                     <Style.Triggers>
                         <MultiDataTrigger>
@@ -158,7 +158,7 @@
             </Button.Style>
         </Button>
 
-        <Button x:Name="NuevoButton" Content="Nuevo" Grid.Row="21" Grid.Column="1" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
+        <Button Style="{StaticResource ButtonStyle}" x:Name="NuevoButton" Content="Nuevo" Grid.Row="21" Grid.Column="1" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
             </Button.Background>
@@ -169,7 +169,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
             </Button.Background>
             <Button.Style>
-                <Style TargetType="{x:Type Button}">
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                     <Setter Property="IsEnabled" Value="false" />
                     <Style.Triggers>
                         <MultiDataTrigger>
@@ -195,7 +195,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
             </Button.Background>
             <Button.Style>
-                <Style TargetType="{x:Type Button}">
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                     <Setter Property="IsEnabled" Value="false" />
                     <Style.Triggers>
                         <MultiDataTrigger>

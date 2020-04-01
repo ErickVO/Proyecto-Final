@@ -81,7 +81,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="3">
-            <ComboBox x:Name="ClienteIdComboBox" FontSize="16" SelectionChanged="ClienteIdComboBox_SelectionChanged"/>
+            <ComboBox x:Name="ClienteIdComboBox" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1">
@@ -105,7 +105,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="9" Grid.Column="3">
-            <ComboBox x:Name="CacaoIdComboBox" FontSize="16" SelectionChanged="CacaoIdComboBox_SelectionChanged"/>
+            <ComboBox x:Name="CacaoIdComboBox" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="11" Grid.Column="1">

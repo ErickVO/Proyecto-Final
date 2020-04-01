@@ -30,7 +30,7 @@
         <Label Content="Clave" Grid.Row="3" Grid.Column="1" FontSize="20"/>
         <PasswordBox x:Name="ClavePasswordBox" Grid.Row="3" Grid.Column="3" FontSize="20"/>
 
-        <Button x:Name="LoginButton" Content="Login" Grid.Column="3" Grid.Row="5" FontSize="20" HorizontalContentAlignment="Right" Width="140" Click="LoginButton_Click">
+        <Button Style="{StaticResource ButtonStyle}" x:Name="LoginButton" Content="Login" Grid.Column="3" Grid.Row="5" FontSize="20" HorizontalContentAlignment="Right" Width="140" Click="LoginButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/login.png" Stretch="Uniform" AlignmentX="Left"/>
             </Button.Background>
