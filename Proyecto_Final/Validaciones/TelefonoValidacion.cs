@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Controls;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Proyecto_Final.Validaciones
 {
@@ -14,21 +15,25 @@ namespace Proyecto_Final.Validaciones
 
             if (cadena != null)
             {
-                if (cadena.Length <= 0)
-                    return new ValidationResult(false, "Debes poner un teléfono");
-
-                cadena = cadena.Replace("-", "");
-
-                foreach (var caracter in cadena)
+                String expresion;
+                expresion = @"^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$";
+                if (Regex.IsMatch(cadena, expresion))
                 {
-                    if (!char.IsDigit(caracter))
-                        return new ValidationResult(false, "El teléfono solo puede tener numeros o guion");
+                    if (Regex.Replace(cadena, expresion, String.Empty).Length == 0)
+                    {
+                        return ValidationResult.ValidResult;
+                    }
+                    else
+                    {
+                        return new ValidationResult(false, Message);
+                    }
                 }
-
-                return ValidationResult.ValidResult;
-
+                else
+                    return new ValidationResult(false, Message);
             }
-            return new ValidationResult(false, "Debes poner un teléfono");
+            return new ValidationResult(false, Message);
         }
+
+        public String Message { get; set; }
     }
 }

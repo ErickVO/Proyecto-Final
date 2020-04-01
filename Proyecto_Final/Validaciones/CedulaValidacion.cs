@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Controls;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Proyecto_Final.Validaciones
 {
@@ -14,21 +15,23 @@ namespace Proyecto_Final.Validaciones
 
             if (cadena != null)
             {
-                if (cadena.Length <= 0)
-                    return new ValidationResult(false, "Debes poner una cedula");
-
-                cadena = cadena.Replace("-", "");
-
-                foreach (var caracter in cadena)
+                String expresion;
+                expresion = @"^\d{3}[- ]?\d{7}[- ]?\d{1}$";
+                if (Regex.IsMatch(cadena, expresion))
                 {
-                    if (!char.IsDigit(caracter))
-                        return new ValidationResult(false, "La cedula solo puede tener numeros o guion");
+                    if (Regex.Replace(cadena, expresion, String.Empty).Length == 0)
+                    {
+                        return ValidationResult.ValidResult;
+                    }
+                    else
+                    {
+                        return new ValidationResult(false, "Cedula no valida");
+                    }
                 }
-
-                return ValidationResult.ValidResult;
-
+                else
+                    return new ValidationResult(false, "Cedula no valido");
             }
-            return new ValidationResult(false, "Debes poner una cedula");
+            return new ValidationResult(false, "Debes poner una Cedula");
         }
     }
 }

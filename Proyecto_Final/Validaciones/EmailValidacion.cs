@@ -25,11 +25,11 @@ namespace Proyecto_Final.Validaciones
                     }
                     else
                     {
-                        return new ValidationResult(false, "El email no es valido");
+                        return new ValidationResult(false, "Email no valido");
                     }
                 }
                 else
-                    return new ValidationResult(false, "El email no esta en el formato correcto");
+                    return new ValidationResult(false, "Email no valido");
 
                 
 

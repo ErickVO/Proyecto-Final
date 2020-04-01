@@ -80,7 +80,7 @@
         <Label Content="Cedula:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CedulaTextBox" Grid.Row="7" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="Cedula" Mode="TwoWay">
+                <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:CedulaValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -91,7 +91,7 @@
         <Label Content="Telefono:" Grid.Row="9" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="TelefonoTextBox" Grid.Row="9" Grid.Column="3"  FontSize="17">
             <TextBox.Text>
-                <Binding Path="Telefono" Mode="TwoWay">
+                <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:TelefonoValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
