@@ -18,12 +18,6 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                //revisar
-                /*if (CacaosBLL.comprarCacao(contrato.CantidadTotal))
-                {
-                    if (db.Contratos.Add(contrato) != null)
-                        paso = db.SaveChanges() > 0;
-                }*/
                 if (db.Contratos.Add(contrato) != null)
                     paso = db.SaveChanges() > 0;
 
@@ -143,77 +137,13 @@ namespace Proyecto_Final.BLL
                 return false;
         }
 
-        //revisar
-        /*public static bool verificarPago(int clienteId, decimal cantidad)
+        public static void RestarCantidad(int id, decimal cantidad)
         {
-            List<Contratos> lista = GetList(c => c.ClienteId == clienteId);
+            Contratos contrato = Buscar(id);
 
-            foreach(var item in lista)
-            {
-                if (calcularPago(cantidad, item.ContratoId) == true)
-                    return true;
-            }
+            contrato.CantidadPendiente = cantidad;
 
-            return false;
+            Modificar(contrato);
         }
-
-        public static void pagar(int clienteId, decimal cantidad)
-        {
-            List<Contratos> lista = GetList(c => c.ClienteId == clienteId);
-
-            foreach (var item in lista)
-            {
-                if (guardarPago(cantidad, item.ContratoId) == true)
-                    return;
-            }
-        }
-
-        private static bool calcularPago(decimal cantidad, int contratoId)
-        {
-            Contratos contrato = Buscar(contratoId);
-
-            if (contrato.VentaDetalle == null)
-                return false;
-
-            foreach (var item in contrato.VentaDetalle)
-            {
-                while (item.CantidadCacao > 0 && cantidad > 0)
-                {
-                    item.CantidadCacao--;
-                    cantidad--;
-                }
-            }
-
-            if (cantidad == 0)
-                return true;
-            else
-                return false;
-        }
-
-        private static bool guardarPago(decimal cantidad, int contratoId)
-        {
-            Contratos contrato = Buscar(contratoId);
-
-            if (contrato.VentaDetalle == null)
-                return false;
-
-            foreach (var item in contrato.VentaDetalle)
-            {
-                while (item.CantidadCacao > 0 && cantidad > 0)
-                {
-                    item.CantidadCacao--;
-                    cantidad--;
-                }
-            }
-
-            if (cantidad == 0)
-            {
-                Modificar(contrato);
-
-                return true;
-            }
-            else
-                return false;
-        }*/
     }
 }

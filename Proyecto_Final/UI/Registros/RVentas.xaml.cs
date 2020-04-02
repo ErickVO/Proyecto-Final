@@ -73,6 +73,7 @@ namespace Proyecto_Final.UI.Registros
             BalanceLabel.Content = "";
 
             UsuarioLabel.Content = UsuarioNombre;
+            CantidadPendienteLabel.Content = string.Empty;
             ClientesComboBox.SelectedIndex = -1;
             ContratoIdComboBox.Items.Clear();
 
@@ -108,6 +109,7 @@ namespace Proyecto_Final.UI.Registros
                 contenedor.ventas.UsuarioId = UsuarioId;
 
             contenedor.ventas.ClienteId = ClientesId[ClientesComboBox.SelectedIndex];
+            llenarVentaDetalle();
 
             if (VentaIdTextBox.Text == "0")
             {
@@ -129,11 +131,20 @@ namespace Proyecto_Final.UI.Registros
 
             if (paso)
             {
+                ContratosBLL.RestarCantidad(contenedor.ventas.VentaDetalle[0].ContratoId, Convert.ToDecimal(CantidadPendienteLabel.Content));
                 Limpiar();
                 MessageBox.Show("Guardado");
             }
             else
                 MessageBox.Show("No se Pudo Guardar la Venta");
+        }
+
+        private void llenarVentaDetalle()
+        {
+            foreach(var item in contenedor.listaVentas)
+            {
+                contenedor.ventas.VentaDetalle.Add(new VentasDetalle(item.VentaId, item.ContratoId, item.Cantidad, item.Importe));
+            }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
@@ -161,10 +172,14 @@ namespace Proyecto_Final.UI.Registros
             {
                 contenedor.ventas = VentaAnterior;
                 llenarDataGrid();
+                obtenerListado();
                 UsuarioLabel.Content = obtenerNombreUsuario(contenedor.ventas.UsuarioId);
 
+                Contratos contrato = ContratosBLL.Buscar(Convert.ToInt32(ContratoIdComboBox.SelectedItem));
+                CantidadPendienteLabel.Content = Convert.ToString(contrato.CantidadPendiente);
+
                 ClientesComboBox.IsEnabled = false;
-                ContratoIdComboBox.IsEnabled = true;
+                ContratoIdComboBox.IsEnabled = false;
 
                 Recargar();
             }
@@ -173,6 +188,18 @@ namespace Proyecto_Final.UI.Registros
                 Limpiar();
                 MessageBox.Show("Venta No Encontrada");
             }
+        }
+
+        private void obtenerListado()
+        {
+            for (int i = 0; i < ClientesId.Count; i++)
+            {
+                if (ClientesId[i] == contenedor.ventas.ClienteId)
+                    ClientesComboBox.SelectedIndex = i;
+            }
+
+            ContratoIdComboBox.Items.Add(contenedor.ventas.VentaDetalle[0].ContratoId);
+            ContratoIdComboBox.SelectedIndex = 0;
         }
 
         private void llenarDataGrid()
@@ -197,6 +224,12 @@ namespace Proyecto_Final.UI.Registros
             if(contenedor.ventasDetalle.Cantidad > Convert.ToDecimal(CantidadPendienteLabel.Content))
             {
                 MessageBox.Show("Ha excedido la cantidad disponible");
+                return;
+            }
+
+            if(ContratoIdComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe seleccionar un contrato");
                 return;
             }
 
@@ -231,8 +264,11 @@ namespace Proyecto_Final.UI.Registros
 
             if (contenedor.ventas.VentaId > 0)
             {
-                Pagos pagos = PagosBLL.PagoDeVenta(contenedor.ventas.VentaId);
-                balance -= pagos.Total;
+                if(PagosBLL.ExistePago())
+                {
+                    Pagos pagos = PagosBLL.PagoDeVenta(contenedor.ventas.VentaId);
+                    balance -= pagos.Total;
+                }
             }
 
             Contratos contrato = ContratosBLL.Buscar(Convert.ToInt32(ContratoIdComboBox.SelectedItem));
@@ -288,6 +324,11 @@ namespace Proyecto_Final.UI.Registros
                 CantidadTextBox.IsEnabled = false;
                 return;
             }
+
+            Contratos contrato = ContratosBLL.Buscar(Convert.ToInt32(ContratoIdComboBox.SelectedItem));
+
+            if(contenedor.ventas.VentaId == 0)
+                CantidadPendienteLabel.Content = Convert.ToString(contrato.CantidadPendiente);
 
             CantidadTextBox.IsEnabled = true;
 

@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Controls;
 using System.Globalization;
 using Proyecto_Final.Entidades;
+using Proyecto_Final.Contenedores;
 
 namespace Proyecto_Final.Validaciones
 {
@@ -13,7 +14,7 @@ namespace Proyecto_Final.Validaciones
         {
             if (value != null)
             {
-                List<PagosDetalle> detalle = (List<PagosDetalle>)value;
+                List<ListaPagos> detalle = (List<ListaPagos>)value;
 
                 if (detalle.Count > 0)
                 {

@@ -132,30 +132,6 @@ namespace Proyecto_Final.BLL
                 return false;
         }
 
-        //revisar
-        /*public static decimal BuscarCantidadTotal(int Id)
-        {
-            Contratos contrato = new Contratos();
-            decimal cantidad = 0;
-            Contexto db = new Contexto();
-
-            try
-            {
-                contrato = db.Contratos.Find(Id);
-                cantidad = contrato.CantidadTotal;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                db.Dispose();
-            }
-
-            return cantidad;
-        }*/
-
         public static bool EntradaValida(Ventas ventas)
         {
             //verifica si el contrato ya esta utilizado
@@ -172,44 +148,13 @@ namespace Proyecto_Final.BLL
             return true;
         }
 
-        public static decimal obtenerBalance(int id)
+        public static void RestarBalance(int id, decimal balance)
         {
-            Contexto db = new Contexto();
-            decimal balance = 0.0m;
+            Ventas venta = Buscar(id);
 
-            try
-            {
-                balance = db.Ventas.Find(id).Balance;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                db.Dispose();
-            }
-            return balance;
-        }
+            venta.Balance = balance;
 
-        public static decimal obtenerTotal(int id)
-        {
-            Contexto db = new Contexto();
-            decimal total = 0.0m;
-
-            try
-            {
-                total = db.Ventas.Find(id).Total;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                db.Dispose();
-            }
-            return total;
+            Modificar(venta);
         }
     }
 }

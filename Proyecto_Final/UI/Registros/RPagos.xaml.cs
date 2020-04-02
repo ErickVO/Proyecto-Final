@@ -34,6 +34,8 @@ namespace Proyecto_Final.UI.Registros
             CreacionLabel.ContentStringFormat = "MM/dd/yyyy";
             ModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             obtenerClientes();
+            VentaComboBox.IsEnabled = false;
+            MontoTextBox.IsEnabled = false;
             this.DataContext = contenedor;
         }
 
@@ -49,10 +51,8 @@ namespace Proyecto_Final.UI.Registros
             if(contenedor.pagos.PagoId == 0)
                 contenedor.pagos.UsuarioId = UsuarioId;
 
-            if (ClientesComboBox.SelectedIndex < 0)
-                return;
-
             contenedor.pagos.ClienteId = ClientesId[ClientesComboBox.SelectedIndex];
+            llenarPagoDetalle();
 
             if (contenedor.pagos.PagoId == 0)
                 paso = PagosBLL.Guardar(contenedor.pagos);
@@ -72,12 +72,21 @@ namespace Proyecto_Final.UI.Registros
 
             if (paso)
             {
+                VentasBLL.RestarBalance(contenedor.pagos.PagoDetalle[0].VentaId, Convert.ToDecimal(BalanceLabel.Content));
                 limpiar();
                 MessageBox.Show("Guardado");
             }
             else
             {
                 MessageBox.Show("No se pudo guardar");
+            }
+        }
+
+        private void llenarPagoDetalle()
+        {
+            foreach (var item in contenedor.listaPagos)
+            {
+                contenedor.pagos.PagoDetalle.Add(new PagosDetalle(item.PagoId, item.VentaId, item.Monto, item.Saldo));
             }
         }
 
@@ -89,10 +98,14 @@ namespace Proyecto_Final.UI.Registros
             {
                 contenedor.pagos = pago;
                 llenarDataGrid();
+                obtenerListado();
                 UsuarioLabel.Content = obtenerNombreUsuario(contenedor.pagos.UsuarioId);
 
+                Ventas venta = VentasBLL.Buscar(Convert.ToInt32(VentaComboBox.SelectedItem));
+                BalanceLabel.Content = Convert.ToString(venta.Balance);
+
                 ClientesComboBox.IsEnabled = false;
-                VentaComboBox.IsEnabled = true;
+                VentaComboBox.IsEnabled = false;
 
                 reCargar();
             }
@@ -101,6 +114,18 @@ namespace Proyecto_Final.UI.Registros
                 limpiar();
                 MessageBox.Show("Pago no encontrado");
             }
+        }
+
+        private void obtenerListado()
+        {
+            for (int i = 0; i < ClientesId.Count; i++)
+            {
+                if (ClientesId[i] == contenedor.pagos.ClienteId)
+                    ClientesComboBox.SelectedIndex = i;
+            }
+
+            VentaComboBox.Items.Add(contenedor.pagos.PagoDetalle[0].VentaId);
+            VentaComboBox.SelectedIndex = 0;
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
@@ -129,8 +154,14 @@ namespace Proyecto_Final.UI.Registros
                 return;
             }
 
+            if (VentaComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe seleccionar una venta");
+                return;
+            }
+
             contenedor.listaPagos.Add(new ListaPagos(contenedor.pagos.PagoId, Convert.ToInt32(VentaComboBox.SelectedItem), contenedor.pagosDetalle.Monto));
-            calcularSaldo(contenedor.listaPagos);
+            calcularPago();
             reCargar();
 
             MontoTextBox.Clear();
@@ -142,8 +173,11 @@ namespace Proyecto_Final.UI.Registros
             if (PagosDataGrid.Items.Count > 1 && PagosDataGrid.SelectedIndex < PagosDataGrid.Items.Count - 1)
             {
                 contenedor.listaPagos.RemoveAt(PagosDataGrid.SelectedIndex);
-                calcularSaldo(contenedor.listaPagos);
+                calcularPago();
                 reCargar();
+
+                MontoTextBox.Clear();
+                MontoTextBox.Focus();
             }
 
             if (PagosDataGrid.Items.Count == 1)
@@ -160,7 +194,7 @@ namespace Proyecto_Final.UI.Registros
         {
             contenedor = new ContenedorPagos();
 
-            BalanceLabel.Content = "";
+            BalanceLabel.Content = string.Empty;
             UsuarioLabel.Content = UsuarioNombre;
             ClientesComboBox.SelectedIndex = -1;
             VentaComboBox.Items.Clear();
@@ -197,8 +231,6 @@ namespace Proyecto_Final.UI.Registros
 
         private void obtenerVentas(int id)
         {
-            VentaComboBox.Items.Clear();
-
             List<Ventas> ventas = VentasBLL.GetList(v => v.ClienteId == id);
 
             foreach (var item in ventas)
@@ -217,7 +249,12 @@ namespace Proyecto_Final.UI.Registros
         private void ClientesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ClientesComboBox.SelectedIndex < 0)
+            {
+                VentaComboBox.IsEnabled = false;
                 return;
+            }
+
+            VentaComboBox.IsEnabled = true;
 
             PagosDataGrid.ItemsSource = new List<ListaPagos>();
 
@@ -229,26 +266,38 @@ namespace Proyecto_Final.UI.Registros
         private void VentaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (VentaComboBox.SelectedIndex < 0)
+            {
+                MontoTextBox.IsEnabled = false;
                 return;
+            }
 
-            contenedor.listaPagos = new List<ListaPagos>();
+            Ventas venta = VentasBLL.Buscar(Convert.ToInt32(VentaComboBox.SelectedItem));
 
-            BalanceLabel.Content = VentasBLL.obtenerBalance(Convert.ToInt32(VentaComboBox.SelectedItem));
+            if(contenedor.pagos.PagoId==0)
+                BalanceLabel.Content = Convert.ToString(venta.Balance);
+
+            MontoTextBox.IsEnabled = true;
+
+            PagosDataGrid.ItemsSource = new List<ListaPagos>();
 
             reCargar();
         }
 
-        private void calcularSaldo(List<ListaPagos> listaPagos)
+        private void calcularPago()
         {
-            decimal total = VentasBLL.obtenerTotal(Convert.ToInt32(VentaComboBox.SelectedItem));
-            contenedor.pagos.Total = 0;
+            Ventas venta = VentasBLL.Buscar(Convert.ToInt32(VentaComboBox.SelectedItem));
 
-            foreach(var item in listaPagos)
+            decimal total = 0.0m;
+
+            foreach(var item in contenedor.listaPagos)
             {
-                total -= item.Monto;
-                item.Saldo = total;
-                contenedor.pagos.Total += item.Monto;
+                total += item.Monto;
+                venta.Balance -= item.Monto;
+                item.Saldo = venta.Balance;
             }
+
+            TotalLabel.Content = Convert.ToString(total);
+            BalanceLabel.Content = Convert.ToString(venta.Balance);
         }
 
         private void llenarDataGrid()

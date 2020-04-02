@@ -23,10 +23,10 @@ namespace Proyecto_Final.Entidades
             Saldo = 0.0m;
         }
 
-        public PagosDetalle(int ventaId, decimal monto, decimal saldo)
+        public PagosDetalle(int pagoId, int ventaId, decimal monto, decimal saldo)
         {
             PagoDetalleId = 0;
-            PagoId = 0;
+            PagoId = pagoId;
             VentaId = ventaId;
             Monto = monto;
             Saldo = saldo;

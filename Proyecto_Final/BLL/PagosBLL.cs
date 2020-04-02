@@ -142,5 +142,15 @@ namespace Proyecto_Final.BLL
             }
             return pago;
         }
+
+        public static bool ExistePago()
+        {
+            List<Pagos> pagos = GetList(c => true);
+
+            if (pagos.Count > 0)
+                return true;
+            else
+                return false;
+        }
     }
 }
