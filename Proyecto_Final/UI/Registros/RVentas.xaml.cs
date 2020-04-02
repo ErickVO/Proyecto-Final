@@ -21,6 +21,7 @@ namespace Proyecto_Final.UI.Registros
     /// </summary>
     public partial class rVentas : Window
     {
+        //
         ContenedorVentas contenedor = new ContenedorVentas();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
