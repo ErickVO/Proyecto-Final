@@ -59,6 +59,17 @@ namespace Proyecto_Final.UI.Consultas
                     case 5://Email
                         Listado = UsuariosBLL.GetList(u => u.Clave.Contains(CriterioTextBox.Text));
                         break;
+                    case 6://UsuarioIdCreacion
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = UsuariosBLL.GetList(u => u.UsuarioIdCreacion == id);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
                 }
                 if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
                     Listado = Listado.Where(u => u.Fecha.Date >= DesdeDatePicker.SelectedDate.Value && u.Fecha.Date <= HastaDatePicker.SelectedDate.Value).ToList();
@@ -73,3 +84,4 @@ namespace Proyecto_Final.UI.Consultas
         }
     }
 }
+

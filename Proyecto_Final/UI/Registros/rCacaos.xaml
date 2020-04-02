@@ -169,11 +169,12 @@
 
         <Label Content="Fecha Creacion: " Grid.Row="11" Grid.Column="5" FontSize="16"/>
         <Label x:Name="CreacionLabel" Grid.Row="13" Grid.Column="5" FontSize="16" Content="{Binding Path=FechaCreacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        
+
         <Label Content="Fecha Modificacion: " Grid.Row="15" Grid.Column="5" FontSize="16"/>
         <Label x:Name="ModificacionLabel" Grid.Row="17" Grid.Column="5" FontSize="16" Content="{Binding Path=FechaModificacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         <Label Content="Creado por: " Grid.Row="13" Grid.Column="1" FontSize="16"/>
         <Label x:Name="UsuarioLabel" Grid.Row="13" Grid.Column="3" FontSize="16"/>
     </Grid>
+
 </Window>

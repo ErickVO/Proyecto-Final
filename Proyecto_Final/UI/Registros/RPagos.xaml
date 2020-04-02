@@ -76,11 +76,11 @@
 
         <Label Content="VentaId:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
         <ComboBox x:Name="VentaComboBox" Grid.Row="7" Grid.Column="3" FontSize="17" SelectionChanged="VentaComboBox_SelectionChanged"/>
-        
+
         <!--Balance = Cuanto queda por pagar-->
         <Label Content="Balance:" Grid.Row="9" Grid.Column="1" FontSize="16"/>
         <Label x:Name="BalanceLabel" Grid.Row="9" Grid.Column="3" FontSize="16"/>
-        
+
         <!--Total = Lo que se ha pagado-->
         <Label Content="Total:" Grid.Row="11" Grid.Column="1" FontSize="16"/>
         <Label x:Name="TotalLabel" Grid.Row="11" Grid.Column="3" FontSize="17" Content="{Binding Path=pagos.Total, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
@@ -225,4 +225,5 @@
         <Label x:Name="UsuarioLabel" Grid.Row="24" Grid.Column="3" FontSize="16"/>
 
     </Grid>
+
 </Window>

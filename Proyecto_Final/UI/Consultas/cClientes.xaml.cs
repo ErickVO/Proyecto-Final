@@ -47,7 +47,25 @@ namespace Proyecto_Final.UI.Consultas
                             MessageBox.Show("Por favor, ingrese un ID valido");
                         }
                         break;
-                    case 2://UsuarioId
+                    case 2://Nombres
+                        Listado = ClientesBLL.GetList(c => c.Nombres.Contains(CriterioTextBox.Text));
+                        break;
+                    case 3://Cedula
+                        Listado = ClientesBLL.GetList(c => c.Cedula.Contains(CriterioTextBox.Text));
+                        break;
+                    case 4://Telefono
+                        Listado = ClientesBLL.GetList(c => c.Telefono.Contains(CriterioTextBox.Text));
+                        break;
+                    case 5://Celular
+                        Listado = ClientesBLL.GetList(c => c.Celular.Contains(CriterioTextBox.Text));
+                        break;
+                    case 6://Direccion
+                        Listado = ClientesBLL.GetList(c => c.Direccion.Contains(CriterioTextBox.Text));
+                        break;
+                    case 7://Email
+                        Listado = ClientesBLL.GetList(c => c.Email.Contains(CriterioTextBox.Text));
+                        break;
+                    case 8://UsuarioId
                         try
                         {
                             int id = Convert.ToInt32(CriterioTextBox.Text);
@@ -57,21 +75,6 @@ namespace Proyecto_Final.UI.Consultas
                         {
                             MessageBox.Show("Por favor, ingrese un ID valido");
                         }
-                        break;
-                    case 3://Nombres
-                        Listado = ClientesBLL.GetList(c => c.Nombres.Contains(CriterioTextBox.Text));
-                        break;
-                    case 4://Cedula
-                        Listado = ClientesBLL.GetList(c => c.Cedula.Contains(CriterioTextBox.Text));
-                        break;
-                    case 5://Telefono
-                        Listado = ClientesBLL.GetList(c => c.Telefono.Contains(CriterioTextBox.Text));
-                        break;
-                    case 6://Direccion
-                        Listado = ClientesBLL.GetList(c => c.Direccion.Contains(CriterioTextBox.Text));
-                        break;
-                    case 7://Email
-                        Listado = ClientesBLL.GetList(c => c.Email.Contains(CriterioTextBox.Text));
                         break;
                 }
                 if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
@@ -87,3 +90,4 @@ namespace Proyecto_Final.UI.Consultas
         }
     }
 }
+

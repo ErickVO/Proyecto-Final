@@ -9,15 +9,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Proyecto_Final.BLL;
 using Proyecto_Final.Entidades;
-using Proyecto_Final.Contenedores;
+using Proyecto_Final.BLL;
 using Proyecto_Final.UI.Consultas;
+using Proyecto_Final.Contenedores;
 
 namespace Proyecto_Final.UI.Registros
 {
     /// <summary>
-    /// Interaction logic for RPagos.xaml
+    /// Interaction logic for rPagos.xaml
     /// </summary>
     public partial class rPagos : Window
     {
@@ -48,7 +48,7 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            if(contenedor.pagos.PagoId == 0)
+            if (contenedor.pagos.PagoId == 0)
                 contenedor.pagos.UsuarioId = UsuarioId;
 
             contenedor.pagos.ClienteId = ClientesId[ClientesComboBox.SelectedIndex];
@@ -147,7 +147,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (contenedor.pagosDetalle.Monto > Convert.ToDecimal(BalanceLabel.Content))
             {
                 MessageBox.Show("Ha excedido el pago posible");
@@ -273,7 +273,7 @@ namespace Proyecto_Final.UI.Registros
 
             Ventas venta = VentasBLL.Buscar(Convert.ToInt32(VentaComboBox.SelectedItem));
 
-            if(contenedor.pagos.PagoId==0)
+            if (contenedor.pagos.PagoId == 0)
                 BalanceLabel.Content = Convert.ToString(venta.Balance);
 
             MontoTextBox.IsEnabled = true;
@@ -289,7 +289,7 @@ namespace Proyecto_Final.UI.Registros
 
             decimal total = 0.0m;
 
-            foreach(var item in contenedor.listaPagos)
+            foreach (var item in contenedor.listaPagos)
             {
                 total += item.Monto;
                 venta.Balance -= item.Monto;
@@ -304,10 +304,11 @@ namespace Proyecto_Final.UI.Registros
         {
             contenedor.listaPagos = new List<ListaPagos>();
 
-            foreach(var item in contenedor.pagos.PagoDetalle)
+            foreach (var item in contenedor.pagos.PagoDetalle)
             {
                 contenedor.listaPagos.Add(new ListaPagos(item.PagoId, item.VentaId, item.Monto, item.Saldo));
             }
         }
+
     }
 }

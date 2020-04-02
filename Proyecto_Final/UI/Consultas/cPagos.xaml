@@ -38,8 +38,9 @@
             <ComboBox x:Name="FiltroComboBox" SelectedIndex="0" Width="150" FontSize="15">
                 <ComboBoxItem Content="Todo"/>
                 <ComboBoxItem Content="PagoId"/>
+                <ComboBoxItem Content="ClienteId"/>
+                <ComboBoxItem Content="Total"/>
                 <ComboBoxItem Content="UsuarioId"/>
-                <ComboBoxItem Content="Monto"/>
             </ComboBox>
         </StackPanel>
 
@@ -61,4 +62,5 @@
             <DataGrid x:Name="ConsultaDataGrid" Height="375"/>
         </StackPanel>
     </Grid>
+
 </Window>

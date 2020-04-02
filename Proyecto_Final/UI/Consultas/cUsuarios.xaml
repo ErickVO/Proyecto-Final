@@ -1,11 +1,11 @@
-﻿<Window x:Class="Proyecto_Final.UI.Consultas.cClientes"
+﻿<Window x:Class="Proyecto_Final.UI.Consultas.cUsuarios"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Consultas"
         mc:Ignorable="d"
-        Title="                                                                                                   Consulta de Clientes" Height="450" Width="800">
+        Title="                                                                                                   Consulta de Usuarios" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/Cacao-Ventanas.jpg"/>
@@ -37,13 +37,12 @@
             <Label Content="Filtro" FontSize="15" Background="#FFDED3D3"/>
             <ComboBox x:Name="FiltroComboBox" SelectedIndex="0" Width="150" FontSize="15">
                 <ComboBoxItem Content="Todo"/>
-                <ComboBoxItem Content="ClienteId"/>
-                <ComboBoxItem Content="UsuarioId"/>
+                <ComboBoxItem Content="Id"/>
                 <ComboBoxItem Content="Nombres"/>
-                <ComboBoxItem Content="Cedula"/>
-                <ComboBoxItem Content="Telefono"/>
-                <ComboBoxItem Content="Direccion"/>
+                <ComboBoxItem Content="NombreUsuario"/>
+                <ComboBoxItem Content="Clave"/>
                 <ComboBoxItem Content="Email"/>
+                <ComboBoxItem Content="UsuarioIdCreacion"/>
             </ComboBox>
         </StackPanel>
 
@@ -65,4 +64,5 @@
             <DataGrid x:Name="ConsultaDataGrid" Height="375"/>
         </StackPanel>
     </Grid>
+
 </Window>

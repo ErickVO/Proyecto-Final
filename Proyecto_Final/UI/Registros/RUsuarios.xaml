@@ -193,4 +193,5 @@
         <Label Content="Creado por: " Grid.Row="15" Grid.Column="1" FontSize="16"/>
         <Label x:Name="UsuarioLabel" Grid.Row="15" Grid.Column="3" FontSize="16"/>
     </Grid>
+
 </Window>
