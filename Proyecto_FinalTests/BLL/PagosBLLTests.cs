@@ -7,7 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    /*[TestClass()]
+    [TestClass()]
     public class PagosBLLTests
     {
         [TestMethod()]
@@ -16,10 +16,13 @@ namespace Proyecto_Final.BLL.Tests
             Pagos pagos = new Pagos();
 
             pagos.PagoId = 0;
-            pagos.UsuarioId = 1;
             pagos.Fecha = DateTime.Now;
-            pagos.Monto = 1200.0m;
-            pagos.PagoDetalle.Add(new PagosDetalle(1, "Sanchéz", 10.0m, 120.0m));
+            pagos.ClienteId = 1;
+            pagos.Total = 800.0m;
+            pagos.UsuarioId = 1;
+            pagos.FechaCreacion = DateTime.Now;
+            pagos.FechaModificacion = DateTime.Now;
+            pagos.PagoDetalle.Add(new PagosDetalle(0, 1, 800.0m, 400.0m));
 
             bool paso = PagosBLL.Guardar(pagos);
 
@@ -32,11 +35,12 @@ namespace Proyecto_Final.BLL.Tests
             Pagos pagos = new Pagos();
 
             pagos.PagoId = 1;
+            pagos.ClienteId = 1;
+            pagos.Total = 1000.0m;
             pagos.UsuarioId = 1;
-            pagos.Fecha = DateTime.Now;
-            pagos.Monto = 2400.0m;
-            pagos.PagoDetalle.Add(new PagosDetalle(1, "Sanchéz", 10.0m, 120.0m));
-            pagos.PagoDetalle.Add(new PagosDetalle(1, "Orgánico", 30.0m, 40.0m));
+            pagos.FechaModificacion = DateTime.Now;
+            pagos.PagoDetalle.Add(new PagosDetalle(0, 1, 800.0m, 400.0m));
+            pagos.PagoDetalle.Add(new PagosDetalle(0, 1, 200.0m, 200.0m));
 
             bool paso = PagosBLL.Modificar(pagos);
 
@@ -62,9 +66,25 @@ namespace Proyecto_Final.BLL.Tests
         [TestMethod()]
         public void GetListTest()
         {
-            List<Pagos> listado = new List<Pagos>();
+            List<Pagos> listado = PagosBLL.GetList(p => true);
 
             Assert.IsTrue(listado != null);
         }
-    }*/
+
+        [TestMethod()]
+        public void PagoDeVentaTest()
+        {
+            Pagos pago = PagosBLL.PagoDeVenta(1);
+
+            Assert.IsTrue(pago != null);
+        }
+
+        [TestMethod()]
+        public void ExistePagoTest()
+        {
+            bool paso = PagosBLL.ExistePago();
+
+            Assert.IsTrue(paso);
+        }
+    }
 }

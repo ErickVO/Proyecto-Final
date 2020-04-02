@@ -7,7 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    /*[TestClass()]
+    [TestClass()]
     public class UsuariosBLLTests
     {
         [TestMethod()]
@@ -16,11 +16,14 @@ namespace Proyecto_Final.BLL.Tests
             Usuarios usuarios = new Usuarios();
 
             usuarios.UsuarioId = 0;
-            usuarios.Nombres = "El macho";
             usuarios.Fecha = DateTime.Now;
+            usuarios.Nombres = "El macho";
             usuarios.NombreUsuario = "Macho";
             usuarios.Clave = "Muy macho";
             usuarios.Email = "muy_macho@outlook.com";
+            usuarios.FechaCreacion = DateTime.Now;
+            usuarios.FechaModificacion = DateTime.Now;
+            usuarios.UsuarioIdCreacion = 1;
 
             bool paso = UsuariosBLL.Guardar(usuarios);
 
@@ -34,10 +37,11 @@ namespace Proyecto_Final.BLL.Tests
 
             usuarios.UsuarioId = 2;
             usuarios.Nombres = "EL MACHO";
-            usuarios.Fecha = DateTime.Now;
             usuarios.NombreUsuario = "Macho";
             usuarios.Clave = "Muy macho";
             usuarios.Email = "muy_macho@outlook.com";
+            usuarios.FechaModificacion = DateTime.Now;
+            usuarios.UsuarioIdCreacion = 1;
 
             bool paso = UsuariosBLL.Modificar(usuarios);
 
@@ -63,7 +67,7 @@ namespace Proyecto_Final.BLL.Tests
         [TestMethod()]
         public void GetListTest()
         {
-            List<Usuarios> listado = new List<Usuarios>();
+            List<Usuarios> listado = UsuariosBLL.GetList(u => true);
 
             Assert.IsTrue(listado != null);
         }
@@ -71,16 +75,7 @@ namespace Proyecto_Final.BLL.Tests
         [TestMethod()]
         public void ExisteTest()
         {
-            Usuarios usuarios = new Usuarios();
-
-            usuarios.UsuarioId = 2;
-            usuarios.Nombres = "EL MACHO";
-            usuarios.Fecha = DateTime.Now;
-            usuarios.NombreUsuario = "Macho";
-            usuarios.Clave = "Muy macho";
-            usuarios.Email = "muy_macho@outlook.com";
-
-            bool paso = UsuariosBLL.Existe(usuarios);
+            bool paso = UsuariosBLL.Existe("Macho", "Muy macho");
 
             Assert.IsTrue(paso);
         }
@@ -88,18 +83,9 @@ namespace Proyecto_Final.BLL.Tests
         [TestMethod()]
         public void ObtenerIdTest()
         {
-            Usuarios usuarios = new Usuarios();
-
-            usuarios.UsuarioId = 0;
-            usuarios.Nombres = "EL MACHO";
-            usuarios.Fecha = DateTime.Now;
-            usuarios.NombreUsuario = "Macho";
-            usuarios.Clave = "Muy macho";
-            usuarios.Email = "muy_macho@outlook.com";
-
-            int id = UsuariosBLL.ObtenerId(usuarios);
+            int id = UsuariosBLL.ObtenerId("Macho", "Muy macho");
 
             Assert.IsTrue(id == 2);
         }
-    }*/
+    }
 }
