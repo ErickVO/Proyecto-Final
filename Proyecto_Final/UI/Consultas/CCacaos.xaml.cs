@@ -47,33 +47,10 @@ namespace Proyecto_Final.UI.Consultas
                             MessageBox.Show("Por favor, ingrese un ID valido");
                         }
                         break;
-                    case 2://UsuarioId
-                        try
-                        {
-                            int id = Convert.ToInt32(CriterioTextBox.Text);
-                            Listado = CacaosBLL.GetList(c => c.UsuarioId == id);
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un ID valido");
-                        }
-                        break;
-                    case 3://EntradaId
-                        //revisar
-                        /*try
-                        {
-                            int id = Convert.ToInt32(CriterioTextBox.Text);
-                            Listado = CacaosBLL.GetList(c => c.EntradaId == id);
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un ID valido");
-                        }*/
-                        break;
-                    case 4://Tipo
+                    case 2://Tipo
                         Listado = CacaosBLL.GetList(s => s.Tipo.Contains(CriterioTextBox.Text));
                         break;
-                    case 5://Cantidad
+                    case 3://Cantidad
                         try
                         {
                             decimal cantidad = Convert.ToInt32(CriterioTextBox.Text);
@@ -82,6 +59,39 @@ namespace Proyecto_Final.UI.Consultas
                         catch (FormatException)
                         {
                             MessageBox.Show("Por favor, ingrese una cantidad valida");
+                        }
+                        break;
+                    case 4://Costo
+                        try
+                        {
+                            decimal costo = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = CacaosBLL.GetList(c => c.Costo == costo);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un costo valido");
+                        }
+                        break;
+                    case 5://Precio
+                        try
+                        {
+                            decimal precio = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = CacaosBLL.GetList(c => c.Precio == precio);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un precio valido");
+                        }
+                        break;
+                    case 6://UsuarioId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = CacaosBLL.GetList(c => c.UsuarioId == id);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
                         }
                         break;
                 }
@@ -98,3 +108,4 @@ namespace Proyecto_Final.UI.Consultas
         }
     }
 }
+

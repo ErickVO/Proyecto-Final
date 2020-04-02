@@ -16,7 +16,7 @@ using Proyecto_Final.UI.Consultas;
 namespace Proyecto_Final.UI.Registros
 {
     /// <summary>
-    /// Interaction logic for RCacaos.xaml
+    /// Interaction logic for rCacaos.xaml
     /// </summary>
     public partial class rCacaos : Window
     {
@@ -44,7 +44,7 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            if(cacao.CacaoId == 0)
+            if (cacao.CacaoId == 0)
                 cacao.UsuarioId = UsuarioId;
 
             cacao.FechaModificacion = DateTime.Now;
@@ -143,5 +143,6 @@ namespace Proyecto_Final.UI.Registros
 
             return usuarios.NombreUsuario;
         }
+
     }
 }

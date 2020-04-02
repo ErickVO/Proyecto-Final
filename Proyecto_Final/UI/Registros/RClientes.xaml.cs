@@ -16,7 +16,7 @@ using Proyecto_Final.UI.Consultas;
 namespace Proyecto_Final.UI.Registros
 {
     /// <summary>
-    /// Interaction logic for RClientes.xaml
+    /// Interaction logic for rClientes.xaml
     /// </summary>
     public partial class rClientes : Window
     {
@@ -134,5 +134,6 @@ namespace Proyecto_Final.UI.Registros
 
             return usuarios.NombreUsuario;
         }
+
     }
 }

@@ -47,7 +47,29 @@ namespace Proyecto_Final.UI.Consultas
                             MessageBox.Show("Por favor, ingrese un ID valido");
                         }
                         break;
-                    case 2://UsuarioId
+                    case 2://ClienteId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = PagosBLL.GetList(p => p.ClienteId == id);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
+                    case 3://Total
+                        try
+                        {
+                            decimal total = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = PagosBLL.GetList(p => p.Total == total);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un total valido");
+                        }
+                        break;
+                    case 4://UsuarioId
                         try
                         {
                             int id = Convert.ToInt32(CriterioTextBox.Text);
@@ -56,19 +78,6 @@ namespace Proyecto_Final.UI.Consultas
                         catch (FormatException)
                         {
                             MessageBox.Show("Por favor, ingrese un ID valido");
-                        }
-                        break;
-                    case 3://Monto
-                        try
-                        {
-                            //revisar
-                            /*
-                            decimal monto = Convert.ToInt32(CriterioTextBox.Text);
-                            Listado = PagosBLL.GetList(p => p.Monto == monto);*/
-                        }
-                        catch (FormatException)
-                        {
-                            MessageBox.Show("Por favor, ingrese un monto valido");
                         }
                         break;
                 }

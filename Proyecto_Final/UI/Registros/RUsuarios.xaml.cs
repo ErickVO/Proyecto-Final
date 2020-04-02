@@ -16,7 +16,7 @@ using Proyecto_Final.UI.Consultas;
 namespace Proyecto_Final.UI.Registros
 {
     /// <summary>
-    /// Interaction logic for RUsuarios.xaml
+    /// Interaction logic for rUsuarios.xaml
     /// </summary>
     public partial class rUsuarios : Window
     {
@@ -115,7 +115,7 @@ namespace Proyecto_Final.UI.Registros
 
             reCargar();
         }
-        
+
         private void reCargar()
         {
             this.DataContext = null;
@@ -135,5 +135,6 @@ namespace Proyecto_Final.UI.Registros
 
             return usuarios.NombreUsuario;
         }
+
     }
 }

@@ -42,6 +42,7 @@
                 <ComboBoxItem Content="NombreUsuario"/>
                 <ComboBoxItem Content="Clave"/>
                 <ComboBoxItem Content="Email"/>
+                <ComboBoxItem Content="UsuarioIdCreacion"/>
             </ComboBox>
         </StackPanel>
 
@@ -63,4 +64,5 @@
             <DataGrid x:Name="ConsultaDataGrid" Height="375"/>
         </StackPanel>
     </Grid>
+
 </Window>

@@ -38,10 +38,11 @@
             <ComboBox x:Name="FiltroComboBox" SelectedIndex="0" Width="150" FontSize="15">
                 <ComboBoxItem Content="Todo"/>
                 <ComboBoxItem Content="CacaoId"/>
-                <ComboBoxItem Content="UsuarioId"/>
-                <ComboBoxItem Content="EntradaId"/>
                 <ComboBoxItem Content="Tipo"/>
                 <ComboBoxItem Content="Cantidad"/>
+                <ComboBoxItem Content="Costo"/>
+                <ComboBoxItem Content="Precio"/>
+                <ComboBoxItem Content="UsuarioId"/>
             </ComboBox>
         </StackPanel>
 
