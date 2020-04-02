@@ -89,6 +89,13 @@ namespace Proyecto_Final.UI.Registros
         {
             if (UsuarioId != usuario.UsuarioId)
             {
+                Usuarios AnteriorUsuario = UsuariosBLL.Buscar(usuario.UsuarioId);
+                if (AnteriorUsuario == null)
+                {
+                    MessageBox.Show("No se Puede Eliminar un usuario que no existe");
+                    return;
+                }
+
                 if (UsuariosBLL.Eliminar(usuario.UsuarioId))
                 {
                     limpiar();

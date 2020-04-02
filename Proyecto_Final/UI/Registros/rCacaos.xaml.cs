@@ -94,9 +94,10 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (cacao.CacaoId == 0)
+            Cacaos AnteriorCacao = CacaosBLL.Buscar(cacao.CacaoId);
+            if(AnteriorCacao == null)
             {
-                MessageBox.Show("No se puede eliminar el 0");
+                MessageBox.Show("No se Puede Eliminar un cacao que no existe");
                 return;
             }
 

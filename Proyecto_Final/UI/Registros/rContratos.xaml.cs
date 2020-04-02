@@ -37,6 +37,7 @@ namespace Proyecto_Final.UI.Registros
             ContratoIdTextBox.Text = "0";
             ObtenerClientes();
             ObtenerCacaos();
+            CantidadTextBox.IsEnabled = false;
             this.DataContext = contrato;
         }
 
@@ -106,10 +107,10 @@ namespace Proyecto_Final.UI.Registros
                 contrato.UsuarioId = UsuarioId;
 
             if (ClienteIdComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe seleccionar un cliente");
                 return;
-
-            if (CacaoIdComboBox.SelectedIndex < 0)
-                return;
+            }
 
             contrato.ClienteId = ClientesId[ClienteIdComboBox.SelectedIndex];
             contrato.CacaoId = CacaosId[CacaoIdComboBox.SelectedIndex];
@@ -151,14 +152,27 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (contrato.ContratoId == 0)
+            Contratos AnteriorContrato = ContratosBLL.Buscar(contrato.ContratoId);
+            if (AnteriorContrato == null)
             {
-                MessageBox.Show("No se puede eliminar el 0");
+                MessageBox.Show("No se Puede Eliminar un contrato que no existe");
                 return;
+            }
+
+            List<Ventas> ventas = VentasBLL.GetList(p => true);
+
+            foreach (var item in ventas)
+            {
+                if (item.VentaDetalle[0].ContratoId == contrato.ContratoId)
+                {
+                    MessageBox.Show("No se puede eliminar este contrato ya que tiene una venta");
+                    return;
+                }
             }
 
             if (ContratosBLL.Eliminar(contrato.ContratoId))
             {
+                CacaosBLL.DevolverCacao(contrato.CacaoId, contrato.Cantidad);
                 MessageBox.Show("Eliminado");
                 Limpiar();
             }
@@ -178,6 +192,7 @@ namespace Proyecto_Final.UI.Registros
 
                 ClienteIdComboBox.IsEnabled = false;
                 CacaoIdComboBox.IsEnabled = false;
+                CantidadTextBox.IsEnabled = false;
 
                 Recargar();
             }

@@ -18,9 +18,9 @@ namespace Proyecto_Final.Validaciones
                 {
                     id = Convert.ToInt32(value);
                 }
-                catch (FormatException)
+                catch (Exception)
                 {
-                    return new ValidationResult(false, "El ID debe ser un numero entero");
+                    return new ValidationResult(false, "No es un ID valido");
                 }
 
                 if (id >= 0)

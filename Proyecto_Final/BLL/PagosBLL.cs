@@ -110,7 +110,7 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                Lista = db.Pagos.Where(pago).ToList();
+                Lista = db.Pagos.Include(p => p.PagoDetalle).Where(pago).ToList();
             }
             catch (Exception)
             {

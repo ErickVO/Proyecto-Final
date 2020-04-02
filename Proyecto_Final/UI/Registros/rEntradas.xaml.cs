@@ -107,10 +107,10 @@ namespace Proyecto_Final.UI.Registros
                 entrada.UsuarioId = UsuarioId;
 
             if (SuplidorIdComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Debe seleccionar un suplidor");
                 return;
-
-            if (CacaoIdComboBox.SelectedIndex < 0)
-                return;
+            }
 
             entrada.SuplidorId = SuplidoresId[SuplidorIdComboBox.SelectedIndex]; //obtener el id del suplidor seleccionado
             entrada.CacaoId = CacaosId[CacaoIdComboBox.SelectedIndex];
@@ -145,9 +145,10 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (entrada.EntradaId == 0)
+            Entradas AnteriorEntradas = EntradasBLL.Buscar(entrada.EntradaId);
+            if (AnteriorEntradas == null)
             {
-                MessageBox.Show("No se puede eliminar el 0");
+                MessageBox.Show("No se Puede Eliminar una entrada que no existe");
                 return;
             }
 

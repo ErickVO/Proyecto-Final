@@ -91,6 +91,13 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            Clientes AnteriorCliente = ClientesBLL.Buscar(cliente.ClienteId);
+            if (AnteriorCliente == null)
+            {
+                MessageBox.Show("No se Puede Eliminar un cliente que no existe");
+                return;
+            }
+
             if (ClientesBLL.Eliminar(cliente.ClienteId))
             {
                 limpiar();

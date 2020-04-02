@@ -11,16 +11,15 @@ namespace Proyecto_Final.Validaciones
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string cadena = value as string;
-            if (cadena != null)
+            if (!string.IsNullOrWhiteSpace(cadena))
             {
                 if (cadena.Length <= 0)
                     return new ValidationResult(false, "Debes poner un Nombre");
 
-                cadena = cadena.Trim();
 
                 foreach (var caracter in cadena)
                 {
-                    if (!char.IsLetter(caracter))
+                    if (!char.IsLetter(caracter) && !char.IsWhiteSpace(caracter))
                         return new ValidationResult(false, "El nombre solo puede tener letras");
                 }
 

@@ -145,5 +145,14 @@ namespace Proyecto_Final.BLL
 
             Modificar(contrato);
         }
+
+        public static void RestablecerCantidadPendiente(int id)
+        {
+            Contratos contrato = Buscar(id);
+
+            contrato.CantidadPendiente = contrato.Cantidad;
+
+            Modificar(contrato);
+        }
     }
 }

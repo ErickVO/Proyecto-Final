@@ -100,12 +100,6 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            if (!VentasBLL.EntradaValida(contenedor.ventas))
-            {
-                MessageBox.Show("Ya ha sido utilizada este ContratoId");
-                return;
-            }
-
             if (contenedor.ventas.VentaId == 0)
                 contenedor.ventas.UsuarioId = UsuarioId;
 
@@ -114,6 +108,11 @@ namespace Proyecto_Final.UI.Registros
 
             if (VentaIdTextBox.Text == "0")
             {
+                if (!VentasBLL.EntradaValida(contenedor.ventas))
+                {
+                    MessageBox.Show("Ya ha sido utilizada este ContratoId");
+                    return;
+                }
                 paso = VentasBLL.Guardar(contenedor.ventas);
             }
             else
@@ -150,14 +149,27 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (contenedor.ventas.VentaId == 0)
+            Ventas AnteriorVenta = VentasBLL.Buscar(contenedor.ventas.VentaId);
+            if (AnteriorVenta == null)
             {
-                MessageBox.Show("No se puede eliminar el 0");
+                MessageBox.Show("No se Puede Eliminar un venta que no existe");
                 return;
+            }
+
+            List<Pagos> pagos = PagosBLL.GetList(p => true);
+
+            foreach (var item in pagos)
+            {
+                if (item.PagoDetalle[0].VentaId == contenedor.ventas.VentaId)
+                {
+                    MessageBox.Show("No se puede eliminar esta ya que tiene un pago");
+                    return;
+                }
             }
 
             if (VentasBLL.Eliminar(contenedor.ventas.VentaId))
             {
+                ContratosBLL.RestablecerCantidadPendiente(contenedor.ventas.VentaDetalle[0].ContratoId);
                 Limpiar();
                 MessageBox.Show("Eliminado");
             }
@@ -267,8 +279,15 @@ namespace Proyecto_Final.UI.Registros
             {
                 if (PagosBLL.ExistePago())
                 {
-                    Pagos pagos = PagosBLL.PagoDeVenta(contenedor.ventas.VentaId);
-                    balance -= pagos.Total;
+                    List<Pagos> pagos = PagosBLL.GetList(p => true);
+
+                    foreach(var item in pagos)
+                    {
+                        if(item.PagoDetalle[0].VentaId == contenedor.ventas.VentaId)
+                        {
+                            balance -= item.Total;
+                        }
+                    }
                 }
             }
 

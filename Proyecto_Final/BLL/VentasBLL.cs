@@ -109,7 +109,7 @@ namespace Proyecto_Final.BLL
 
             try
             {
-                Lista = db.Ventas.Where(venta).ToList();
+                Lista = db.Ventas.Include(v => v.VentaDetalle).Where(venta).ToList();
             }
             catch (Exception)
             {

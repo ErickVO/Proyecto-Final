@@ -15,7 +15,7 @@ namespace Proyecto_Final.Validaciones
                 DateTime fecha = new DateTime();
                 DateTime.TryParse(value.ToString(), out fecha);
 
-                if (fecha > DateTime.Now)
+                if (fecha < DateTime.Now)
                     return new ValidationResult(false, "Debes poner una Fecha valida");
 
                 return ValidationResult.ValidResult;

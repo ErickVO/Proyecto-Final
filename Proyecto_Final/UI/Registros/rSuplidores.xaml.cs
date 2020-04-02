@@ -97,9 +97,10 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (suplidor.SuplidorId == 0)
+            Suplidores AnteriorSuplidor = SuplidoresBLL.Buscar(suplidor.SuplidorId);
+            if (AnteriorSuplidor == null)
             {
-                MessageBox.Show("No se puede eliminar el 0");
+                MessageBox.Show("No se Puede Eliminar un suplidor que no existe");
                 return;
             }
 

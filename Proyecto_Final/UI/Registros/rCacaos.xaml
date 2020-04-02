@@ -47,7 +47,7 @@
         <Label Content="CacaoId:" Grid.Row="1" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CacaoIdTextBox" Grid.Row="1" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="CacaoId" Mode="TwoWay">
+                <Binding Path="CacaoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:IdValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>

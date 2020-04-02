@@ -144,5 +144,17 @@ namespace Proyecto_Final.BLL
             else
                 return false;
         }
+
+        public static void DevolverCacao(int id, decimal cantidad)
+        {
+            Cacaos cacao = Buscar(id);
+
+            if (cacao == null)
+                return;
+
+            cacao.Cantidad += cantidad;
+
+            Modificar(cacao);
+        }
     }
 }

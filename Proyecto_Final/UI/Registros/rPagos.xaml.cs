@@ -130,9 +130,10 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (contenedor.pagos.PagoId == 0)
+            Pagos AnteriorPago = PagosBLL.Buscar(contenedor.pagos.PagoId);
+            if (AnteriorPago == null)
             {
-                MessageBox.Show("No se puede eliminar el 0");
+                MessageBox.Show("No se Puede Eliminar un Pago que no existe");
                 return;
             }
 
