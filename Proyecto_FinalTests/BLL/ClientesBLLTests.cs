@@ -16,13 +16,16 @@ namespace Proyecto_Final.BLL.Tests
             Clientes clientes = new Clientes();
 
             clientes.ClienteId = 0;
-            clientes.UsuarioId = 1;
             clientes.Fecha = DateTime.Now;
             clientes.Nombres = "Alfredo";
             clientes.Cedula = "234-6583756-9";
             clientes.Telefono = "809-422-2485";
+            clientes.Celular = "829-573-5783";
             clientes.Direccion = "Los mellos";
             clientes.Email = "Jabon_cuchara@outlook.com";
+            clientes.FechaCreacion = DateTime.Now;
+            clientes.FechaModificacion = DateTime.Now;
+            clientes.UsuarioId = 1;
 
             bool paso = ClientesBLL.Guardar(clientes);
 
@@ -35,13 +38,14 @@ namespace Proyecto_Final.BLL.Tests
             Clientes clientes = new Clientes();
 
             clientes.ClienteId = 1;
-            clientes.UsuarioId = 1;
-            clientes.Fecha = DateTime.Now;
             clientes.Nombres = "Alfredo Weyne";
             clientes.Cedula = "234-6583756-9";
             clientes.Telefono = "809-422-2485";
+            clientes.Celular = "829-573-5783";
             clientes.Direccion = "Los mellos";
             clientes.Email = "Jabon_cuchara@outlook.com";
+            clientes.FechaModificacion = DateTime.Now;
+            clientes.UsuarioId = 1;
 
             bool paso = ClientesBLL.Modificar(clientes);
 
@@ -67,9 +71,17 @@ namespace Proyecto_Final.BLL.Tests
         [TestMethod()]
         public void GetListTest()
         {
-            List<Clientes> listado = new List<Clientes>();
+            List<Clientes> listado = ClientesBLL.GetList(c => true);
 
             Assert.IsTrue(listado != null);
+        }
+
+        [TestMethod()]
+        public void ExisteClienteTest()
+        {
+            bool paso = ClientesBLL.ExisteCliente();
+
+            Assert.IsTrue(paso);
         }
     }
 }
