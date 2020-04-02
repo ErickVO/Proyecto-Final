@@ -18,9 +18,9 @@ namespace Proyecto_Final.UI.Consultas
     /// <summary>
     /// Interaction logic for CCacaos.xaml
     /// </summary>
-    public partial class CCacaos : Window
+    public partial class cCacaos : Window
     {
-        public CCacaos()
+        public cCacaos()
         {
             InitializeComponent();
         }

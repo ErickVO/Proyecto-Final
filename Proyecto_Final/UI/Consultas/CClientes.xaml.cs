@@ -18,9 +18,9 @@ namespace Proyecto_Final.UI.Consultas
     /// <summary>
     /// Interaction logic for CClientes.xaml
     /// </summary>
-    public partial class CClientes : Window
+    public partial class cClientes : Window
     {
-        public CClientes()
+        public cClientes()
         {
             InitializeComponent();
         }

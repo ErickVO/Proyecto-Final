@@ -19,13 +19,13 @@ namespace Proyecto_Final.UI.Registros
     /// <summary>
     /// Interaction logic for RVentas.xaml
     /// </summary>
-    public partial class RVentas : Window
+    public partial class rVentas : Window
     {
         ContenedorVentas contenedor = new ContenedorVentas();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
         List<int> ClientesId = new List<int>();
-        public RVentas(int usuarioId, string usuarioNombre)
+        public rVentas(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -296,7 +296,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            CVentas cVentas = new CVentas();
+            cVentas cVentas = new cVentas();
             cVentas.Show();
         }
 

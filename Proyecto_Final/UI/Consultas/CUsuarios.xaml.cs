@@ -18,9 +18,9 @@ namespace Proyecto_Final.UI.Consultas
     /// <summary>
     /// Interaction logic for CUsuarios.xaml
     /// </summary>
-    public partial class CUsuarios : Window
+    public partial class cUsuarios : Window
     {
-        public CUsuarios()
+        public cUsuarios()
         {
             InitializeComponent();
         }

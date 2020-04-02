@@ -18,13 +18,13 @@ namespace Proyecto_Final.UI.Registros
     /// <summary>
     /// Interaction logic for RCacaos.xaml
     /// </summary>
-    public partial class RCacaos : Window
+    public partial class rCacaos : Window
     {
         Cacaos cacao = new Cacaos();
         int UsuarioId = 0;
         string UsuarioNombre = string.Empty;
 
-        public RCacaos(int usuarioId, string usuarioNombre)
+        public rCacaos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -111,7 +111,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void ConsultarCacaosButton_Click(object sender, RoutedEventArgs e)
         {
-            CCacaos cCacaos = new CCacaos();
+            cCacaos cCacaos = new cCacaos();
             cCacaos.Show();
         }
 

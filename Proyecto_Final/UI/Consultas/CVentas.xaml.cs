@@ -18,9 +18,9 @@ namespace Proyecto_Final.UI.Consultas
     /// <summary>
     /// Interaction logic for CVentas.xaml
     /// </summary>
-    public partial class CVentas : Window
+    public partial class cVentas : Window
     {
-        public CVentas()
+        public cVentas()
         {
             InitializeComponent();
         }

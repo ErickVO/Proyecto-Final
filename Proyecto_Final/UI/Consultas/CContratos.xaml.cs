@@ -18,9 +18,9 @@ namespace Proyecto_Final.UI.Consultas
     /// <summary>
     /// Interaction logic for CContratos.xaml
     /// </summary>
-    public partial class CContratos : Window
+    public partial class cContratos : Window
     {
-        public CContratos()
+        public cContratos()
         {
             InitializeComponent();
         }

@@ -18,12 +18,12 @@ namespace Proyecto_Final.UI.Registros
     /// <summary>
     /// Interaction logic for RSuplidores.xaml
     /// </summary>
-    public partial class RSuplidores : Window
+    public partial class rSuplidores : Window
     {
         Suplidores suplidor = new Suplidores();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
-        public RSuplidores(int usuarioId, string usuarioNombre)
+        public rSuplidores(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -131,7 +131,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            CSuplidores cSuplidores = new CSuplidores();
+            cSuplidores cSuplidores = new cSuplidores();
             cSuplidores.Show();
         }
 

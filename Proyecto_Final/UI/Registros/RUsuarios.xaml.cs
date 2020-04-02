@@ -18,12 +18,12 @@ namespace Proyecto_Final.UI.Registros
     /// <summary>
     /// Interaction logic for RUsuarios.xaml
     /// </summary>
-    public partial class RUsuarios : Window
+    public partial class rUsuarios : Window
     {
         Usuarios usuario = new Usuarios();
         int UsuarioId = 0;
         string UsuarioNombre = string.Empty;
-        public RUsuarios(int usuarioId, string usuarioNombre)
+        public rUsuarios(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -103,7 +103,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void ConsultarUsuariosButton_Click(object sender, RoutedEventArgs e)
         {
-            CUsuarios cUsuarios = new CUsuarios();
+            cUsuarios cUsuarios = new cUsuarios();
             cUsuarios.Show();
         }
 

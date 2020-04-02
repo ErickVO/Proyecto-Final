@@ -19,13 +19,13 @@ namespace Proyecto_Final.UI.Registros
     /// <summary>
     /// Interaction logic for RPagos.xaml
     /// </summary>
-    public partial class RPagos : Window
+    public partial class rPagos : Window
     {
         ContenedorPagos contenedor = new ContenedorPagos();
         int UsuarioId = 0;
         string UsuarioNombre = string.Empty;
         List<int> ClientesId = new List<int>();
-        public RPagos(int usuarioId, string usuarioNombre)
+        public rPagos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -186,7 +186,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void ConsultarPagosButton_Click(object sender, RoutedEventArgs e)
         {
-            CPagos cPagos = new CPagos();
+            cPagos cPagos = new cPagos();
             cPagos.Show();
         }
 

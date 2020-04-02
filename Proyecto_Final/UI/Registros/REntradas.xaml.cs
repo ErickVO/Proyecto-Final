@@ -18,14 +18,14 @@ namespace Proyecto_Final.UI.Registros
     /// <summary>
     /// Interaction logic for REntradas.xaml
     /// </summary>
-    public partial class REntradas : Window
+    public partial class rEntradas : Window
     {
         Entradas entrada = new Entradas();
         private int UsuarioId { get; set; }
         private string UsuarioNombre { get; set; }
         List<int> SuplidoresId = new List<int>();
         List<int> CacaosId = new List<int>();
-        public REntradas(int usuarioId, string usuarioNombre)
+        public rEntradas(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -198,7 +198,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void ConsultarEntradasButton_Click(object sender, RoutedEventArgs e)
         {
-            CEntradas cEntradas = new CEntradas();
+            cEntradas cEntradas = new cEntradas();
             cEntradas.Show();
         }
 
