@@ -57,6 +57,9 @@ namespace Proyecto_Final.UI.Consultas
                     case 4://Direccion
                         Listado = SuplidoresBLL.GetList(s => s.Direccion.Contains(CriterioTextBox.Text));
                         break;
+                    case 5:
+                        Listado = SuplidoresBLL.GetList(s => s.Email.Contains(CriterioTextBox.Text));
+                        break;
                 }
                 if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
                     Listado = Listado.Where(s => s.Fecha.Date >= DesdeDatePicker.SelectedDate.Value && s.Fecha.Date <= HastaDatePicker.SelectedDate.Value).ToList();

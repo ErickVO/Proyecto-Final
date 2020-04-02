@@ -106,7 +106,7 @@ namespace Proyecto_Final.UI.Registros
                 return;
             }
 
-            if(contenedor.ventas.VentaId == 0)
+            if (contenedor.ventas.VentaId == 0)
                 contenedor.ventas.UsuarioId = UsuarioId;
 
             contenedor.ventas.ClienteId = ClientesId[ClientesComboBox.SelectedIndex];
@@ -142,7 +142,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void llenarVentaDetalle()
         {
-            foreach(var item in contenedor.listaVentas)
+            foreach (var item in contenedor.listaVentas)
             {
                 contenedor.ventas.VentaDetalle.Add(new VentasDetalle(item.VentaId, item.ContratoId, item.Cantidad, item.Importe));
             }
@@ -222,13 +222,13 @@ namespace Proyecto_Final.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            if(contenedor.ventasDetalle.Cantidad > Convert.ToDecimal(CantidadPendienteLabel.Content))
+            if (contenedor.ventasDetalle.Cantidad > Convert.ToDecimal(CantidadPendienteLabel.Content))
             {
                 MessageBox.Show("Ha excedido la cantidad disponible");
                 return;
             }
 
-            if(ContratoIdComboBox.SelectedIndex < 0)
+            if (ContratoIdComboBox.SelectedIndex < 0)
             {
                 MessageBox.Show("Debe seleccionar un contrato");
                 return;
@@ -255,7 +255,7 @@ namespace Proyecto_Final.UI.Registros
             decimal balance = 0.0m;
             decimal cantidad = 0.0m;
 
-            foreach(var item in contenedor.listaVentas)
+            foreach (var item in contenedor.listaVentas)
             {
                 item.Total = item.Cantidad * item.Importe;
                 total += item.Total;
@@ -265,7 +265,7 @@ namespace Proyecto_Final.UI.Registros
 
             if (contenedor.ventas.VentaId > 0)
             {
-                if(PagosBLL.ExistePago())
+                if (PagosBLL.ExistePago())
                 {
                     Pagos pagos = PagosBLL.PagoDeVenta(contenedor.ventas.VentaId);
                     balance -= pagos.Total;
@@ -328,7 +328,7 @@ namespace Proyecto_Final.UI.Registros
 
             Contratos contrato = ContratosBLL.Buscar(Convert.ToInt32(ContratoIdComboBox.SelectedItem));
 
-            if(contenedor.ventas.VentaId == 0)
+            if (contenedor.ventas.VentaId == 0)
                 CantidadPendienteLabel.Content = Convert.ToString(contrato.CantidadPendiente);
 
             CantidadTextBox.IsEnabled = true;

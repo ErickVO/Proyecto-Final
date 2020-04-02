@@ -102,7 +102,7 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            if(contrato.ContratoId == 0)
+            if (contrato.ContratoId == 0)
                 contrato.UsuarioId = UsuarioId;
 
             if (ClienteIdComboBox.SelectedIndex < 0)

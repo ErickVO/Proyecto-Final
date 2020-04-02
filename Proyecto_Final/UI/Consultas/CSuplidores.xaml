@@ -42,6 +42,7 @@
                 <ComboBoxItem Content="Nombres"/>
                 <ComboBoxItem Content="Cedula"/>
                 <ComboBoxItem Content="Dirección"/>
+                <ComboBoxItem Content="Email"/>
             </ComboBox>
         </StackPanel>
 

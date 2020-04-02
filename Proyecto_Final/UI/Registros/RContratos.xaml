@@ -131,7 +131,7 @@
         <StackPanel Grid.Row="13" Grid.Column="3">
             <Label x:Name="PrecioLabel" FontSize="16" Content="{Binding Path=Precio, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="15" Grid.Column="1">
             <Label Content="Total:" FontSize="16"/>
         </StackPanel>
@@ -257,6 +257,6 @@
                 </Button.Style>
             </Button>
         </StackPanel>
-        
+
     </Grid>
 </Window>

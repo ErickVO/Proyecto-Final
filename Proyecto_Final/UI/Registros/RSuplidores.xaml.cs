@@ -65,7 +65,7 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            if(suplidor.SuplidorId == 0)
+            if (suplidor.SuplidorId == 0)
                 suplidor.UsuarioId = UsuarioId;
 
             if (SuplidorIdTextBox.Text == "0")
@@ -97,7 +97,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if(suplidor.SuplidorId == 0)
+            if (suplidor.SuplidorId == 0)
             {
                 MessageBox.Show("No se puede eliminar el 0");
                 return;

@@ -103,7 +103,7 @@ namespace Proyecto_Final.UI.Registros
         {
             bool paso = false;
 
-            if(entrada.EntradaId == 0)
+            if (entrada.EntradaId == 0)
                 entrada.UsuarioId = UsuarioId;
 
             if (SuplidorIdComboBox.SelectedIndex < 0)
@@ -183,7 +183,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void obtenerListado()
         {
-            for(int i = 0; i < SuplidoresId.Count; i++)
+            for (int i = 0; i < SuplidoresId.Count; i++)
             {
                 if (SuplidoresId[i] == entrada.SuplidorId)
                     SuplidorIdComboBox.SelectedIndex = i;

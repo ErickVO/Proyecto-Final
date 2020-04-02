@@ -38,7 +38,9 @@
             <Label Content="Filtro" FontSize="15" Background="#FFDED3D3"/>
             <ComboBox SelectedIndex="0" x:Name="FiltroComboBox" Width="150" FontSize="15">
                 <ComboBoxItem Content="Todo"/>
-                <ComboBoxItem Content="Id"/>
+                <ComboBoxItem Content="ContratoId"/>
+                <ComboBoxItem Content="ClienteId"/>
+                <ComboBoxItem Content="CacaoId"/>
             </ComboBox>
         </StackPanel>
 

@@ -36,11 +36,35 @@ namespace Proyecto_Final.UI.Consultas
                     case 0://Todo
                         Listado = ContratosBLL.GetList(c => true);
                         break;
-                    case 1://Id
+                    case 1://ContratoId
                         try
                         {
                             int id = Convert.ToInt32(CriterioTextBox.Text);
                             Listado = ContratosBLL.GetList(c => c.ContratoId == id);
+                            MessageBox.Show("ID");
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
+                    case 2://ClienteId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = ContratosBLL.GetList(c => c.ClienteId == id);
+                            MessageBox.Show("ID");
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
+                    case 3://CacaoId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = ContratosBLL.GetList(c => c.CacaoId == id);
                             MessageBox.Show("ID");
                         }
                         catch (FormatException)

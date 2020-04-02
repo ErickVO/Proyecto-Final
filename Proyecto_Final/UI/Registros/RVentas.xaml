@@ -119,7 +119,7 @@
         <StackPanel Grid.Row="13" Grid.Column="3">
             <Label x:Name="CantidadPendienteLabel" FontSize="16"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="15" Grid.Column="1">
             <Label Content="Cantidad:" FontSize="16"/>
         </StackPanel>
