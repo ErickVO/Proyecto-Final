@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
-        Title="                                                                                                   Registro de Usuarios" Height="450" Width="800">
+        Title="                                                                                                   Registro de Usuarios" Height="550" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -191,6 +191,6 @@
         <Label x:Name="ModificacionLabel" Grid.Row="17" Grid.Column="5" FontSize="16" Content="{Binding Path=FechaModificacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
         <Label Content="Creado por: " Grid.Row="15" Grid.Column="1" FontSize="16"/>
-        <Label x:Name="UsuarioLabel" Grid.Row="13" Grid.Column="3" FontSize="16"/>
+        <Label x:Name="UsuarioLabel" Grid.Row="15" Grid.Column="3" FontSize="16"/>
     </Grid>
 </Window>

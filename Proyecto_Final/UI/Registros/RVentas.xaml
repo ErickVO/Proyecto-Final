@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
-        Title="                                                                                                    Registro de Ventas" Height="450" Width="800">
+        Title="                                                                                                    Registro de Ventas" Height="550" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -36,8 +36,8 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
             <RowDefinition Height="7*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="7*"/>
@@ -137,7 +137,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="17" Grid.RowSpan="3"  Grid.Column="1" Grid.ColumnSpan="3">
-            <DataGrid Style="{StaticResource DataGridStyle}" x:Name="VentasDataGrid" Height="66">
+            <DataGrid Style="{StaticResource DataGridStyle}" x:Name="VentasDataGrid" Height="97">
                 <DataGrid.ItemsSource>
                     <Binding Path="listaVentas" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>

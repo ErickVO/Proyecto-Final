@@ -27,6 +27,7 @@ namespace Proyecto_Final.UI.Menu
             InitializeComponent();
             UsuarioId = usuarioId;
             UsuarioNombre = usuarioNombre;
+            UsuarioTextBlock.Text = "Usuario: " + usuarioNombre;
         }
 
         //Registros

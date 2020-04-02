@@ -15,8 +15,11 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="10"/>
+            
         </Grid.RowDefinitions>
 
         <StackPanel>
@@ -44,6 +47,8 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        
+        <TextBlock x:Name="UsuarioTextBlock" FontSize="18" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Background="White"/>
+
+
     </Grid>
 </Window>

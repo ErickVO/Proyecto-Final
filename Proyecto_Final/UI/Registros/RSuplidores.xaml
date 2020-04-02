@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Proyecto_Final.UI.Registros"
         xmlns:src="clr-namespace:Proyecto_Final.Validaciones"
         mc:Ignorable="d"
-        Title="                                                                                                   Registro de Suplidores" Height="450" Width="800">
+        Title="                                                                                                   Registro de Suplidores" Height="550" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
