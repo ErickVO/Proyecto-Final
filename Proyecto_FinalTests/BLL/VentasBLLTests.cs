@@ -7,7 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    /*[TestClass()]
+    [TestClass()]
     public class VentasBLLTests
     {
         [TestMethod()]
@@ -17,10 +17,15 @@ namespace Proyecto_Final.BLL.Tests
 
             Ventas v = new Ventas();
             
-            v.VentaId = 0;
-            v.UsuarioId = 1;
+            v.VentaId = 1;
             v.Fecha = DateTime.Now;
-            v.VentaDetalle.Add(new VentasDetalle(v.VentaId, 1, 500));
+            v.ClienteId = 1;
+            v.Total = 100;
+            v.Balance = 100;
+            v.FechaCreacion = DateTime.Now;
+            v.FechaModificacion = DateTime.Now;
+            v.UsuarioId = 1;
+            v.VentaDetalle.Add(new VentasDetalle(v.VentaId, 1, 500, 3000));
 
             paso = VentasBLL.Guardar(v);
 
@@ -35,9 +40,14 @@ namespace Proyecto_Final.BLL.Tests
             Ventas v = new Ventas();
 
             v.VentaId = 0;
-            v.UsuarioId = 1;
             v.Fecha = DateTime.Now;
-            v.VentaDetalle.Add(new VentasDetalle(v.VentaId, 1, 100));
+            v.ClienteId = 1;
+            v.Total = 1000;
+            v.Balance = 100;
+            v.FechaCreacion = DateTime.Now;
+            v.FechaModificacion = DateTime.Now;
+            v.UsuarioId = 1;
+            v.VentaDetalle.Add(new VentasDetalle(v.VentaId, 1, 500, 3000));
 
             paso = VentasBLL.Modificar(v);
 
@@ -70,18 +80,13 @@ namespace Proyecto_Final.BLL.Tests
         }
 
         [TestMethod()]
-        public void BuscarCantidadTotalTest()
+        public void ExisteVentaTest()
         {
-            bool paso = false;
-            decimal cantidad = 0;
-            Contratos contratos = ContratosBLL.Buscar(1);
+            bool paso;
 
-            cantidad = VentasBLL.BuscarCantidadTotal(contratos.ContratoId);
+            paso = VentasBLL.ExisteVenta();
 
-            if (contratos.CantidadTotal == cantidad)
-                paso = true;
-
-            Assert.AreEqual(paso, true);
+            Assert.IsTrue(paso);
         }
 
         [TestMethod()]
@@ -95,5 +100,24 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.AreEqual(paso, true);
         }
-    }*/
+
+        [TestMethod()]
+        public void RestarBalanceTest()
+        {
+            bool paso = false;
+
+            decimal balance;
+
+            Ventas v = VentasBLL.Buscar(1);
+
+            balance = v.Balance;
+
+            VentasBLL.RestarBalance(v.VentaId, 300);
+
+            if (balance < v.Balance)
+                paso = true;
+
+            Assert.IsTrue(paso);
+        }
+    }
 }

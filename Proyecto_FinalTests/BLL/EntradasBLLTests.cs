@@ -16,10 +16,15 @@ namespace Proyecto_Final.BLL.Tests
             bool paso;
             Entradas e = new Entradas();
             e.EntradaId = 0;
-            e.SuplidorId = 1;
-            e.UsuarioId = 1;
-            e.Cantidad = 500;
             e.Fecha = DateTime.Now;
+            e.SuplidorId = 1;
+            e.CacaoId = 1;
+            e.Cantidad = 500;
+            e.Total = 500; 
+            e.FechaCreacion = DateTime.Now;
+            e.FechaModificacion = DateTime.Now;
+            e.UsuarioId = 1;
+
             paso = EntradasBLL.Guardar(e);
 
             Assert.AreEqual(paso, true);
@@ -30,11 +35,15 @@ namespace Proyecto_Final.BLL.Tests
         {
             bool paso;
             Entradas e = new Entradas();
-            e.EntradaId = 2;
-            e.SuplidorId = 1;
-            e.UsuarioId = 1;
-            e.Cantidad = 500;
+            e.EntradaId = 0;
             e.Fecha = DateTime.Now;
+            e.SuplidorId = 1;
+            e.CacaoId = 1;
+            e.Cantidad = 500;
+            e.Total = 600;
+            e.FechaCreacion = DateTime.Now;
+            e.FechaModificacion = DateTime.Now;
+            e.UsuarioId = 1;
             paso = EntradasBLL.Modificar(e);
 
             Assert.AreEqual(paso, true);
@@ -64,6 +73,16 @@ namespace Proyecto_Final.BLL.Tests
             var listado = new List<Entradas>();
             listado = EntradasBLL.GetList(e => true);
             Assert.AreEqual(listado, listado);
+        }
+
+        [TestMethod()]
+        public void ExisteEntradaTest()
+        {
+            bool paso;
+
+            paso = EntradasBLL.ExisteEntrada();
+
+            Assert.IsTrue(paso);
         }
     }
 }
