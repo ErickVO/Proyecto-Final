@@ -35,6 +35,8 @@ namespace Proyecto_Final.UI.Registros
             FechaModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
             VentaIdTextBox.Text = "0";
             obtenerClientes();
+            ContratoIdComboBox.IsEnabled = false;
+            CantidadTextBox.IsEnabled = false;
             this.DataContext = contenedor;
         }
 
@@ -46,6 +48,16 @@ namespace Proyecto_Final.UI.Registros
             {
                 ClientesComboBox.Items.Add(item.Nombres);
                 ClientesId.Add(item.ClienteId);
+            }
+        }
+
+        private void obtenerContratos(int id)
+        {
+            List<Contratos> contratos = ContratosBLL.GetList(c => c.ClienteId == id);
+
+            foreach (var item in contratos)
+            {
+                ContratoIdComboBox.Items.Add(item.ContratoId);
             }
         }
 
@@ -189,7 +201,11 @@ namespace Proyecto_Final.UI.Registros
             }
 
             contenedor.listaVentas.Add(new ListaVentas(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdComboBox.SelectedItem), contenedor.ventasDetalle.Cantidad, obtenerPrecio()));
-            //continuar
+            calcularVenta();
+            Recargar();
+
+            CantidadTextBox.Clear();
+            CantidadTextBox.Focus();
         }
 
         private decimal obtenerPrecio()
@@ -199,29 +215,47 @@ namespace Proyecto_Final.UI.Registros
             return contrato.Precio;
         }
 
-        private void RemoverButton_Click(object sender, RoutedEventArgs e)
+        private void calcularVenta()
         {
-           // if (VentasDataGrid.Items.Count > 1 && VentasDataGrid.SelectedIndex < VentasDataGrid.Items.Count - 1)
+            decimal total = 0.0m;
+            decimal balance = 0.0m;
+            decimal cantidad = 0.0m;
+
+            foreach(var item in contenedor.listaVentas)
             {
-                //guardar los valores para realizar el calculo sin problemas
-                //revisar
-                /*decimal cantidadEliminar = contenedor.ventas.VentaDetalle[VentasDataGrid.SelectedIndex].CantidadCacao;
-                decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);*/
-
-             //   contenedor.ventas.VentaDetalle.RemoveAt(VentasDataGrid.SelectedIndex);
-                Recargar();
-
-                //aumentar la cantidad disponible por el valor que se elimina
-                //revisar
-                /*cantidadDisponible += cantidadEliminar;
-                CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);*/
-
-              //  CantidadCacaoTextBox.Clear();
-              //  CantidadCacaoTextBox.Focus();
+                item.Total = item.Cantidad * item.Importe;
+                total += item.Total;
+                balance += item.Total;
+                cantidad += item.Cantidad;
             }
 
-            //if (VentasDataGrid.Items.Count == 1)
-             //   ContratoIdTextBox.IsEnabled = true;
+            if (contenedor.ventas.VentaId > 0)
+            {
+                Pagos pagos = PagosBLL.PagoDeVenta(contenedor.ventas.VentaId);
+                balance -= pagos.Total;
+            }
+
+            Contratos contrato = ContratosBLL.Buscar(Convert.ToInt32(ContratoIdComboBox.SelectedItem));
+
+            BalanceLabel.Content = Convert.ToString(balance);
+            TotalLabel.Content = Convert.ToString(total);
+            CantidadPendienteLabel.Content = Convert.ToString(contrato.Cantidad - cantidad);
+        }
+
+        private void RemoverButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (VentasDataGrid.Items.Count > 1 && VentasDataGrid.SelectedIndex < VentasDataGrid.Items.Count - 1)
+            {
+                contenedor.listaVentas.RemoveAt(VentasDataGrid.SelectedIndex);
+                calcularVenta();
+                Recargar();
+
+                CantidadTextBox.Clear();
+                CantidadTextBox.Focus();
+            }
+
+            if (VentasDataGrid.Items.Count == 1)
+                ClientesComboBox.IsEnabled = true;
         }
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
@@ -230,58 +264,36 @@ namespace Proyecto_Final.UI.Registros
             cVentas.Show();
         }
 
-        private void ConsultarContratosButton_Click(object sender, RoutedEventArgs e)
+        private void ClientesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CContratos cContratos = new CContratos();
-            cContratos.Show();
+            if (ClientesComboBox.SelectedIndex < 0)
+            {
+                ContratoIdComboBox.IsEnabled = false;
+                return;
+            }
+
+            ContratoIdComboBox.IsEnabled = true;
+
+            VentasDataGrid.ItemsSource = new List<ListaVentas>();
+
+            obtenerContratos(ClientesId[ClientesComboBox.SelectedIndex]);
+
+            Recargar();
         }
 
-        private void ContratoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ContratoIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           // if (!string.IsNullOrWhiteSpace(ContratoIdTextBox.Text))
+            if (ContratoIdComboBox.SelectedIndex < 0)
             {
-             //   AgregarButton.IsEnabled = true;
-                //int contratoId;
-                Contratos contrato = new Contratos();
-              //  int.TryParse(ContratoIdTextBox.Text, out contratoId);
-
-               // contrato = ContratosBLL.Buscar(contratoId);
-                if (contrato != null)
-                {
-                    //revisar
-                    //CantidadAcordadaTextBox.Text = Convert.ToString(VentasBLL.BuscarCantidadTotal(contratoId));
-
-                    int ventaId;
-                    int.TryParse(VentaIdTextBox.Text, out ventaId);
-
-                    //si la venta es nueva, la cantidad disponible sera igual a la del contrato
-                    //sino sera igual a la que este guardada
-
-                    //revisar
-                    /*if(ventaId > 0)
-                        CantidadDisponibleTextBox.Text = Convert.ToString(contenedor.ventas.CantidadDisponible);
-                    else
-                        CantidadDisponibleTextBox.Text = Convert.ToString(CantidadAcordadaTextBox.Text);*/
-                }
-                else
-                {
-             //       CantidadAcordadaTextBox.Text = "No existe Tal Contrato";
-               //     CantidadDisponibleTextBox.Text= "No existe Tal Contrato";
-                 //   AgregarButton.IsEnabled = false;
-                }
+                CantidadTextBox.IsEnabled = false;
+                return;
             }
-        }
 
-        private void calcularDisponible(List<VentasDetalle> lista)
-        {
-            //resta todos los elementos del datagrid a la cantidad disponible
-           // decimal cantidadDisponible = Convert.ToDecimal(CantidadDisponibleTextBox.Text);
-            foreach (var item in lista)
-            {
-                //revisar
-                //cantidadDisponible -= item.CantidadCacao;
-            }
-            //CantidadDisponibleTextBox.Text = Convert.ToString(cantidadDisponible);
+            CantidadTextBox.IsEnabled = true;
+
+            VentasDataGrid.ItemsSource = new List<ListaVentas>();
+
+            Recargar();
         }
     }
 }

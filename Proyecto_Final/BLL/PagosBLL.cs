@@ -122,5 +122,25 @@ namespace Proyecto_Final.BLL
             }
             return Lista;
         }
+
+        public static Pagos PagoDeVenta(int id)
+        {
+            Pagos pago = new Pagos();
+            Contexto db = new Contexto();
+
+            try
+            {
+                pago = db.Pagos.Include(p => p.PagoDetalle).Where(p => p.PagoDetalle[0].VentaId == id).SingleOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return pago;
+        }
     }
 }
