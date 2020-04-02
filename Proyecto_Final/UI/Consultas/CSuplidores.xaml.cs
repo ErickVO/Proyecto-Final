@@ -18,9 +18,9 @@ namespace Proyecto_Final.UI.Consultas
     /// <summary>
     /// Interaction logic for CSuplidores.xaml
     /// </summary>
-    public partial class CSuplidores : Window
+    public partial class cSuplidores : Window
     {
-        public CSuplidores()
+        public cSuplidores()
         {
             InitializeComponent();
         }

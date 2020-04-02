@@ -7,7 +7,6 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    /*
     [TestClass()]
     public class ContratosBLLTests
     {
@@ -18,11 +17,15 @@ namespace Proyecto_Final.BLL.Tests
 
             Contratos c = new Contratos();
             c.ContratoId = 1;
-            c.UsuarioId = 1;
+            c.Fecha = DateTime.Now;
             c.ClienteId = 1;
+            c.FechaVencimiento = Convert.ToDateTime("28/04/2020");
+            c.CacaoId = 1;
+            c.Cantidad = 500;
+            c.Precio = 300;
             c.FechaCreacion = DateTime.Now;
-            c.FechaVencimiento = Convert.ToDateTime("04/28/2020");
-            c.CantidadTotal = 500;
+            c.FechaModificacion = DateTime.Now;
+            c.UsuarioId = 1;
 
             paso = ContratosBLL.Guardar(c);
 
@@ -36,13 +39,15 @@ namespace Proyecto_Final.BLL.Tests
 
             Contratos c = new Contratos();
             c.ContratoId = 1;
-            c.UsuarioId = 1;
+            c.Fecha = DateTime.Now;
             c.ClienteId = 1;
-            c.FechaCreacion = DateTime.Now;
             c.FechaVencimiento = Convert.ToDateTime("27/04/2020");
-            c.CantidadTotal = 400;
-
-            paso = ContratosBLL.Modificar(c);
+            c.CacaoId = 1;
+            c.Cantidad = 500;
+            c.Precio = 300;
+            c.FechaCreacion = DateTime.Now;
+            c.FechaModificacion = DateTime.Now;
+            c.UsuarioId = 1;
 
             Assert.IsTrue(paso);
         }
@@ -73,14 +78,32 @@ namespace Proyecto_Final.BLL.Tests
         }
 
         [TestMethod()]
-        public void verificarPagoTest()
+        public void ExisteContratoTest()
+        {
+            bool paso;
+
+            paso = ContratosBLL.ExisteContrato();
+
+            Assert.IsTrue(paso);
+        }
+
+        [TestMethod()]
+        public void RestarCantidadTest()
         {
             bool paso = false;
-            Clientes clientes = ClientesBLL.Buscar(1);
 
-            paso = ContratosBLL.verificarPago(clientes.ClienteId, 500);
+            decimal cantidad;
 
-            Assert.AreEqual(paso, true);
+            Contratos c = ContratosBLL.Buscar(1);
+
+            cantidad = c.CantidadPendiente;
+
+            ContratosBLL.RestarCantidad(c.ContratoId, cantidad);
+
+            if (cantidad > c.CantidadPendiente)
+                paso = true;
+
+            Assert.IsTrue(paso);
         }
-    }*/
+    }
 }

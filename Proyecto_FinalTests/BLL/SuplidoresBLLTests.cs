@@ -7,7 +7,7 @@ using Proyecto_Final.Entidades;
 
 namespace Proyecto_Final.BLL.Tests
 {
-    /*[TestClass()]
+    [TestClass()]
     public class SuplidoresBLLTests
     {
         [TestMethod()]
@@ -16,12 +16,16 @@ namespace Proyecto_Final.BLL.Tests
             bool paso;
             Suplidores s = new Suplidores();
             s.SuplidorId = 0;
-            s.UsuarioId = 1;
-            s.Nombres = "Luis David";
-            s.Telefono = " 829566 ";
-            s.Cedula = " 056 ";
-            s.Direccion = " Duarte ";
             s.Fecha = DateTime.Now;
+            s.Nombres = "Luis David";
+            s.Direccion = " Duarte ";
+            s.Email = "ag@dn.com";
+            s.Telefono = " 829566 ";
+            s.Celular = "33333333";
+            s.Cedula = " 056 ";
+            s.FechaCreacion = DateTime.Now;
+            s.FechaModificacion = DateTime.Now;
+            s.UsuarioId = 1;
             paso = SuplidoresBLL.Guardar(s);
 
             Assert.AreEqual(paso, true);
@@ -31,15 +35,21 @@ namespace Proyecto_Final.BLL.Tests
         public void ModificarTest()
         {
             bool paso;
+
             Suplidores s = new Suplidores();
-            s.SuplidorId = 2;
-            s.UsuarioId = 1;
-            s.Nombres = "Luis David Sanchez";
-            s.Telefono = " 829566 ";
-            s.Cedula = " 056 ";
-            s.Direccion = " Duarte ";
+            s.SuplidorId = 0;
             s.Fecha = DateTime.Now;
-            paso = SuplidoresBLL.Guardar(s);
+            s.Nombres = "Luis David";
+            s.Direccion = " Duarte ";
+            s.Email = "Klk@outlook.com";
+            s.Telefono = " 829566 ";
+            s.Celular = "33333333";
+            s.Cedula = " 056 ";
+            s.FechaCreacion = DateTime.Now;
+            s.FechaModificacion = DateTime.Now;
+            s.UsuarioId = 1;
+
+            paso = SuplidoresBLL.Modificar(s);
 
             Assert.AreEqual(paso, true);
         }
@@ -69,5 +79,15 @@ namespace Proyecto_Final.BLL.Tests
             listado = SuplidoresBLL.GetList(s => true);
             Assert.AreEqual(listado, listado);
         }
-    }*/
+
+        [TestMethod()]
+        public void ExisteSuplidorTest()
+        {
+            bool paso;
+
+            paso = SuplidoresBLL.ExisteSuplidor();
+
+            Assert.IsTrue(paso);
+        }
+    }
 }

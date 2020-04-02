@@ -40,7 +40,7 @@ namespace Proyecto_Final
 
             if (UsuariosBLL.Existe(UsuarioTextBox.Text,ClavePasswordBox.Password))
             {
-                MenuPrincipal menuPrincipal = new MenuPrincipal(UsuariosBLL.ObtenerId(UsuarioTextBox.Text, ClavePasswordBox.Password),UsuarioTextBox.Text);
+                menuPrincipal menuPrincipal = new menuPrincipal(UsuariosBLL.ObtenerId(UsuarioTextBox.Text, ClavePasswordBox.Password),UsuarioTextBox.Text);
                 menuPrincipal.Show();
                 this.Close();
             }

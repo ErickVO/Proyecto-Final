@@ -18,11 +18,11 @@ namespace Proyecto_Final.UI.Menu
     /// <summary>
     /// Interaction logic for MenuPrincipal.xaml
     /// </summary>
-    public partial class MenuPrincipal : Window
+    public partial class menuPrincipal : Window
     {
         int UsuarioId = 0;
         string UsuarioNombre = string.Empty;
-        public MenuPrincipal(int usuarioId, string usuarioNombre)
+        public menuPrincipal(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -34,13 +34,13 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarCacaoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RCacaos rCacaos = new RCacaos(UsuarioId,UsuarioNombre);
+            rCacaos rCacaos = new rCacaos(UsuarioId,UsuarioNombre);
             rCacaos.Show();
         }
 
         private void RegistrarClienteMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RClientes rClientes = new RClientes(UsuarioId, UsuarioNombre);
+            rClientes rClientes = new rClientes(UsuarioId, UsuarioNombre);
             rClientes.Show();
         }
 
@@ -48,7 +48,7 @@ namespace Proyecto_Final.UI.Menu
         {
             if (ClientesBLL.ExisteCliente() && EntradasBLL.ExisteEntrada())
             {
-                RContratos rContratos = new RContratos(UsuarioId, UsuarioNombre);
+                rContratos rContratos = new rContratos(UsuarioId, UsuarioNombre);
                 rContratos.Show();
             }
             else
@@ -59,7 +59,7 @@ namespace Proyecto_Final.UI.Menu
         {
             if(SuplidoresBLL.ExisteSuplidor() && CacaosBLL.ExisteCacao())
             {
-                REntradas rEntradas = new REntradas(UsuarioId, UsuarioNombre);
+                rEntradas rEntradas = new rEntradas(UsuarioId, UsuarioNombre);
                 rEntradas.Show();
             }
             else
@@ -70,7 +70,7 @@ namespace Proyecto_Final.UI.Menu
         {
             if (VentasBLL.ExisteVenta())
             {
-                RPagos rPagos = new RPagos(UsuarioId, UsuarioNombre);
+                rPagos rPagos = new rPagos(UsuarioId, UsuarioNombre);
                 rPagos.Show();
             }
             else
@@ -79,13 +79,13 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarSuplidorMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RSuplidores rSuplidores = new RSuplidores(UsuarioId, UsuarioNombre);
+            rSuplidores rSuplidores = new rSuplidores(UsuarioId, UsuarioNombre);
             rSuplidores.Show();
         }
 
         private void RegistrarUsuarioMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            RUsuarios rUsuarios = new RUsuarios(UsuarioId, UsuarioNombre);
+            rUsuarios rUsuarios = new rUsuarios(UsuarioId, UsuarioNombre);
             rUsuarios.Show();
         }
 
@@ -93,7 +93,7 @@ namespace Proyecto_Final.UI.Menu
         {
             if (ContratosBLL.ExisteContrato())
             {
-                RVentas rVentas = new RVentas(UsuarioId, UsuarioNombre);
+                rVentas rVentas = new rVentas(UsuarioId, UsuarioNombre);
                 rVentas.Show();
             }
             else
@@ -104,49 +104,49 @@ namespace Proyecto_Final.UI.Menu
 
         private void ConsultarCacaosMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CCacaos cCacaos = new CCacaos();
+            cCacaos cCacaos = new cCacaos();
             cCacaos.Show();
         }
 
         private void ConsultarClientesMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CClientes cClientes = new CClientes();
+            cClientes cClientes = new cClientes();
             cClientes.Show();
         }
 
         private void ConsultarContratosMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CContratos cContratos = new CContratos();
+            cContratos cContratos = new cContratos();
             cContratos.Show();
         }
 
         private void ConsultarEntradasMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CEntradas cEntradas = new CEntradas();
+            cEntradas cEntradas = new cEntradas();
             cEntradas.Show();
         }
 
         private void ConsultarPagosMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CPagos cPagos = new CPagos();
+            cPagos cPagos = new cPagos();
             cPagos.Show();
         }
 
         private void ConsultarSuplidoresMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CSuplidores cSuplidores = new CSuplidores();
+            cSuplidores cSuplidores = new cSuplidores();
             cSuplidores.Show();
         }
 
         private void ConsultarUsuariosMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CUsuarios cUsuarios = new CUsuarios();
+            cUsuarios cUsuarios = new cUsuarios();
             cUsuarios.Show();
         }
 
         private void ConsultarVentasMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CVentas cVentas = new CVentas();
+            cVentas cVentas = new cVentas();
             cVentas.Show();
         }
     }

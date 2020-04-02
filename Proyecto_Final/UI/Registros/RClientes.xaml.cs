@@ -18,12 +18,12 @@ namespace Proyecto_Final.UI.Registros
     /// <summary>
     /// Interaction logic for RClientes.xaml
     /// </summary>
-    public partial class RClientes : Window
+    public partial class rClientes : Window
     {
         Clientes cliente = new Clientes();
         int UsuarioId = 0;
         string UsuarioNombre = string.Empty;
-        public RClientes(int usuarioId, string usuarioNombre)
+        public rClientes(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -102,7 +102,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void ConsultarClientesButton_Click(object sender, RoutedEventArgs e)
         {
-            CClientes cClientes = new CClientes();
+            cClientes cClientes = new cClientes();
             cClientes.Show();
         }
 

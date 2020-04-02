@@ -18,9 +18,9 @@ namespace Proyecto_Final.UI.Consultas
     /// <summary>
     /// Interaction logic for CPagos.xaml
     /// </summary>
-    public partial class CPagos : Window
+    public partial class cPagos : Window
     {
-        public CPagos()
+        public cPagos()
         {
             InitializeComponent();
         }

@@ -18,9 +18,9 @@ namespace Proyecto_Final.UI.Consultas
     /// <summary>
     /// Interaction logic for CEntradas.xaml
     /// </summary>
-    public partial class CEntradas : Window
+    public partial class cEntradas : Window
     {
-        public CEntradas()
+        public cEntradas()
         {
             InitializeComponent();
         }

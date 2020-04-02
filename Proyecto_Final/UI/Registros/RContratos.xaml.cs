@@ -18,7 +18,7 @@ namespace Proyecto_Final.UI.Registros
     /// <summary>
     /// Interaction logic for RContratos.xaml
     /// </summary>
-    public partial class RContratos : Window
+    public partial class rContratos : Window
     {
         Contratos contrato = new Contratos();
         private int UsuarioId { get; set; }
@@ -26,7 +26,7 @@ namespace Proyecto_Final.UI.Registros
 
         List<int> ClientesId = new List<int>();
         List<int> CacaosId = new List<int>();
-        public RContratos(int usuarioId, string usuarioNombre)
+        public rContratos(int usuarioId, string usuarioNombre)
         {
             InitializeComponent();
             UsuarioId = usuarioId;
@@ -212,7 +212,7 @@ namespace Proyecto_Final.UI.Registros
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            CContratos cContratos = new CContratos();
+            cContratos cContratos = new cContratos();
             cContratos.Show();
         }
 
