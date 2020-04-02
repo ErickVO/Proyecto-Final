@@ -14,7 +14,7 @@ Bienvenidos, estas instrucciones te permitirán utilizar el software de manera c
 
 # **Login**
 
-![VentanaLogin](https://user-images.githubusercontent.com/59859052/77865998-0a33fd80-71ff-11ea-841e-01517381b4d8.jpg)
+![Login](https://user-images.githubusercontent.com/59859052/78206504-03122700-746d-11ea-853b-13887cee5016.jpg)
 
 **El Usuario Predeterminado es Admin y la clave es Admin**
 
@@ -22,7 +22,7 @@ En esta ventana se lleva acabo el acceso al programa, el usuario debe de complet
 
 # **Menu**
 
-![MenuPrincipal](https://user-images.githubusercontent.com/59859052/77866111-a100ba00-71ff-11ea-91e5-167beb17075d.jpg)
+![MenuPrincipal](https://user-images.githubusercontent.com/59859052/78206517-0f967f80-746d-11ea-9187-614cd9d4eef2.jpg)
 
 Este es el menu principal mediante el cual se puede acceder a todos los registros y consultas del software.
 
@@ -30,51 +30,51 @@ Este es el menu principal mediante el cual se puede acceder a todos los registro
 
 **Cacaos**
 
-Este es el Registro de Cacaos, para este registro debe de existir una Entrada.
+Este es el Registro de Cacaos.
 
-![RCacao](https://user-images.githubusercontent.com/59859052/77866193-fccb4300-71ff-11ea-8ce4-e21f2bda7aaf.jpg)
+![RCacaos](https://user-images.githubusercontent.com/59859052/78206554-2d63e480-746d-11ea-8afb-ce532cc7a1d3.jpg)
 
 **Clientes**
 
 Este es el registro de Clientes.
 
-![RCliente](https://user-images.githubusercontent.com/59859052/77866269-5fbcda00-7200-11ea-81ad-6ade41390dca.jpg)
+![RClientes](https://user-images.githubusercontent.com/59859052/78206578-3bb20080-746d-11ea-98ea-f4f615b57670.jpg)
 
 **Contratos**
 
-Este es el registro de Contratos, debe de existir cacao para realizar el llenado de datos.
+Este es el registro de Contratos, debe de existir una Entrada y un cliente.
 
-![RContratos](https://user-images.githubusercontent.com/59859052/77866318-867b1080-7200-11ea-82d3-69634d3eb75f.jpg)
+![RContratos](https://user-images.githubusercontent.com/59859052/78206624-5be1bf80-746d-11ea-816d-226e8bbbbdcd.jpg)
 
 **Entradas**
 
-Este es el registro de Entradas, para este registro debe existir un Suplidor.
+Este es el registro de Entradas, para este registro debe existir un Suplidor y Cacao.
 
-![REntradas](https://user-images.githubusercontent.com/59859052/77866351-a14d8500-7200-11ea-9e73-c981eb819aad.jpg)
+![REntradas](https://user-images.githubusercontent.com/59859052/78206655-7025bc80-746d-11ea-83f2-a911e8f0394d.jpg)
 
 **Pagos**
 
-Para este registro debe de existir un cliente, debe de existir un contrato asignado a ese cliente, luego debe seleccionar un tipo de cacao y la cantidad a pagar y ya seleccionado se agregan al pago.
+Para este registro debe de existir una Venta.
 
-![RPagos](https://user-images.githubusercontent.com/59859052/77866510-6a2ba380-7201-11ea-8771-dc56199e7f9a.jpg)
+![RPagos](https://user-images.githubusercontent.com/59859052/78206718-9cd9d400-746d-11ea-8def-51e0b0203d88.jpg)
 
 **Suplidores**
 
 Este es el registo de Suplidores.
 
-![RSuplidores](https://user-images.githubusercontent.com/59859052/77866584-af4fd580-7201-11ea-8de1-6119ce021da8.jpg)
+![RSuplidor](https://user-images.githubusercontent.com/59859052/78206743-aa8f5980-746d-11ea-8de0-b8d7ef71a2a5.jpg)
 
 **Usuarios**
 
 Este es el registro de Usuarios.
 
-![RUsuarios](https://user-images.githubusercontent.com/59859052/77866604-c8f11d00-7201-11ea-9be1-3ca532a8ff9b.jpg)
+![RUsuarios](https://user-images.githubusercontent.com/59859052/78206767-b8dd7580-746d-11ea-9d1d-51cb87908f7f.jpg)
 
 **Ventas**
 
-Este es registro Ventas, para este registro debe de existir un contrato.
+Este es registro Ventas, para este registro debe de existir un Contrato.
 
-![RVentas](https://user-images.githubusercontent.com/59859052/77866721-27b69680-7202-11ea-8691-8f687224bbd3.jpg)
+![RVentas](https://user-images.githubusercontent.com/59859052/78206802-ce529f80-746d-11ea-8e86-d639d4be9c9e.jpg)
 
 # **Consultas**
 
