@@ -42,7 +42,7 @@ Este es el registro de Clientes.
 
 **Contratos**
 
-Este es el registro de Contratos, debe de existir una Entrada y un cliente.
+Este es el registro de Contratos, debe de existir un cliente y debe de haber un cacao con cantidad disponible.
 
 ![RContratos](https://user-images.githubusercontent.com/59859052/78317025-29000000-752f-11ea-84e7-24d71ad0ea81.jpg)
 
