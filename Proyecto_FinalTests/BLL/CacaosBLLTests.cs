@@ -106,5 +106,19 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.IsTrue(cantidad - 100 == cacao.Cantidad);
         }
+
+        [TestMethod()]
+        public void DevolverCacaoTest()
+        {
+            Cacaos cacao = CacaosBLL.Buscar(1);
+
+            decimal cantidad = cacao.Cantidad;
+
+            CacaosBLL.DevolverCacao(1, 100);
+
+            cacao = CacaosBLL.Buscar(1);
+
+            Assert.IsTrue(cantidad + 100 == cacao.Cantidad);
+        }
     }
 }
