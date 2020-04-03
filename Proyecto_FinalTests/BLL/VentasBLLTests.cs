@@ -119,5 +119,24 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.IsTrue(paso);
         }
+
+        [TestMethod()]
+        public void RestablecerBalanceTest(int id)
+        {
+            bool paso = false;
+
+            decimal balance;
+
+            Ventas v = VentasBLL.Buscar(1);
+
+            balance = v.Balance;
+
+            VentasBLL.RestablecerBalance(v.VentaId);
+
+            if (balance > v.Balance)
+                paso = true;
+
+            Assert.IsTrue(paso);
+        }
     }
 }
