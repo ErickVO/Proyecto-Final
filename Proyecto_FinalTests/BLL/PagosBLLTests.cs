@@ -86,5 +86,24 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.IsTrue(paso);
         }
+
+        [TestMethod()]
+        public void EntradaValidaTest()
+        {
+            Pagos pagos = new Pagos();
+
+            pagos.PagoId = 0;
+            pagos.Fecha = DateTime.Now;
+            pagos.ClienteId = 1;
+            pagos.Total = 600.0m;
+            pagos.UsuarioId = 1;
+            pagos.FechaCreacion = DateTime.Now;
+            pagos.FechaModificacion = DateTime.Now;
+            pagos.PagoDetalle.Add(new PagosDetalle(0, 1, 600.0m, 600.0m));
+
+            bool paso = PagosBLL.EntradaValida(pagos);
+
+            Assert.IsTrue(paso);
+        }
     }
 }
