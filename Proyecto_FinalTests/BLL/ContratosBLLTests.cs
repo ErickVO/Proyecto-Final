@@ -105,5 +105,24 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.IsTrue(paso);
         }
+
+        [TestMethod()]
+        public void RestablecerCantidadPendienteTest()
+        {
+            bool paso = false;
+
+            decimal cantidad;
+
+            Contratos c = ContratosBLL.Buscar(1);
+
+            cantidad = c.CantidadPendiente;
+
+            ContratosBLL.RestablecerCantidadPendiente(c.ContratoId);
+
+            if (cantidad < c.CantidadPendiente)
+                paso = true;
+
+            Assert.IsTrue(paso);
+        }
     }
 }
