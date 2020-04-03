@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_Final.UI.Consultas"
         mc:Ignorable="d"
-        Title="                                                                                                   Consulta de Suplidores" Height="450" Width="800">
+        Title="                                                                                                   Consulta de Suplidores" Height="500" Width="1000">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/Cacao-Ventanas.jpg"/>
@@ -43,6 +43,7 @@
                 <ComboBoxItem Content="Cedula"/>
                 <ComboBoxItem Content="Dirección"/>
                 <ComboBoxItem Content="Email"/>
+                <ComboBoxItem Content="UsuarioId"/>
             </ComboBox>
         </StackPanel>
 
@@ -61,7 +62,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
-            <DataGrid x:Name="ConsultaDataGrid" Height="375"/>
+            <DataGrid x:Name="ConsultaDataGrid" Height="416" Width="990"/>
         </StackPanel>
 
     </Grid>

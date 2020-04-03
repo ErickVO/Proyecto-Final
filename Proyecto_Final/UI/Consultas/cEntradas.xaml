@@ -41,6 +41,7 @@
                 <ComboBoxItem Content="EntradaId"/>
                 <ComboBoxItem Content="SuplidorId"/>
                 <ComboBoxItem Content="CacaoId"/>
+                <ComboBoxItem Content="UsuarioId"/>
             </ComboBox>
         </StackPanel>
 

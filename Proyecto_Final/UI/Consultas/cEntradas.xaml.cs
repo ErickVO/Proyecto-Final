@@ -72,6 +72,18 @@ namespace Proyecto_Final.UI.Consultas
                             MessageBox.Show("Por favor, ingrese un ID valido");
                         }
                         break;
+                    case 4://UsuarioId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = EntradasBLL.GetList(e => e.UsuarioId == id);
+                            MessageBox.Show("ID");
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
                 }
                 if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
                     Listado = Listado.Where(e => e.Fecha.Date >= DesdeDatePicker.SelectedDate.Value && e.Fecha.Date <= HastaDatePicker.SelectedDate.Value).ToList();

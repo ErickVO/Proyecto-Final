@@ -60,6 +60,18 @@ namespace Proyecto_Final.UI.Consultas
                     case 5:
                         Listado = SuplidoresBLL.GetList(s => s.Email.Contains(CriterioTextBox.Text));
                         break;
+                    case 6://UsuarioId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = SuplidoresBLL.GetList(s => s.UsuarioId == id);
+                            MessageBox.Show("ID");
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
                 }
                 if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
                     Listado = Listado.Where(s => s.Fecha.Date >= DesdeDatePicker.SelectedDate.Value && s.Fecha.Date <= HastaDatePicker.SelectedDate.Value).ToList();

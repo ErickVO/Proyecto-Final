@@ -60,6 +60,18 @@ namespace Proyecto_Final.UI.Consultas
                             MessageBox.Show("Por favor, ingrese un ID valido");
                         }
                         break;
+                    case 3://UsuarioId
+                        try
+                        {
+                            int id = Convert.ToInt32(CriterioTextBox.Text);
+                            Listado = VentasBLL.GetList(v => v.UsuarioId == id);
+                            MessageBox.Show("ID");
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Por favor, ingrese un ID valido");
+                        }
+                        break;
                 }
                 if (DesdeDatePicker.SelectedDate != null && HastaDatePicker.SelectedDate != null)
                     Listado = Listado.Where(v => v.Fecha.Date >= DesdeDatePicker.SelectedDate.Value && v.Fecha.Date <= HastaDatePicker.SelectedDate.Value).ToList();
@@ -69,8 +81,51 @@ namespace Proyecto_Final.UI.Consultas
                 Listado = VentasBLL.GetList(v => true);
             }
 
+            List<VentaGrid> ventaGrid = new List<VentaGrid>();
+
+            foreach(var item in Listado)
+            {
+                ventaGrid.Add(new VentaGrid(item.VentaId, item.Fecha, item.ClienteId, item.Total, item.Balance, item.FechaCreacion, item.FechaModificacion, item.UsuarioId));
+            }
+
             ConsultaDataGrid.ItemsSource = null;
-            ConsultaDataGrid.ItemsSource = Listado;
+            ConsultaDataGrid.ItemsSource = ventaGrid;
+        }
+
+        private class VentaGrid
+        {
+            public int VentaId { get; set; }
+            public DateTime Fecha { get; set; }
+            public int ClienteId { get; set; }
+            public decimal Total { get; set; }
+            public decimal Balance { get; set; }
+            public DateTime FechaCreacion { get; set; }
+            public DateTime FechaModificacion { get; set; }
+            public int UsuarioId { get; set; }
+
+            public VentaGrid()
+            {
+                VentaId = 0;
+                Fecha = DateTime.Now;
+                ClienteId = 0;
+                Total = 0.0m;
+                Balance = 0.0m;
+                FechaCreacion = DateTime.Now;
+                FechaModificacion = DateTime.Now;
+                UsuarioId = 0;
+            }
+
+            public VentaGrid(int ventaId, DateTime fecha, int clienteId, decimal total, decimal balance, DateTime fechaCreacion, DateTime fechaModificacion, int usuarioId)
+            {
+                VentaId = ventaId;
+                Fecha = fecha;
+                ClienteId = clienteId;
+                Total = total;
+                Balance = balance;
+                FechaCreacion = fechaCreacion;
+                FechaModificacion = fechaModificacion;
+                UsuarioId = usuarioId;
+            }
         }
     }
 }
