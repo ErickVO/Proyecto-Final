@@ -55,7 +55,14 @@ namespace Proyecto_Final.UI.Registros
             llenarPagoDetalle();
 
             if (contenedor.pagos.PagoId == 0)
+            {
+                if (!PagosBLL.EntradaValida(contenedor.pagos))
+                {
+                    MessageBox.Show("Ya ha sido utilizada este VentaId");
+                    return;
+                }
                 paso = PagosBLL.Guardar(contenedor.pagos);
+            }
             else
             {
                 if (!existeEnLaBaseDeDatos())
@@ -139,6 +146,7 @@ namespace Proyecto_Final.UI.Registros
 
             if (PagosBLL.Eliminar(contenedor.pagos.PagoId))
             {
+                VentasBLL.RestablecerBalance(contenedor.pagos.PagoDetalle[0].VentaId);
                 limpiar();
                 MessageBox.Show("Eliminado");
             }

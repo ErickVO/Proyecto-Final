@@ -139,9 +139,8 @@ namespace Proyecto_Final.BLL
 
             foreach (var item in lista)
             {
-                Ventas venta = Buscar(item.VentaId);
 
-                if (venta.VentaDetalle[0].ContratoId == ventas.VentaDetalle[0].ContratoId)
+                if (item.VentaDetalle[0].ContratoId == ventas.VentaDetalle[0].ContratoId)
                     return false;
             }
 
@@ -153,6 +152,15 @@ namespace Proyecto_Final.BLL
             Ventas venta = Buscar(id);
 
             venta.Balance = balance;
+
+            Modificar(venta);
+        }
+
+        public static void RestablecerBalance(int id)
+        {
+            Ventas venta = Buscar(id);
+
+            venta.Balance = venta.Total;
 
             Modificar(venta);
         }

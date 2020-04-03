@@ -152,5 +152,20 @@ namespace Proyecto_Final.BLL
             else
                 return false;
         }
+
+        public static bool EntradaValida(Pagos pagos)
+        {
+            //verifica si el contrato ya esta utilizado
+            List<Pagos> lista = GetList(c => true);
+
+            foreach (var item in lista)
+            {
+
+                if (item.PagoDetalle[0].VentaId == pagos.PagoDetalle[0].VentaId)
+                    return false;
+            }
+
+            return true;
+        }
     }
 }

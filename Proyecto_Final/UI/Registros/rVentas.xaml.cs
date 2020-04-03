@@ -54,6 +54,8 @@ namespace Proyecto_Final.UI.Registros
 
         private void obtenerContratos(int id)
         {
+            ContratoIdComboBox.Items.Clear();
+
             List<Contratos> contratos = ContratosBLL.GetList(c => c.ClienteId == id);
 
             foreach (var item in contratos)
@@ -141,6 +143,8 @@ namespace Proyecto_Final.UI.Registros
 
         private void llenarVentaDetalle()
         {
+            contenedor.ventas.VentaDetalle = new List<VentasDetalle>();
+
             foreach (var item in contenedor.listaVentas)
             {
                 contenedor.ventas.VentaDetalle.Add(new VentasDetalle(item.VentaId, item.ContratoId, item.Cantidad, item.Importe));
@@ -211,8 +215,14 @@ namespace Proyecto_Final.UI.Registros
                     ClientesComboBox.SelectedIndex = i;
             }
 
-            ContratoIdComboBox.Items.Add(contenedor.ventas.VentaDetalle[0].ContratoId);
-            ContratoIdComboBox.SelectedIndex = 0;
+            for (int i = 0; i < ContratoIdComboBox.Items.Count; i++)
+            {
+                ContratoIdComboBox.SelectedIndex = i;
+
+                if (Convert.ToInt32(ContratoIdComboBox.SelectedItem) == contenedor.ventas.VentaDetalle[0].ContratoId)
+                    return;
+            }
+
         }
 
         private void llenarDataGrid()
@@ -345,10 +355,11 @@ namespace Proyecto_Final.UI.Registros
                 return;
             }
 
-            Contratos contrato = ContratosBLL.Buscar(Convert.ToInt32(ContratoIdComboBox.SelectedItem));
-
             if (contenedor.ventas.VentaId == 0)
+            {
+                Contratos contrato = ContratosBLL.Buscar(Convert.ToInt32(ContratoIdComboBox.SelectedItem));
                 CantidadPendienteLabel.Content = Convert.ToString(contrato.CantidadPendiente);
+            }
 
             CantidadTextBox.IsEnabled = true;
 

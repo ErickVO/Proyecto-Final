@@ -75,6 +75,7 @@ namespace Proyecto_Final.UI.Registros
             TotalLabel.Content = "";
             CantidadPendienteLabel.Content = "";
 
+            InventarioLabel.Content = string.Empty;
             ClienteIdComboBox.SelectedIndex = -1;
             CacaoIdComboBox.SelectedIndex = -1;
 
@@ -263,6 +264,7 @@ namespace Proyecto_Final.UI.Registros
             else
             {
                 Cacaos cacao = CacaosBLL.Buscar(CacaosId[CacaoIdComboBox.SelectedIndex]);
+                InventarioLabel.Content = Convert.ToString(cacao.Cantidad);
                 PrecioLabel.Content = Convert.ToString(cacao.Precio);
                 CantidadTextBox.IsEnabled = true;
             }

@@ -43,6 +43,8 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
@@ -109,10 +111,18 @@
         </StackPanel>
 
         <StackPanel Grid.Row="11" Grid.Column="1">
-            <Label Content="Cantidad:" FontSize="16"/>
+            <Label Content="Inventario:" FontSize="16"/>
         </StackPanel>
 
         <StackPanel Grid.Row="11" Grid.Column="3">
+            <Label x:Name="InventarioLabel" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="13" Grid.Column="1">
+            <Label Content="Cantidad:" FontSize="16"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="13" Grid.Column="3">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="CantidadTextBox" FontSize="16" HorizontalAlignment="Stretch" TextChanged="CantidadTextBox_TextChanged">
                 <TextBox.Text>
                     <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -124,35 +134,35 @@
             </TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="13" Grid.Column="1">
+        <StackPanel Grid.Row="15" Grid.Column="1">
             <Label Content="Precio:" FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="13" Grid.Column="3">
+        <StackPanel Grid.Row="15" Grid.Column="3">
             <Label x:Name="PrecioLabel" FontSize="16" Content="{Binding Path=Precio, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="15" Grid.Column="1">
+        <StackPanel Grid.Row="17" Grid.Column="1">
             <Label Content="Total:" FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="15" Grid.Column="3">
+        <StackPanel Grid.Row="17" Grid.Column="3">
             <Label x:Name="TotalLabel" Content="{Binding Path=Total, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="17" Grid.Column="1">
+        <StackPanel Grid.Row="19" Grid.Column="1">
             <Label Content="Cantidad Pendiente:" FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="17" Grid.Column="3">
+        <StackPanel Grid.Row="19" Grid.Column="3">
             <Label x:Name="CantidadPendienteLabel" Content="{Binding Path=CantidadPendiente, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="19" Grid.Column="1">
+        <StackPanel Grid.Row="21" Grid.Column="1">
             <Label Content="Creado Por:" FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="19" Grid.Column="3">
+        <StackPanel Grid.Row="21" Grid.Column="3">
             <Label x:Name="UsuarioLabel" Content=" " FontSize="16"/>
         </StackPanel>
 
@@ -205,7 +215,7 @@
             <Label x:Name="FechaModificacionLabel" Content="{ Binding Path=FechaModificacion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  FontSize="16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="23" Grid.Column="1">
+        <StackPanel Grid.Row="25" Grid.Column="1">
             <Button Style="{StaticResource ButtonStyle}" x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="NuevoButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/nuevo.png" AlignmentX="Left"/>
@@ -213,7 +223,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="23" Grid.Column="3">
+        <StackPanel Grid.Row="25" Grid.Column="3">
             <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/guardar.png" AlignmentX="Left"/>
@@ -237,7 +247,7 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="23" Grid.Column="5">
+        <StackPanel Grid.Row="25" Grid.Column="5">
             <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/eliminar.png" AlignmentX="Left"/>
