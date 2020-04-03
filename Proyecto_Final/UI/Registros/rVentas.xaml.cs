@@ -147,7 +147,7 @@ namespace Proyecto_Final.UI.Registros
 
             foreach (var item in contenedor.listaVentas)
             {
-                contenedor.ventas.VentaDetalle.Add(new VentasDetalle(item.VentaId, item.ContratoId, item.Cantidad, item.Importe));
+                contenedor.ventas.VentaDetalle.Add(new VentasDetalle(contenedor.ventas.VentaId, item.ContratoId, item.Cantidad, item.Importe));
             }
         }
 
@@ -231,7 +231,7 @@ namespace Proyecto_Final.UI.Registros
 
             foreach (var item in contenedor.ventas.VentaDetalle)
             {
-                contenedor.listaVentas.Add(new ListaVentas(item.VentaId, item.ContratoId, item.Cantidad, item.Precio, item.Cantidad * item.Precio));
+                contenedor.listaVentas.Add(new ListaVentas(item.ContratoId, item.Cantidad, item.Precio, item.Cantidad * item.Precio));
             }
         }
 
@@ -256,7 +256,7 @@ namespace Proyecto_Final.UI.Registros
                 return;
             }
 
-            contenedor.listaVentas.Add(new ListaVentas(contenedor.ventas.VentaId, Convert.ToInt32(ContratoIdComboBox.SelectedItem), contenedor.ventasDetalle.Cantidad, obtenerPrecio()));
+            contenedor.listaVentas.Add(new ListaVentas(Convert.ToInt32(ContratoIdComboBox.SelectedItem), contenedor.ventasDetalle.Cantidad, obtenerPrecio()));
             calcularVenta();
             Recargar();
 

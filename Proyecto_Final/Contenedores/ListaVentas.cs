@@ -6,7 +6,6 @@ namespace Proyecto_Final.Contenedores
 {
     public class ListaVentas
     {
-        public int VentaId { get; set; }
         public int ContratoId { get; set; }
         public decimal Cantidad { get; set; }
         public decimal Importe { get; set; }
@@ -14,24 +13,21 @@ namespace Proyecto_Final.Contenedores
 
         public ListaVentas()
         {
-            VentaId = 0;
             ContratoId = 0;
             Cantidad = 0;
             Total = 0;
         }
 
-        public ListaVentas(int ventaId, int contratoId, decimal cantidad, decimal importe)
+        public ListaVentas(int contratoId, decimal cantidad, decimal importe)
         {
-            VentaId = ventaId;
             ContratoId = contratoId;
             Cantidad = cantidad;
             Importe = importe;
             Total = 0;
         }
 
-        public ListaVentas(int ventaId, int contratoId, decimal cantidad, decimal importe, decimal total)
+        public ListaVentas(int contratoId, decimal cantidad, decimal importe, decimal total)
         {
-            VentaId = ventaId;
             ContratoId = contratoId;
             Cantidad = cantidad;
             Importe = importe;

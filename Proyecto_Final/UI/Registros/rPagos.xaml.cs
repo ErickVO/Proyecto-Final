@@ -95,7 +95,7 @@ namespace Proyecto_Final.UI.Registros
 
             foreach (var item in contenedor.listaPagos)
             {
-                contenedor.pagos.PagoDetalle.Add(new PagosDetalle(item.PagoId, item.VentaId, item.Monto, item.Saldo));
+                contenedor.pagos.PagoDetalle.Add(new PagosDetalle(contenedor.pagos.PagoId, item.VentaId, item.Monto, item.Saldo));
             }
         }
 
@@ -171,7 +171,7 @@ namespace Proyecto_Final.UI.Registros
                 return;
             }
 
-            contenedor.listaPagos.Add(new ListaPagos(contenedor.pagos.PagoId, Convert.ToInt32(VentaComboBox.SelectedItem), contenedor.pagosDetalle.Monto));
+            contenedor.listaPagos.Add(new ListaPagos(Convert.ToInt32(VentaComboBox.SelectedItem), contenedor.pagosDetalle.Monto));
             calcularPago();
             reCargar();
 
@@ -320,7 +320,7 @@ namespace Proyecto_Final.UI.Registros
 
             foreach (var item in contenedor.pagos.PagoDetalle)
             {
-                contenedor.listaPagos.Add(new ListaPagos(item.PagoId, item.VentaId, item.Monto, item.Saldo));
+                contenedor.listaPagos.Add(new ListaPagos(item.VentaId, item.Monto, item.Saldo));
             }
         }
 
