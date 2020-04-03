@@ -55,7 +55,7 @@
                     <ImageBrush/>
                 </Label.Background>
             </Label>
-            <Button x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="115" Click="ConsultarButton_Click">
+            <Button Style="{StaticResource ButtonStyle}" x:Name="ConsultarButton" Content="Consultar" HorizontalContentAlignment="Right" FontSize="20" Width="115" Click="ConsultarButton_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/buscar.png" AlignmentX="Left"/>
                 </Button.Background>

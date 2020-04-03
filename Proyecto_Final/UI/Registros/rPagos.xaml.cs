@@ -91,6 +91,8 @@ namespace Proyecto_Final.UI.Registros
 
         private void llenarPagoDetalle()
         {
+            contenedor.pagos.PagoDetalle = new List<PagosDetalle>();
+
             foreach (var item in contenedor.listaPagos)
             {
                 contenedor.pagos.PagoDetalle.Add(new PagosDetalle(item.PagoId, item.VentaId, item.Monto, item.Saldo));
@@ -240,6 +242,8 @@ namespace Proyecto_Final.UI.Registros
 
         private void obtenerVentas(int id)
         {
+            VentaComboBox.Items.Clear();
+
             List<Ventas> ventas = VentasBLL.GetList(v => v.ClienteId == id);
 
             foreach (var item in ventas)
@@ -297,16 +301,17 @@ namespace Proyecto_Final.UI.Registros
             Ventas venta = VentasBLL.Buscar(Convert.ToInt32(VentaComboBox.SelectedItem));
 
             decimal total = 0.0m;
+            decimal balance = venta.Total;
 
             foreach (var item in contenedor.listaPagos)
             {
                 total += item.Monto;
-                venta.Balance -= item.Monto;
-                item.Saldo = venta.Balance;
+                balance -= item.Monto;
+                item.Saldo = balance;
             }
 
             TotalLabel.Content = Convert.ToString(total);
-            BalanceLabel.Content = Convert.ToString(venta.Balance);
+            BalanceLabel.Content = Convert.ToString(balance);
         }
 
         private void llenarDataGrid()
