@@ -44,7 +44,7 @@ Este es el registro de Clientes.
 
 Este es el registro de Contratos, debe de existir una Entrada y un cliente.
 
-![RContratos](https://user-images.githubusercontent.com/59859052/78206624-5be1bf80-746d-11ea-816d-226e8bbbbdcd.jpg)
+![RContratos](https://user-images.githubusercontent.com/59859052/78317025-29000000-752f-11ea-84e7-24d71ad0ea81.jpg)
 
 **Entradas**
 
@@ -87,4 +87,4 @@ Todas las consultas tienen este estilo por esto solo muestro esta aqui.
 Luis David Sánchez Ovalles.
 Darwin Lantigua Fermin.
 
-# ** Gracias por la atención **👍
+# **Gracias por la atención**👍
