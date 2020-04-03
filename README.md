@@ -68,7 +68,7 @@ Este es el registo de Suplidores.
 
 Este es el registro de Usuarios.
 
-![RUsuarios](https://user-images.githubusercontent.com/59859052/78206767-b8dd7580-746d-11ea-9d1d-51cb87908f7f.jpg)
+![image](https://user-images.githubusercontent.com/59859052/78407371-9e70dc80-75d2-11ea-8ce8-07aa7cd57efa.png)
 
 **Ventas**
 
