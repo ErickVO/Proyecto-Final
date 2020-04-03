@@ -6,7 +6,7 @@
 
 # **Cronograma de Trabajo**
 
-![image](https://user-images.githubusercontent.com/59859052/77968000-48d7bf80-72b4-11ea-8050-91790ee9d4f1.png)
+![image](https://user-images.githubusercontent.com/59859052/78405803-42588900-75cf-11ea-8878-35b6bf02f0a0.png)
 
 # **Inicio**📄
 
