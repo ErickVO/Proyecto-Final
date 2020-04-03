@@ -30,8 +30,8 @@ namespace Proyecto_Final.UI.Registros
             UsuarioId = usuarioId;
             UsuarioNombre = usuarioNombre;
             UsuarioLabel.Content = UsuarioNombre;
-            CreacionLabel.ContentStringFormat = "MM/dd/yyyy";
-            ModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            CreacionLabel.ContentStringFormat = "dd/MM/yyyy";
+            ModificacionLabel.ContentStringFormat = "dd/MM/yyyy";
             this.DataContext = cacao;
         }
 

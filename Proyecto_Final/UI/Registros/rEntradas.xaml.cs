@@ -31,8 +31,8 @@ namespace Proyecto_Final.UI.Registros
             UsuarioId = usuarioId;
             UsuarioNombre = usuarioNombre;
             UsuarioLabel.Content = UsuarioNombre;
-            FechaCreacionLabel.ContentStringFormat = "MM/dd/yyyy";
-            FechaModificacionLabel.ContentStringFormat = "MM/dd/yyyy";
+            FechaCreacionLabel.ContentStringFormat = "dd/MM/yyyy";
+            FechaModificacionLabel.ContentStringFormat = "dd/MM/yyyy";
             EntradaIdTextBox.Text = "0";
             ObtenerSuplidor();
             ObtenerCacaos();
