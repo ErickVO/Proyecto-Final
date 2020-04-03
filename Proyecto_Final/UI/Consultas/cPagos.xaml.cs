@@ -89,8 +89,37 @@ namespace Proyecto_Final.UI.Consultas
                 Listado = PagosBLL.GetList(p => true);
             }
 
+            List<PagosGrid> pagosGrids = new List<PagosGrid>();
+
+            foreach(var item in Listado)
+            {
+                pagosGrids.Add(new PagosGrid(item.PagoId, item.Fecha, item.ClienteId, item.Total, item.FechaCreacion, item.FechaModificacion, item.UsuarioId));
+            }
+
             ConsultaDataGrid.ItemsSource = null;
-            ConsultaDataGrid.ItemsSource = Listado;
+            ConsultaDataGrid.ItemsSource = pagosGrids;
+        }
+
+        public class PagosGrid
+        {
+            public int PagoId { get; set; }
+            public DateTime Fecha { get; set; }
+            public int ClienteId { get; set; }
+            public decimal Total { get; set; }
+            public DateTime FechaCreacion { get; set; }
+            public DateTime FechaModificacion { get; set; }
+            public int UsuarioId { get; set; }
+
+            public PagosGrid(int pagoId, DateTime fecha, int clienteId, decimal total, DateTime fechaCreacion, DateTime fechaModificacion, int usuarioId)
+            {
+                PagoId = pagoId;
+                Fecha = fecha;
+                ClienteId = clienteId;
+                Total = total;
+                FechaCreacion = fechaCreacion;
+                FechaModificacion = fechaModificacion;
+                UsuarioId = usuarioId;
+            }
         }
     }
 }
