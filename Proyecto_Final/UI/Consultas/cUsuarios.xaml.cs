@@ -57,7 +57,7 @@ namespace Proyecto_Final.UI.Consultas
                         Listado = UsuariosBLL.GetList(u => u.Clave.Contains(CriterioTextBox.Text));
                         break;
                     case 5://Email
-                        Listado = UsuariosBLL.GetList(u => u.Clave.Contains(CriterioTextBox.Text));
+                        Listado = UsuariosBLL.GetList(u => u.Email.Contains(CriterioTextBox.Text));
                         break;
                     case 6://UsuarioIdCreacion
                         try

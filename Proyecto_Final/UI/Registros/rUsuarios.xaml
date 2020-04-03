@@ -47,7 +47,7 @@
         <Label Content="UsuarioId:" Grid.Row="1" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioIdTextBox" Grid.Row="1" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="UsuarioId" Mode="TwoWay">
+                <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:IdValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -56,9 +56,9 @@
         </TextBox>
 
         <Label Content="Fecha:" Grid.Row="3" Grid.Column="1" FontSize="16"/>
-        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
+        <DatePicker Style="{StaticResource DatePickerStyle}" x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
             <DatePicker.SelectedDate>
-                <Binding Path="Fecha" Mode="TwoWay">
+                <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:FechaValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -69,7 +69,7 @@
         <Label Content="Nombres:" Grid.Row="5" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" Grid.Row="5" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="Nombres" Mode="TwoWay">
+                <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:NombreValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -80,7 +80,7 @@
         <Label Content="Nombre Usuario:" Grid.Row="7" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="UsuarioTextBox" Grid.Row="7" Grid.Column="3"  FontSize="17">
             <TextBox.Text>
-                <Binding Path="NombreUsuario" Mode="TwoWay">
+                <Binding Path="NombreUsuario" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -91,7 +91,7 @@
         <Label Content="Clave:" Grid.Row="9" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="ClaveTextBox" Grid.Row="9" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="Clave" Mode="TwoWay">
+                <Binding Path="Clave" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>

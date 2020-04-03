@@ -98,6 +98,17 @@ namespace Proyecto_Final.UI.Registros
                 return;
             }
 
+            List<Contratos> contratos = ContratosBLL.GetList(p => true);
+
+            foreach (var item in contratos)
+            {
+                if (item.ClienteId == cliente.ClienteId)
+                {
+                    MessageBox.Show("No se puede eliminar este cliente ya que tiene un contrato");
+                    return;
+                }
+            }
+
             if (ClientesBLL.Eliminar(cliente.ClienteId))
             {
                 limpiar();

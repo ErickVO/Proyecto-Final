@@ -76,6 +76,13 @@ namespace Proyecto_Final.BLL
             Contexto db = new Contexto();
             try
             {
+                List<Entradas> entradas = EntradasBLL.GetList(e => e.CacaoId == id);
+
+                foreach(var item in entradas)
+                {
+                    EntradasBLL.Eliminar(item.EntradaId);
+                }
+
                 var Eliminar = db.Cacaos.Find(id);
                 db.Entry(Eliminar).State = EntityState.Deleted;
                 paso = (db.SaveChanges() > 0);
@@ -155,6 +162,19 @@ namespace Proyecto_Final.BLL
             cacao.Cantidad += cantidad;
 
             Modificar(cacao);
+        }
+
+        public static bool cacaoDisponible()
+        {
+            List<Cacaos> cacaos = GetList(c => true);
+
+            foreach(var item in cacaos)
+            {
+                if (item.Cantidad > 0)
+                    return true;
+            }
+
+            return false;
         }
     }
 }

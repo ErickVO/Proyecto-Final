@@ -120,5 +120,13 @@ namespace Proyecto_Final.BLL.Tests
 
             Assert.IsTrue(cantidad + 100 == cacao.Cantidad);
         }
+
+        [TestMethod()]
+        public void cacaoDisponibleTest()
+        {
+            bool paso = CacaosBLL.cacaoDisponible();
+
+            Assert.IsTrue(paso);
+        }
     }
 }

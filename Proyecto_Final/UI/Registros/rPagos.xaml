@@ -52,7 +52,7 @@
         <Label Content="PagoId:" Grid.Row="1" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="PagoIdTextBox" Grid.Row="1" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="pagos.PagoId" Mode="TwoWay">
+                <Binding Path="pagos.PagoId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:IdValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -61,9 +61,9 @@
         </TextBox>
 
         <Label Content="Fecha:" Grid.Row="3" Grid.Column="1" FontSize="16"/>
-        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
+        <DatePicker Style="{StaticResource DatePickerStyle}" x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
             <DatePicker.SelectedDate>
-                <Binding Path="pagos.Fecha" Mode="TwoWay">
+                <Binding Path="pagos.Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:FechaValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -98,7 +98,7 @@
 
         <DataGrid Style="{StaticResource DataGridStyle}" x:Name="PagosDataGrid" Grid.Row="15" Grid.Column="1" Grid.RowSpan="4" Grid.ColumnSpan="3">
             <DataGrid.ItemsSource>
-                <Binding Path="listaPagos" Mode="TwoWay">
+                <Binding Path="listaPagos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:DetallePagoValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>

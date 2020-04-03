@@ -61,7 +61,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="3">
-            <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
+            <DatePicker Style="{StaticResource DatePickerStyle}" x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
                 <DatePicker.SelectedDate>
                     <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>

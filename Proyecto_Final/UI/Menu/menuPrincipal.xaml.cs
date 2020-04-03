@@ -46,13 +46,13 @@ namespace Proyecto_Final.UI.Menu
 
         private void RegistrarContratoMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            if (ClientesBLL.ExisteCliente() && EntradasBLL.ExisteEntrada())
+            if (ClientesBLL.ExisteCliente() && CacaosBLL.cacaoDisponible())
             {
                 rContratos rContratos = new rContratos(UsuarioId, UsuarioNombre);
                 rContratos.Show();
             }
             else
-                MessageBox.Show("Necesita un cliente y una entrada");
+                MessageBox.Show("Necesita un cliente y un cacao con cantidad disponible");
         }
 
         private void RegistrarEntradaMenuItem_Click(object sender, RoutedEventArgs e)

@@ -67,7 +67,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="3">
-            <DatePicker x:Name="FechaDatePicker"  FontSize="16">
+            <DatePicker Style="{StaticResource DatePickerStyle}" x:Name="FechaDatePicker"  FontSize="16">
                 <DatePicker.SelectedDate>
                     <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -91,7 +91,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="3">
-            <DatePicker x:Name="FechaVencimientoDatePicker"  FontSize="16">
+            <DatePicker Style="{StaticResource DatePickerStyle}" x:Name="FechaVencimientoDatePicker"  FontSize="16">
                 <DatePicker.SelectedDate>
                     <Binding Path="FechaVencimiento" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>

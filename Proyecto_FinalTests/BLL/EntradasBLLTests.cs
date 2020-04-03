@@ -74,15 +74,5 @@ namespace Proyecto_Final.BLL.Tests
             listado = EntradasBLL.GetList(e => true);
             Assert.AreEqual(listado, listado);
         }
-
-        [TestMethod()]
-        public void ExisteEntradaTest()
-        {
-            bool paso;
-
-            paso = EntradasBLL.ExisteEntrada();
-
-            Assert.IsTrue(paso);
-        }
     }
 }

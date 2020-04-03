@@ -51,7 +51,7 @@
         <StackPanel Grid.Row="1" Grid.Column="3">
             <TextBox Style="{StaticResource TextBoxStyle}" x:Name="SuplidorIdTextBox"  FontSize="17">
                 <TextBox.Text>
-                    <Binding Path="SuplidorId" Mode="TwoWay">
+                    <Binding Path="SuplidorId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <src:IdValidacion ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
@@ -61,7 +61,7 @@
         </StackPanel>
 
         <Label Content="Fecha:" Grid.Row="3" Grid.Column="1" FontSize="16"/>
-        <DatePicker x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
+        <DatePicker Style="{StaticResource DatePickerStyle}" x:Name="FechaDatePicker" Grid.Row="3" Grid.Column="3" FontSize="16">
             <DatePicker.SelectedDate>
                 <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -74,7 +74,7 @@
         <Label Content="Nombres:" Grid.Row="5" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="NombresTextBox" Grid.Row="5" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="Nombres" Mode="TwoWay">
+                <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:NombreValidacion ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
@@ -118,7 +118,7 @@
         <Label Content="Dirección:" Grid.Row="13" Grid.Column="1" FontSize="16"/>
         <TextBox Style="{StaticResource TextBoxStyle}" x:Name="DireccionTextBox" Grid.Row="13" Grid.Column="3" FontSize="17">
             <TextBox.Text>
-                <Binding Path="Direccion" Mode="TwoWay">
+                <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <src:CampoLlenoValidacion ValidatesOnTargetUpdated="True" Message="Debes poner una dirección."/>
                     </Binding.ValidationRules>
